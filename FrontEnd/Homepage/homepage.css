@@ -4,6 +4,19 @@ body {
     font-family: 'Montserrat';
     display: flex;
     justify-content: center;
+    background-position: 100%;
+    animation-name: bg-animation;
+    animation-duration: 3s;
+}
+
+@keyframes bg-animation {
+    from {background-position: 0%;}
+    to {background-position: 100%;}
+}
+
+@keyframes fade-in {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
 }
 
 .top-bar {
@@ -14,6 +27,8 @@ body {
     align-items: center;
     border-radius: 20px;
     padding-inline: 50px;
+    animation-name: fade-in;
+    animation-duration: 1s;
 }
 
 .title {
@@ -87,7 +102,7 @@ ul {
     top: 99%;
     left: 50%;
     transform: translate(-50%, -100%);
-    width: 75%;
+    width: 90%;
     height: 10%;
     border-radius: 20px;
     display: inline-flex;
@@ -121,11 +136,6 @@ ul {
 }
 
 .link:hover {
-    text-decoration: underline;
-}
-
-.link:active {
     color: white;
-    transition: .05s ease-in;
+    transition: .2s ease-in;
 }
-

@@ -14,6 +14,11 @@ function login() {
 
     xhr.onload = () => {
         console.log(xhr.response)
+        console.log(xhr.status)
+        console.log(xhr.statusText)
+        if(xhr.status == 200) {
+            open("../Homepage/homepage.html", "_self")
+        }
     }
 
     xhr.send();

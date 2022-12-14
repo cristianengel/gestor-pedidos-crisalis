@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    background-image: url(../Images/background.jpg);
+    font-family: 'Montserrat';
+    display: flex;
+    justify-content: center;
+}
+
+.top-bar {
+    background-color: rgb(200, 200, 200);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    align-items: center;
+    border-radius: 20px;
+    padding-inline: 50px;
+}
+
+.title {
+    margin: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-element-container {
+    float: right;
+    margin: 10px;
+}
+
+.nav-sub-list {
+    display: none;
+    position: absolute;
+    padding: 0;
+}
+
+.nav-element-container:hover > .nav-sub-list {
+    display: block;
+}
+
+.nav-sub-item {
+    float: none;
+    margin: 5px;
+    background-color: rgb(50,50,50);
+    display: block;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.nav-sub-item:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+.nav-item {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 10px;
+    color: black;
+    position: relative;
+}
+
+.nav-item:hover {
+    text-decoration: none;
+    background-color: rgb(50,50,50);
+    color: white;
+    transition: .1s ease-in;
+}
+
+.nav-item:active {
+    text-decoration: none;
+}
+
+.nav-item:visited {
+    text-decoration: none;
+}
+
+.footer {
+    background-color: rgb(200, 200, 200);
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 75%;
+    height: 10%;
+    border-radius: 20px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.linkedin-info {
+    display: flex;
+    height: 30px;
+}
+
+.email-info {
+    display: flex;
+    height: 20px;
+}
+
+.link {
+    margin-inline: 2%;
+    color: black;
+}
+
+.link:link {
+    text-decoration: none;
+}
+
+.link:visited {
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link:active {
+    color: white;
+    transition: .05s ease-in;
+}
+

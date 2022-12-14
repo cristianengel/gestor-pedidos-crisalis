@@ -10,6 +10,10 @@ let emailLink = document.querySelector("#email-link");
 function register() {
     mostrarBtn.style.display = "none";
     passwordInput.type = "password";
+
+    if(confirm("Confirmar registro?") == false) {
+        return
+    }
     // Resto del código
     const link = 'http://localhost:8080/user/registration'
     const data = {
@@ -28,6 +32,9 @@ function register() {
     })
         .then(res => res.json())
         .then(data => console.log(data));
+
+    alert("Usuario Registrado")
+    open("../Login/login.html", "_self")
 }
 
 function hideMostrarBtn() {

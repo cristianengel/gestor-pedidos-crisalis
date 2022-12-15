@@ -23,6 +23,7 @@ body {
     padding-bottom: 2%;
     width: 500px;
     position: absolute;
+    border-radius: 20px;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);

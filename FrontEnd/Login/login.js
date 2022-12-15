@@ -4,7 +4,7 @@ let passwordInput = document.querySelector("#password");
 let mostrarBtn = document.querySelector("#mostrar-btn");
 let loginBtn = document.querySelector("#login-btn");
 let emailLink = document.querySelector("#email-link");
-// Logueo
+
 function login() {
     mostrarBtn.style.display = "none";
     passwordInput.type = "password";
@@ -13,11 +13,15 @@ function login() {
     xhr.open('GET', link);
 
     xhr.onload = () => {
-        console.log(xhr.response)
-        console.log(xhr.status)
-        console.log(xhr.statusText)
+        console.log(xhr.status);
         if(xhr.status == 200) {
-            open("../Homepage/homepage.html", "_self")
+            open("../Homepage/homepage.html", "_self");
+        }
+        if(xhr.status == 400) {
+            alert("Hay datos faltantes.")
+        }
+        if(xhr.status == 401) {
+            alert("No se pudo iniciar sesión.")
         }
     }
 
@@ -41,7 +45,5 @@ mostrarBtn.addEventListener("click", () => {
 });
 loginBtn.addEventListener("click", login);
 emailLink.addEventListener("click", () => {
-    navigator.clipboard.writeText("cristianengel1411@gmail.com");
-
-    alert("Copied the text: " + "cristianengel1411@gmail.com");
+    // todo: copy text to the clipboard
 })

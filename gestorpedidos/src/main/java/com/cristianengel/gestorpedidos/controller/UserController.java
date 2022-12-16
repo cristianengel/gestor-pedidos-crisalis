@@ -23,6 +23,9 @@ public class UserController {
         return this.userService.saveUser(userDTO);
     }
 
+    @PostMapping(value = "delete")
+    public void deleteUserById(@RequestParam String username) {this.userService.deleteUser(username);}
+
     @GetMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDTO loginUser(@RequestParam String username, String password) {
         return this.userService.loginUser(username, password);

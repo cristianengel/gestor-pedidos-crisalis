@@ -9,11 +9,13 @@ import com.cristianengel.gestorpedidos.model.dto.UserDTO;
 import com.cristianengel.gestorpedidos.repository.UserRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
@@ -27,6 +29,10 @@ public class UserService {
             return this.userRepository.save(new User(userDTO));
         }
         throw new NotCreatedException("Error in saving new User");
+    }
+
+    public void deleteUser(String username) {
+        this.userRepository.deleteByUsername(username);
     }
 
     public UserDTO loginUser(String username, String password) {

@@ -24,11 +24,13 @@ public class GoodController {
         return this.goodService.saveGood(goodDTO);
     }
 
+    @PostMapping(value = "delete")
+    public void deleteGood(@RequestParam int id) {this.goodService.deleteGoodById(id);}
+
     @GetMapping(value = "get_by_id", produces = MediaType.APPLICATION_JSON_VALUE)
     public GoodDTO loadGood(@RequestParam int id) {
         return this.goodService.loadGoodById(id);
     }
-
 
     @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<GoodDTO> getAllGoods() {

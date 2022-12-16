@@ -1,0 +1,131 @@
+body {
+    background-image: url(../Images/background.jpg);
+    text-align: center;
+    font-family: 'Montserrat';
+    background-position: 100%;
+    animation-name: bg-animation;
+    animation-duration: 3s;
+}
+
+@keyframes bg-animation {
+    from {background-position-x: 0%;}
+    to {background-position: 100%;}
+}
+
+@keyframes fade-in {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+.center-panel {
+    background-color: rgb(200, 200, 200);
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 500px;
+    position: absolute;
+    border-radius: 20px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.delete-user-text {
+    color: black;
+    font-size: x-large;
+}
+
+.bottom-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    margin-inline: 2%;
+    color: black;
+}
+
+.link:link {
+    text-decoration: none;
+}
+
+.link:visited {
+    text-decoration: none;
+}
+
+.link:hover {
+    color: white;
+    transition: .2s ease-in;
+}
+
+.delete-btn {
+    background: none;
+    border-radius: .5em;
+    border-color: black;
+    color: black;
+    font-size: larger;
+    margin-inline: 2%;
+}
+
+.username-div {
+    display: inline-flex;
+    height: 30px;
+    column-gap: 20px;
+}
+
+#username {
+    font-size: large;
+    background: none;
+    color: black;
+    border: 0;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+#username::placeholder {
+    color: black;
+}
+
+.delete-btn:hover {
+    background-color: black;
+    color: rgb(200, 200, 200);
+    transition: .2s ease-in;
+}
+
+.delete-btn:active {
+    color: white;
+    transition: none;
+}
+
+#username:hover {
+    border-bottom: 1px solid rgb(200, 200, 200);
+    transition: .2s ease-in;
+}
+
+.footer {
+    background-color: rgb(200, 200, 200);
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 90%;
+    height: 10%;
+    border-radius: 20px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.linkedin-info {
+    display: flex;
+    height: 30px;
+}
+
+.email-info {
+    display: flex;
+    height: 20px;
+}

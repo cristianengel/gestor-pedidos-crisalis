@@ -10,7 +10,7 @@ body {
 }
 
 @keyframes bg-animation {
-    from {background-position: 0%;}
+    from {background-position : 0%;}
     to {background-position: 100%;}
 }
 
@@ -19,9 +19,19 @@ body {
     to {opacity: 100%;}
 }
 
+@keyframes title-in {
+    from {font-size: x-large;}
+    to {font-size: xx-large;}
+}
+
+@keyframes title-out {
+    from {font-size: xx-large;}
+    to {font-size: x-large;}
+}
 .top-bar {
     background-color: rgb(200, 200, 200);
     display: flex;
+    max-width: 90%;
     justify-content: space-between;
     margin-top: 15px;
     align-items: center;
@@ -33,6 +43,18 @@ body {
 
 .title {
     margin: 20px;
+    font-size: x-large;
+}
+
+.title:hover {
+    font-size: xx-large;
+    animation-name: title-in;
+    animation-duration: .2s;
+}
+
+.title:not(:hover) {
+    animation-name: title-out;
+    animation-duration: .2s;
 }
 
 ul {
@@ -54,6 +76,8 @@ ul {
 
 .nav-element-container:hover > .nav-sub-list {
     display: block;
+    animation-name: fade-in;
+    animation-duration: .2s;
 }
 
 .nav-sub-item {

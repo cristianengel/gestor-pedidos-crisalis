@@ -10,11 +10,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Builder
-public class BienDTO {
-    @JsonProperty("precio")
-    private double precio;
-    @JsonProperty("tipo")
-    private int tipo;
-    @JsonProperty("cargo_soporte")
-    private double cargoSoporte;
+public class GoodDTO {
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("price")
+    private double price;
+    @JsonProperty("type")
+    private int type;
+    @JsonProperty("extra_charges")
+    private double extraCharges;
 }

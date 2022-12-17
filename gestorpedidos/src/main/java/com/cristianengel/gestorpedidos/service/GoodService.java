@@ -7,7 +7,6 @@ import com.cristianengel.gestorpedidos.repository.GoodRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,13 +27,6 @@ public class GoodService {
 
     public GoodDTO loadGoodById(int id) {
         return this.goodRepository.findById(id)
-                .orElseThrow(
-                        () -> new UnauthorizedException("Non Existing Good.")
-                ).toDTO();
-    }
-
-    public GoodDTO loadGoodByName(String name) {
-        return this.goodRepository.findByName(name)
                 .orElseThrow(
                         () -> new UnauthorizedException("Non Existing Good.")
                 ).toDTO();

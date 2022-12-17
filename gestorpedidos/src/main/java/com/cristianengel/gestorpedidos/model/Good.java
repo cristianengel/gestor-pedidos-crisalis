@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "good")
+@Table(name = "bien")
 public class Good {
 
     @Id
@@ -20,16 +20,20 @@ public class Good {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "nombre")
     private String name;
 
-    @Column(name = "price")
+    @Column(name = "precio_base")
     private double price;
 
-    @Column(name = "type")
+    @Column(name = "tipo")
+    // Type 1: Product
+    // Type 2: Service
+    // Type 3: Special Service
     private int type;
 
-    @Column(name = "extra_charges")
+    @Column(name = "cargo_soporte")
+    // Only with type = 3
     private double extraCharges;
 
     public Good(GoodDTO goodDTO) {

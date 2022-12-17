@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping(value = "delete")
-    public void deleteUserById(@RequestParam String username) {this.userService.deleteUser(username);}
+    public void deleteUserByUsername(@RequestParam String username) {this.userService.deleteUser(username);}
 
     @GetMapping(value = "login", produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDTO loginUser(@RequestParam String username, String password) {

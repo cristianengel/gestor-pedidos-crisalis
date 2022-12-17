@@ -1,15 +1,7 @@
 body {
-    background-image: url(../Images/background.jpg);
+    background-image: url(../Images/material-background.jpg);
     text-align: center;
     font-family: 'Montserrat';
-    background-position: 100%;
-    animation-name: bg-animation;
-    animation-duration: 3s;
-}
-
-@keyframes bg-animation {
-    from {background-position-x: 0%;}
-    to {background-position: 100%;}
 }
 
 @keyframes fade-in {
@@ -18,9 +10,9 @@ body {
 }
 
 .center-panel {
-    background-color: rgb(200, 200, 200);
+    background-color: azure;
     padding-top: 2%;
-    padding-bottom: 2%;
+    padding-bottom: 3%;
     width: 500px;
     position: absolute;
     border-radius: 20px;
@@ -56,17 +48,20 @@ body {
 }
 
 .link:hover {
-    color: white;
-    transition: .2s ease-in;
+    color: #3D5AFE;
+    transition: .1s ease-in;
 }
 
 .delete-btn {
-    background: none;
+    background-color: #3D5AFE;
+    border: none;
     border-radius: .5em;
     border-color: black;
-    color: black;
+    color: azure;
     font-size: larger;
     margin-inline: 2%;
+    padding-block: 5px;
+    padding-inline: 7px;
 }
 
 .username-div {
@@ -85,27 +80,21 @@ body {
 }
 
 #username::placeholder {
-    color: black;
+    color: rgb(65,65,65);
 }
 
 .delete-btn:hover {
-    background-color: black;
-    color: rgb(200, 200, 200);
-    transition: .2s ease-in;
-}
-
-.delete-btn:active {
-    color: white;
-    transition: none;
+    background-color: #536DFE;
+    transition: .1s ease-in;
 }
 
 #username:hover {
-    border-bottom: 1px solid rgb(200, 200, 200);
-    transition: .2s ease-in;
+    border-bottom: 1px solid #3D5AFE;
+    transition: .1s ease-in;
 }
 
 .footer {
-    background-color: rgb(200, 200, 200);
+    background-color: azure;
     position: absolute;
     top: 99%;
     left: 50%;

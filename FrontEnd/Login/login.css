@@ -1,15 +1,7 @@
 body {
-    background-image: url(../Images/background.jpg);
+    background-image: url(../Images/material-background.jpg);
     text-align: center;
     font-family: 'Montserrat';
-    background-position: 100%;
-    animation-name: bg-animation;
-    animation-duration: 3s;
-}
-
-@keyframes bg-animation {
-    from {background-position: 0%;}
-    to {background-position: 100%;}
 }
 
 @keyframes fade-in {
@@ -18,9 +10,9 @@ body {
 }
 
 .center-panel {
-    background-color: rgb(200, 200, 200);
+    background-color: azure;
     padding-top: 2%;
-    padding-bottom: 2%;
+    padding-bottom: 3%;
     width: 500px;
     position: absolute;
     border-radius: 20px;
@@ -56,25 +48,30 @@ body {
 }
 
 .link:hover {
-    color: white;
-    transition: .2s ease-in;
+    color: #3D5AFE;
+    transition: .1s ease-in;
 }
 
 .login-btn {
-    background: none;
+    background-color: #536DFE;
     border-radius: .5em;
-    border-color: black;
-    color: black;
+    border: none;
+    color: azure;
+    padding-block: 5px;
+    padding-inline: 7px;
     font-size: larger;
     margin-inline: 2%;
 }
 
 .mostrar-btn {
-    background: none;
+    background-color: #536DFE;
     border: none;
-    color: black;
+    border-radius: 10px;
+    color: azure;
     align-self: flex-end;
     display: none;
+    padding-block: 5px;
+    padding-inline: 7px;
 }
 
 .username-div, .password-div {
@@ -93,36 +90,26 @@ body {
 }
 
 #password::placeholder, #username::placeholder {
-    color: black;
+    color: rgb(65, 65, 65);
 }
 
 .login-btn:hover {
-    background-color: black;
-    color: rgb(200, 200, 200);
-    transition: .2s ease-in;
-}
-
-.login-btn:active {
-    color: white;
-    transition: none;
-}
-
-#username:hover, #password:hover {
-    border-bottom: 1px solid white;
-    transition: .2s ease-in;
-}
-
-.mostrar-btn:hover {
-    color: rgb(200, 200, 200);
+    background-color: #3D5AFE;
     transition: .1s ease-in;
 }
 
-.mostrar-btn:active {
-    color: white;
+#username:hover, #password:hover {
+    border-bottom: 1px solid #3D5AFE;
+    transition: .1s ease-in;
+}
+
+.mostrar-btn:hover {
+    background-color: #3D5AFE;
+    transition: .1s ease-in;
 }
 
 .footer {
-    background-color: rgb(200, 200, 200);
+    background-color: azure;
     position: absolute;
     top: 99%;
     left: 50%;

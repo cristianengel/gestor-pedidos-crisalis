@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    background-image: url(../Images/material-background.jpg);
+    font-family: 'Montserrat';
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes fade-in {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+.center-panel {
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 20px;
+    width: 500px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.button {
+    font-size: large;
+    background-color: #3D5AFE;
+    color: azure;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-bottom: 15px;
+}

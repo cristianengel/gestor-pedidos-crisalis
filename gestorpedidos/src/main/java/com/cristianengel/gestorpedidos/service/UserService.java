@@ -1,6 +1,5 @@
 package com.cristianengel.gestorpedidos.service;
 
-import com.cristianengel.gestorpedidos.controller.UserController;
 import com.cristianengel.gestorpedidos.exception.custom.EmptyElementException;
 import com.cristianengel.gestorpedidos.exception.custom.NotCreatedException;
 import com.cristianengel.gestorpedidos.exception.custom.UnauthorizedException;

@@ -4,7 +4,7 @@ let usernameInput = document.querySelector("#username");
 let passwordInput = document.querySelector("#password");
 let mostrarBtn = document.querySelector("#mostrar-btn");
 let registerBtn = document.querySelector("#register-btn");
-let emailLink = document.querySelector("#email-link");
+let goToLoginBtn = document.querySelector("#go-to-login-btn");
 
 // Registración
 function register() {
@@ -22,19 +22,17 @@ function register() {
         username: usernameInput.value,
         password: passwordInput.value
     };
-    fetch(link, {
+    const response = fetch(link, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
-            'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "*"
+            'Content-Type': 'application/json'
         }
     })
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => console.log(data))
 
     alert("Usuario Registrado");
-    open("../Login/login.html", "_self");
 }
 
 function hideMostrarBtn() {
@@ -58,13 +56,11 @@ mostrarBtn.addEventListener("click", () => {
 });
 registerBtn.addEventListener("click", () => {
     if (nameInput.value == "" || lastnameInput.value == "" || usernameInput.value == "" || passwordInput.value == "") {
-        alert("Hay datos faltantes.")
+        alert("Hay datos faltantes.");
         return;
     }
-    register()
+    register();
 });
-emailLink.addEventListener("click", () => {
-    navigator.clipboard.writeText("cristianengel1411@gmail.com");
-
-    alert("Copied the text: " + "cristianengel1411@gmail.com");
-})
+goToLoginBtn.addEventListener("click", () => {
+    open("../Login/login.html", "_self");
+});

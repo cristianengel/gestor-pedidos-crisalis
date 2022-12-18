@@ -3,7 +3,6 @@ let usernameInput = document.querySelector("#username");
 let passwordInput = document.querySelector("#password");
 let mostrarBtn = document.querySelector("#mostrar-btn");
 let loginBtn = document.querySelector("#login-btn");
-let emailLink = document.querySelector("#email-link");
 
 function login() {
     mostrarBtn.style.display = "none";
@@ -25,7 +24,7 @@ function login() {
         }
     }
 
-    xhr.send();
+    xhr.send(); 
 }
 
 // Event Listeners
@@ -36,6 +35,7 @@ usernameInput.addEventListener("focus", () => {
 passwordInput.addEventListener("focus", () => {
     mostrarBtn.style.display = "flex";
 });
+loginBtn.addEventListener("click", login);
 mostrarBtn.addEventListener("click", () => {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
@@ -43,7 +43,3 @@ mostrarBtn.addEventListener("click", () => {
         passwordInput.type = "password";
     }
 });
-loginBtn.addEventListener("click", login);
-emailLink.addEventListener("click", () => {
-    // todo: copy text to the clipboard
-})

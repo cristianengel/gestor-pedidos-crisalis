@@ -52,7 +52,7 @@ body {
     transition: .1s ease-in;
 }
 
-.register-btn {
+.bottom-btn {
     background-color: #536DFE;
     border-radius: .5em;
     border: none;
@@ -93,7 +93,7 @@ body {
     color: rgb(65, 65, 65);
 }
 
-.register-btn:hover {
+.bottom-btn:hover {
     background-color: #3D5AFE;
     transition: .1s ease-in;
 }
@@ -127,9 +127,4 @@ body {
 .linkedin-info {
     display: flex;
     height: 30px;
-}
-
-.email-info {
-    display: flex;
-    height: 20px;
 }

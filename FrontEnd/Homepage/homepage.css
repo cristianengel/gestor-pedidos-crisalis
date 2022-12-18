@@ -94,6 +94,7 @@ ul {
 .nav-item {
     display: block;
     padding: 8px;
+    margin: 0%;
     text-decoration: none;
     border-radius: 10px;
     color: black;
@@ -134,11 +135,6 @@ ul {
 .linkedin-info {
     display: flex;
     height: 30px;
-}
-
-.email-info {
-    display: flex;
-    height: 20px;
 }
 
 .link {

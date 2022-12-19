@@ -14,7 +14,6 @@ function register() {
     if (confirm("Confirmar registro?") == false) {
         return
     }
-    // Resto del código
     const link = 'http://localhost:8080/user/registration'
     const data = {
         name: nameInput.value,
@@ -33,6 +32,7 @@ function register() {
         .then(data => console.log(data))
 
     alert("Usuario Registrado");
+    console.log(response)
 }
 
 function hideMostrarBtn() {

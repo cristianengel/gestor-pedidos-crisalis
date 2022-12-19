@@ -1,13 +1,10 @@
 let usernameInput = document.querySelector("#username");
-let registerBtn = document.querySelector("#delete-btn");
-let emailLink = document.querySelector("#email-link");
+let deleteBtn = document.querySelector("#delete-btn");
+let goToLoginBtn = document.querySelector("#go-to-login-btn");
 
 // Registración
-function register() {
-    mostrarBtn.style.display = "none";
-    passwordInput.type = "password";
-
-    if (confirm("Confirmar registro?") == false) {
+function deleteUser() {
+    if (confirm(`Seguro que desea eliminar al usuario ${usernameInput.value}?`) == false) {
         return
     }
     // Resto del código
@@ -15,38 +12,17 @@ function register() {
     fetch(link, {
         method: 'POST',
     })
-    alert("Usuario Registrado");
-    open("../Login/login.html", "_self");
+    alert("Usuario Eliminado");
 }
 
-function hideMostrarBtn() {
-    mostrarBtn.style.display = "none";
-    passwordInput.type = "password";
-}
-
-// Event Listeners
-nameInput.addEventListener("focus", hideMostrarBtn)
-lastnameInput.addEventListener("focus", hideMostrarBtn)
-usernameInput.addEventListener("focus", hideMostrarBtn);
-passwordInput.addEventListener("focus", () => {
-    mostrarBtn.style.display = "flex";
-});
-mostrarBtn.addEventListener("click", () => {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-    } else {
-        passwordInput.type = "password";
-    }
-});
-registerBtn.addEventListener("click", () => {
-    if (nameInput.value == "" || lastnameInput.value == "" || usernameInput.value == "" || passwordInput.value == "") {
+deleteBtn.addEventListener("click", () => {
+    if (usernameInput.value == "") {
         alert("Hay datos faltantes.")
         return;
     }
-    register()
+    deleteUser()
 });
-emailLink.addEventListener("click", () => {
-    navigator.clipboard.writeText("cristianengel1411@gmail.com");
 
-    alert("Copied the text: " + "cristianengel1411@gmail.com");
-})
+goToLoginBtn.addEventListener("click", () => {
+    open("../Login/login.html", "_self");
+});

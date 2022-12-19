@@ -1,5 +1,5 @@
 body {
-    background-image: url(../Images/material-background.jpg);
+    background-image: url(../Images/material-background.png);
     text-align: center;
     font-family: 'Montserrat';
 }
@@ -28,7 +28,7 @@ body {
     font-size: x-large;
 }
 
-.bottom-btn {
+.bottom-btns {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +52,7 @@ body {
     transition: .1s ease-in;
 }
 
-.delete-btn {
+.bottom-btn {
     background-color: #3D5AFE;
     border: none;
     border-radius: .5em;
@@ -112,9 +112,4 @@ body {
 .linkedin-info {
     display: flex;
     height: 30px;
-}
-
-.email-info {
-    display: flex;
-    height: 20px;
 }

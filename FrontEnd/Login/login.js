@@ -36,6 +36,7 @@ passwordInput.addEventListener("focus", () => {
     mostrarBtn.style.display = "flex";
 });
 loginBtn.addEventListener("click", login);
+
 mostrarBtn.addEventListener("click", () => {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
@@ -43,3 +44,15 @@ mostrarBtn.addEventListener("click", () => {
         passwordInput.type = "password";
     }
 });
+
+usernameInput.addEventListener("keydown", function(event) {
+    if(event.key == "Enter") {
+        login()
+    }
+})
+
+passwordInput.addEventListener("keydown", function(event) {
+    if(event.key == "Enter") {
+        login()
+    }
+})

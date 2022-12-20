@@ -2,6 +2,8 @@ body {
     background-image: url(../Images/material-background.png);
     text-align: center;
     font-family: 'Montserrat';
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 @keyframes fade-in {

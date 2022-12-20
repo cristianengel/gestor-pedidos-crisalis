@@ -4,6 +4,8 @@ body {
     font-family: 'Montserrat';
     display: flex;
     justify-content: center;
+    background-attachment: fixed;   
+    background-size: cover;
 }
 
 @keyframes fade-in {

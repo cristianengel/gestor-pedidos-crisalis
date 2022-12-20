@@ -4,6 +4,8 @@ body {
     font-family: 'Montserrat';
     display: flex;
     justify-content: center;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 @keyframes fade-in {
@@ -45,8 +47,21 @@ body {
     margin-bottom: 15px;
 }
 
+.home-btn {
+    margin-top: 1em;
+    width: 8rem;
+    background-color: #FF6961;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
 .button:hover {
     background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.home-btn:hover {
+    background-color: #ff908a;
     transition: .1s ease-in;
 }
 

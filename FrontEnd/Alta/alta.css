@@ -79,6 +79,11 @@ body {
     width: 48%;
 }
 
+thead {
+    background-color: #3D5AFE;
+    color: azure;
+}
+
 .button {
     font-size: large;
     background-color: #3D5AFE;

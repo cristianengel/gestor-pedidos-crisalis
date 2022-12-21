@@ -11,6 +11,10 @@ body {
     font-family: 'Montserrat';
 }
 
+button {
+    font-family: 'Montserrat';
+}
+
 @keyframes fade-in {
     from {opacity: 0%;}
     to {opacity: 100%;}
@@ -46,6 +50,7 @@ body {
     width: 48%;
     flex-direction: column;
     justify-content: center;
+    height: min-content;
 }
 
 .attribute-container {
@@ -79,9 +84,15 @@ body {
     width: 48%;
 }
 
-thead {
+.table {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.thead {
     background-color: #3D5AFE;
     color: azure;
+    border-radius: 10px;
 }
 
 .button {
@@ -118,7 +129,7 @@ thead {
 
 .footer {
     background-color: azure;
-    position: absolute;
+    position: fixed;
     top: 99%;
     left: 50%;
     transform: translate(-50%, -100%);

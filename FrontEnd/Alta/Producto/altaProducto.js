@@ -50,7 +50,7 @@ function loadBody(data) {
     }
 }
 
-async function refreshTable(urlHeaders, urlBody, table) {
+async function refreshTable(urlHeaders, urlBody) {
     
     let responseArray;
     
@@ -77,7 +77,7 @@ async function refreshTable(urlHeaders, urlBody, table) {
 }
 
 // Initial Load
-refreshTable("./headers.json", productListLink, table)
+refreshTable("./headers.json", productListLink)
 
 addBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea agregar este producto?") == true) {

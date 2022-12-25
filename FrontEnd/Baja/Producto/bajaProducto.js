@@ -2,11 +2,10 @@ const homeButton = document.querySelector("#home-btn");
 const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const nameInput = document.querySelector("#name");
-const priceInput = document.querySelector("#price");
-const addBtn = document.querySelector("#add-btn");
+const idInput = document.querySelector("#product-id");
+const deleteBtn = document.querySelector("#delete-btn");
 const productListLink = "http://localhost:8080/good/list";
-const addProductLink = "http://localhost:8080/good/new";
+const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}`;
 
 function cleanInputs() {
     nameInput.value = "";
@@ -14,15 +13,8 @@ function cleanInputs() {
 }
 
 async function deleteProduct() {
-    const data = {
-        name: nameInput.value,
-        price: priceInput.value,
-        type: 1,
-        extra_charges: 0
-    }
     const response = await fetch(deleteProductLink, {
         method: "POST",
-        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json"
         }
@@ -43,9 +35,11 @@ async function fetchDataFromDB(url) {
 }
 
 function loadBody(data) {
+    console.log(data);
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
+        console.log(dataObjectArray)
         for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
             
             const cellElement = document.createElement("td")

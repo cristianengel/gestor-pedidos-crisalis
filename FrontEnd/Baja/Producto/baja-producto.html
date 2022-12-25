@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../baja.css">
+    <title>Baja Producto</title>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Baja Producto</h1>
+        <button class="button home-btn" id="home-btn">Home</button>
+    </div>
+    <div class="center-container">
+        <div class="form">
+            <div class="attribute-container">
+                <h3>Id Producto</h3>
+                <input type="text" id="product-id" class="text-input">
+            </div>
+            <button class="button" id="delete-btn">Eliminar</button>
+        </div>
+        <div class="list">
+            <h2>Productos Existentes</h2>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="bajaProducto.js"></script>
+</body>
+</html>

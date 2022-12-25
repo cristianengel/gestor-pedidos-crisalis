@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    min-width: 850px;
+    background-image: url(../Images/material-background.png);
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Montserrat';
+}
+
+body::-webkit-scrollbar {
+    background-color: #536DFE;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #3D5AFE;
+    border-radius: 10px;
+}
+
+button {
+    font-family: 'Montserrat';
+}
+
+@keyframes fade-in {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+.top-bar {
+    display: flex;
+    background-color: azure;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    width: 50%;
+    height: fit-content;
+    margin: 10px;
+    align-self: center;
+    padding-inline: 50px;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    height: 10vh;
+    min-height: 50px;
+}
+
+.center-container {
+    margin: 1em;
+    display: flex;
+    justify-content: space-around;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.form {
+    background-color: azure;
+    border-radius: 20px;
+    display: flex;
+    width: 48%;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.blue-text {
+    color: #3D5AFE;
+}
+
+.top-btn {
+    background-color: #3D5AFE;
+    color: azure;
+    border: none;
+    border-radius: 10px;
+    font-size: larger;
+    width: 45%;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+}
+
+.top-btn:hover {
+    background-color: #536DFE;
+}
+
+.attribute-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-input {
+    height: fit-content;
+    margin-inline: 1em;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid black;
+    height: 20px;
+    font-size: 18px;
+    font-family: 'Montserrat';
+}
+
+.text-input:hover {
+    border-bottom: 1px solid #3D5AFE;
+}
+
+.text-input:focus {
+    outline: none;
+}
+
+.list {
+    background-color: azure;
+    border-radius: 20px;
+    width: 48%;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: 80vh;
+}
+
+.list::-webkit-scrollbar, .form::-webkit-scrollbar {
+    background-color: #536DFE;
+    width: 20px;
+    border-radius: 20px;
+}
+
+.list::-webkit-scrollbar-thumb, .form::-webkit-scrollbar-thumb {
+    background-color: #3D5AFE;
+    border-radius: 20px;
+}
+
+.list::-webkit-scrollbar-corner {
+    background: none;
+}
+
+.table {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.thead {
+    background-color: #3D5AFE;
+    color: azure;
+    border-radius: 10px;
+}
+
+.person {
+    display: none;
+}
+
+.business {
+    display: none;
+}
+
+.button {
+    font-size: large;
+    background-color: #3D5AFE;
+    color: azure;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+    width: 50%;
+    align-self: center;
+}
+
+.home-btn {
+    margin-top: 1em;
+    width: 8rem;
+    background-color: #FF6961;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.button:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.home-btn:hover {
+    background-color: #ff908a;
+    transition: .1s ease-in;
+} 

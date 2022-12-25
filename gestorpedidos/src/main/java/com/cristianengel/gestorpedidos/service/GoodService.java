@@ -21,8 +21,8 @@ public class GoodService {
         return this.goodRepository.save(new Good(goodDTO));
     }
 
-    public void deleteGoodById(int id) {
-        this.goodRepository.deleteById(id);
+    public void deleteGoodByName(String name) {
+        this.goodRepository.deleteByName(name);
     }
 
     public GoodDTO loadGoodById(int id) {

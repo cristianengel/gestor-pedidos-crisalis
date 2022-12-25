@@ -25,8 +25,8 @@ public class GoodController {
     }
 
     @PostMapping(value = "delete")
-    public void deleteGood(@RequestParam int id) {
-        this.goodService.deleteGoodById(id);
+    public void deleteGood(@RequestParam String name) {
+        this.goodService.deleteGoodByName(name);
     }
 
     @GetMapping(value = "get_by_id", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -20,7 +20,7 @@ const businessBtn = document.querySelector("#businessBtn");
 // Person Inputs
 const nameInput = document.querySelector("#name");
 const lastnameInput = document.querySelector("#lastname");
-const identificationInput = document.querySelector("#identification");
+const dniInput = document.querySelector("#dni");
 const addressInput = document.querySelector("#address");
 const phoneNumberInput = document.querySelector("#phoneNumber");
 const emailInput = document.querySelector("#email");
@@ -42,7 +42,25 @@ let isBusiness;
 const clientListLink = "http://localhost:8080/client/list";
 const addClientLink = "http://localhost:8080/client/new";
 
+function cleanInputs() {
+    nameInput.value = "";
+    lastnameInput.value = "";
+    dniInput.value = "";
+    addressInput.value = "";
+    phoneNumberInput.value = "";
+    emailInput.value = "";
+    cuitInput.value = "";
+    businessNameInput.value = "";
+    businessStartDateInput.value = "";
+    ownerNameInput.value = "";
+    ownerLastnameInput.value = "";
+    ownerAddressInput.value = "";
+    ownerPhoneNumberInput.value = "";
+    ownerEmailInput.value = "";
+}
+
 async function saveClient() {
+    console.log("Guardado")
     let data;
     if(isBusiness == true) {
         data = {
@@ -59,7 +77,7 @@ async function saveClient() {
     } else {
         data = {
             is_business: false,
-            identification_number: identificationInput.value,
+            identification_number: dniInput.value,
             name: nameInput.value,
             lastname: lastnameInput.value,
             address: addressInput.value,
@@ -76,8 +94,10 @@ async function saveClient() {
             "Content-Type": "application/json"
         }
     })
-        .then(res => res.json())
-        .then(data => console.log(data));
+        .then(res => res.json());
+
+    refreshTable("./headers.json", clientListLink);
+    cleanInputs()
 }
 
 async function fetchDataFromDB(url) {
@@ -89,11 +109,9 @@ async function fetchDataFromDB(url) {
 }
 
 function loadBody(data) {
-    console.log(data);
     for (let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        console.log(dataObjectArray)
 
         let cellElement = document.createElement("td");
         cellElement.textContent = dataObjectArray[1][1];
@@ -196,6 +214,29 @@ businessBtn.addEventListener("click", () => {
 })
 
 addBtn.addEventListener("click", () => {
-    saveClient()
-    refreshTable("./headers.json", clientListLink)
+    if(!isBusiness) {
+        if(nameInput.value == "" ||
+         lastnameInput.value == "" ||
+          dniInput.value == "" ||
+           addressInput.value == "" ||
+            phoneNumberInput.value == "" ||
+             emailInput.value == "") {
+                console.log("No guardado (Persona)")
+                return;
+             }
+    } else {
+        if(cuitInput.value == "" ||
+        businessNameInput.value == "" ||
+         businessStartDateInput.value == "" ||
+          ownerNameInput.value == "" ||
+           ownerLastnameInput.value == "" ||
+            ownerAddressInput.value == "" ||
+            ownerPhoneNumberInput.value == "" ||
+            ownerEmailInput.value == "") {
+                console.log("No guardado (Empresa)")
+                return;
+            }
+    }
+
+    saveClient();
 })

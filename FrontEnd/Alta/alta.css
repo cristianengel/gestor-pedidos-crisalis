@@ -11,6 +11,15 @@ body {
     font-family: 'Montserrat';
 }
 
+body::-webkit-scrollbar {
+    background-color: #536DFE;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #3D5AFE;
+    border-radius: 10px;
+}
+
 button {
     font-family: 'Montserrat';
 }
@@ -51,6 +60,8 @@ button {
     display: flex;
     width: 48%;
     flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .blue-text {
@@ -119,6 +130,10 @@ button {
 .list::-webkit-scrollbar-thumb, .form::-webkit-scrollbar-thumb {
     background-color: #3D5AFE;
     border-radius: 20px;
+}
+
+.list::-webkit-scrollbar-corner {
+    background: none;
 }
 
 .table {

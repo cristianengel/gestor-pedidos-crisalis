@@ -8,6 +8,11 @@ const addBtn = document.querySelector("#add-btn");
 const productListLink = "http://localhost:8080/good/list";
 const addProductLink = "http://localhost:8080/good/new";
 
+function cleanInputs() {
+    nameInput.value = "";
+    priceInput.value = "";
+}
+
 async function saveProduct() {
     const data = {
         name: nameInput.value,
@@ -23,7 +28,10 @@ async function saveProduct() {
         }
     })
         .then(res => res.json())
-        .then(data => console.log(data)); 
+        .then(data => console.log(data));
+        
+    refreshTable("./headers.json", productListLink);
+    cleanInputs()
 }
 
 async function fetchDataFromDB(url) {
@@ -82,9 +90,6 @@ refreshTable("./headers.json", productListLink)
 addBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea agregar este producto?") == true) {
         saveProduct();
-        refreshTable("./headers.json", productListLink, table);
-        nameInput.value = "";
-        priceInput.value = "";
     }
 })
 

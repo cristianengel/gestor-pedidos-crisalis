@@ -1,6 +1,5 @@
 {
     "headers": [
-        "Id",
         "Nombre",
         "Precio"
     ]

@@ -2,10 +2,10 @@ const homeButton = document.querySelector("#home-btn");
 const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const idInput = document.querySelector("#product-id");
+const nameInput = document.querySelector("#name");
 const deleteBtn = document.querySelector("#delete-btn");
 const productListLink = "http://localhost:8080/good/list";
-const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}`;
+const deleteProductLink = `http://localhost:8080/good/delete?name=${nameInput.value}`;
 
 function cleanInputs() {
     nameInput.value = "";

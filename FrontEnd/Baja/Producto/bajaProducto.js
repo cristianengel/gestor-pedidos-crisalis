@@ -5,25 +5,22 @@ const tableBody = document.querySelector("#tbody");
 const nameInput = document.querySelector("#name");
 const deleteBtn = document.querySelector("#delete-btn");
 const productListLink = "http://localhost:8080/good/list";
-const deleteProductLink = `http://localhost:8080/good/delete?name=${nameInput.value}`;
 
 function cleanInputs() {
     nameInput.value = "";
-    priceInput.value = "";
 }
 
-async function deleteProduct() {
-    const response = await fetch(deleteProductLink, {
+function deleteProduct() {
+    const deleteProductLink = `http://localhost:8080/good/delete?name=${nameInput.value}`;
+    fetch(deleteProductLink, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Length": 0
         }
     })
-        .then(res => res.json())
-        .then(data => console.log(data));
-        
+    console.log(nameInput.value)    
     refreshTable("./headers.json", productListLink);
-    cleanInputs()
+    cleanInputs();
 }
 
 async function fetchDataFromDB(url) {
@@ -35,11 +32,9 @@ async function fetchDataFromDB(url) {
 }
 
 function loadBody(data) {
-    console.log(data);
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        console.log(dataObjectArray)
         for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
             
             const cellElement = document.createElement("td")
@@ -81,7 +76,7 @@ async function refreshTable(urlHeaders, urlBody) {
 refreshTable("./headers.json", productListLink)
 
 deleteBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea agregar este producto?") == true) {
+    if(confirm("Seguro que desea eliminar este producto?") == true) {
         deleteProduct();
     }
 })

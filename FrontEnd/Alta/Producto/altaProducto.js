@@ -13,14 +13,14 @@ function cleanInputs() {
     priceInput.value = "";
 }
 
-async function deleteProduct() {
+async function addProduct() {
     const data = {
         name: nameInput.value,
         price: priceInput.value,
         type: 1,
         extra_charges: 0
     }
-    const response = await fetch(deleteProductLink, {
+    const response = await fetch(addProductLink, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -86,9 +86,9 @@ async function refreshTable(urlHeaders, urlBody) {
 // Initial Load
 refreshTable("./headers.json", productListLink)
 
-deleteBtn.addEventListener("click", () => {
+addBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea agregar este producto?") == true) {
-        deleteProduct();
+        addProduct();
     }
 })
 

@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class GoodDTO {
+    private int id;
     @JsonProperty("name")
     private String name;
     @JsonProperty("price")

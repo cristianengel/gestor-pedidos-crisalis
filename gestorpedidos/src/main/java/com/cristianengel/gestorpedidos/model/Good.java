@@ -46,6 +46,7 @@ public class Good {
     public GoodDTO toDTO() {
         return
                 GoodDTO.builder()
+                        .id(this.id)
                         .name(this.name)
                         .price(this.price)
                         .type(this.type)

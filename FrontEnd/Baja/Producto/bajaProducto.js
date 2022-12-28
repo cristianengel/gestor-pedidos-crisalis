@@ -1,25 +1,22 @@
 const homeButton = document.querySelector("#home-btn");
-const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const nameInput = document.querySelector("#name");
+const idInput = document.querySelector("#id-input");
 const deleteBtn = document.querySelector("#delete-btn");
 const productListLink = "http://localhost:8080/good/list";
 
 function cleanInputs() {
-    nameInput.value = "";
+    idInput.value = "";
 }
 
 function deleteProduct() {
-    const deleteProductLink = `http://localhost:8080/good/delete?name=${nameInput.value}`;
+    const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}`;
     fetch(deleteProductLink, {
         method: "POST",
         headers: {
             "Content-Length": 0
         }
     })
-    console.log(nameInput.value)    
-    refreshTable("./headers.json", productListLink);
     cleanInputs();
 }
 
@@ -47,9 +44,6 @@ function loadBody(data) {
 }
 
 async function refreshTable(urlHeaders, urlBody) {
-    
-    let responseArray;
-    
     // Headers
     const headersResponse = await fetch(urlHeaders);
     const { headers } = await headersResponse.json();
@@ -78,10 +72,10 @@ refreshTable("./headers.json", productListLink)
 deleteBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea eliminar este producto?") == true) {
         deleteProduct();
+        refreshTable("./headers.json", productListLink);
     }
 })
 
 homeButton.addEventListener("click", () => {
     open("../../Homepage/homepage.html", "_self");
 })
-

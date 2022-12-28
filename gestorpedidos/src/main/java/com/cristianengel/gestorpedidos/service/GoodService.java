@@ -21,8 +21,8 @@ public class GoodService {
         return this.goodRepository.save(new Good(goodDTO));
     }
 
-    public void deleteGoodByName(String name) {
-        this.goodRepository.deleteByName(name);
+    public void deleteGoodById(int id) {
+        this.goodRepository.deleteById(id);
     }
 
     public GoodDTO loadGoodById(int id) {
@@ -30,6 +30,14 @@ public class GoodService {
                 .orElseThrow(
                         () -> new UnauthorizedException("Non Existing Good.")
                 ).toDTO();
+    }
+
+    public void updateProduct(int id, String name, double price) {
+        this.goodRepository.updateNameAndPriceById(name, price, id);
+    }
+
+    public List<Good> searchProduct(String name) {
+        return this.goodRepository.searchProduct(name);
     }
 
     public List<GoodDTO> getAllGoodsInDB() {

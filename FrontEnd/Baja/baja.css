@@ -60,8 +60,7 @@ button {
     display: flex;
     width: 48%;
     flex-direction: column;
-    overflow: hidden;
-    overflow-y: scroll;
+    height: min-content;
 }
 
 .blue-text {

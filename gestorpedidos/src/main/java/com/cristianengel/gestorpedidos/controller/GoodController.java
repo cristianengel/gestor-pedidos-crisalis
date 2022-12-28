@@ -24,9 +24,14 @@ public class GoodController {
         return this.goodService.saveGood(goodDTO);
     }
 
+    @GetMapping(value = "search", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Good> getAllProductsByName(@RequestParam String name) {
+        return this.goodService.searchProduct(name);
+    }
+
     @PostMapping(value = "delete")
-    public void deleteGood(@RequestParam String name) {
-        this.goodService.deleteGoodByName(name);
+    public void deleteGood(@RequestParam int id) {
+        this.goodService.deleteGoodById(id);
     }
 
     @GetMapping(value = "get_by_id", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -37,5 +42,9 @@ public class GoodController {
     @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<GoodDTO> getAllGoods() {
         return this.goodService.getAllGoodsInDB();
+    }
+    @PostMapping(value = "update")
+    public void updateProduct(@RequestParam int id, String name, double price){
+        this.goodService.updateProduct(id, name, price);
     }
 }

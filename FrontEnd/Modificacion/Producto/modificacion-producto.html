@@ -4,10 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="../modificacion.css">
     <title>Modificación Producto</title>
 </head>
 <body>
+    <div class="top-bar">
+        <h1>Modificacion Producto</h1>
+        <button class="button home-btn" id="home-btn">Home</button>
+    </div>
+    <div class="center-container">
+        <div class="form">
+            <div class="attribute-container">
+                <h3>ID</h3>
+                <input type="text" id="id-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h3>Nombre</h3>
+                <input type="text" id="name" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h3>Precio Base</h3>
+                <input type="text" id="price" class="text-input">
+            </div>
+            <button class="button" id="modify-btn">Modificar</button>
+        </div>
+        <div class="list">
+            <div class="top-table-div">
+                <h2 class="list-title">Productos Existentes</h2>
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por nombre...">
+                <button class="button search-btn" id="search-btn">Buscar</button>
+            </div>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
     <script src="modificacionProducto.js"></script>
 </body>
 </html>

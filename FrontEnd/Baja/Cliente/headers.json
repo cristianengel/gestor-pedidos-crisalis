@@ -1,12 +1,12 @@
 {
     "headers": [
+        "Empresa",
         "DNI/CUIT",
         "Nombre",
         "Apellido",
         "Dirección",
         "Teléfono",
         "Email",
-        "Empresa",
         "Razón Social",
         "Fecha Inicio Actividades"
     ]

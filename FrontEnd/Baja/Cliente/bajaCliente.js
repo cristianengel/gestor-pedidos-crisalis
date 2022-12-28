@@ -36,55 +36,30 @@ function loadBody(data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
 
-        let cellElement = document.createElement("td");
-        cellElement.textContent = dataObjectArray[1][1];
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        cellElement.textContent = dataObjectArray[2][1];
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        cellElement.textContent = dataObjectArray[3][1];
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        cellElement.textContent = dataObjectArray[4][1];
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        cellElement.textContent = dataObjectArray[5][1];
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        cellElement.textContent = dataObjectArray[6][1];
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        if(dataObjectArray[0][1] === true) {
-            cellElement.textContent = "Sí";
-        } else {
-            cellElement.textContent = "No"
+        for(let i of dataObjectArray) {
+            let cellElement = document.createElement("td");
+            cellElement.textContent = i[1];
+            rowElement.appendChild(cellElement);
         }
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        if(dataObjectArray[0][1] === true) {
-            cellElement.textContent = dataObjectArray[7][1];
-        } else {
-            cellElement.textContent = "-"
-        }
-        rowElement.appendChild(cellElement);
-
-        cellElement = document.createElement("td");
-        if(dataObjectArray[0][1] === true) {
-            cellElement.textContent = dataObjectArray[8][1];
-        } else {
-            cellElement.textContent = "-"
-        }
-        rowElement.appendChild(cellElement);
-
-        tableBody.appendChild(rowElement);
+        tableBody.appendChild(rowElement)
+    }
+    for (let i = 0, row; row = table.rows[i]; i++) {
+        //iterate through rows
+        row.addEventListener("click", () => {
+            identificationInput.value = row.cells[1].innerHTML;
+        })
+        //rows would be accessed using the "row" variable assigned in the for loop
+        for (let j = 0, col; col = row.cells[j]; j++) {
+          //iterate through columns
+          //columns would be accessed using the "col" variable assigned in the for loop
+          if(col.innerHTML == "false") {
+            col.innerHTML = "No";
+          } else if (col.innerHTML == "true") {
+            col.innerHTML = "Sí";
+          } else if (col.innerHTML == "") {
+            col.innerHTML = "-";
+          }
+        }  
     }
 }
 

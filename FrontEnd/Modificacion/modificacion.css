@@ -24,6 +24,10 @@ button {
     font-family: 'Montserrat';
 }
 
+tbody > tr:hover {
+    color: grey;
+}
+
 @keyframes fade-in {
     from {opacity: 0%;}
     to {opacity: 100%;}
@@ -90,6 +94,12 @@ button {
 
 .top-btn:hover {
     background-color: #536DFE;
+}
+
+.top-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .attribute-container {

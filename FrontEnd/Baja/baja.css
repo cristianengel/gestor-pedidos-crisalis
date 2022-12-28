@@ -24,6 +24,10 @@ button {
     font-family: 'Montserrat';
 }
 
+tbody > tr:hover {
+    color: grey;
+}
+
 @keyframes fade-in {
     from {opacity: 0%;}
     to {opacity: 100%;}

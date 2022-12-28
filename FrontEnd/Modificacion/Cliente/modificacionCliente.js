@@ -7,7 +7,7 @@ const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
 
 // Add Button
-const addBtn = document.querySelector("#add-btn");
+const modifyBtn = document.querySelector("#modify-btn");
 
 // Divs
 const personDiv = document.querySelector("#personDiv");
@@ -20,7 +20,6 @@ const businessBtn = document.querySelector("#businessBtn");
 // Person Inputs
 const nameInput = document.querySelector("#name");
 const lastnameInput = document.querySelector("#lastname");
-const dniInput = document.querySelector("#dni");
 const addressInput = document.querySelector("#address");
 const phoneNumberInput = document.querySelector("#phoneNumber");
 const emailInput = document.querySelector("#email");
@@ -33,7 +32,6 @@ const ownerPhoneNumberInput = document.querySelector("#ownerPhoneNumber");
 const ownerEmailInput = document.querySelector("#ownerEmail");
 
 // Business Inputs
-const cuitInput = document.querySelector("#cuit");
 const businessNameInput = document.querySelector("#businessName");
 const businessStartDateInput = document.querySelector("#businessStartDate");
 
@@ -42,18 +40,19 @@ const searchBtn = document.querySelector("#search-btn");
 const listInput = document.querySelector("#list-input");
 
 let isBusiness;
+const identificationInput = document.querySelector("#identification-input");
+const loadBtn = document.querySelector("#load-btn");
 
 const clientListLink = "http://localhost:8080/client/list";
-const addClientLink = "http://localhost:8080/client/new";
+const updateClientLink = "http://localhost:8080/client/update";
 
 function cleanInputs() {
+    identificationInput.value = "";
     nameInput.value = "";
     lastnameInput.value = "";
-    dniInput.value = "";
     addressInput.value = "";
     phoneNumberInput.value = "";
     emailInput.value = "";
-    cuitInput.value = "";
     businessNameInput.value = "";
     businessStartDateInput.value = "";
     ownerNameInput.value = "";
@@ -63,47 +62,57 @@ function cleanInputs() {
     ownerEmailInput.value = "";
 }
 
+async function loadData() {
+    let clientData = await fetchDataFromDB(`http://localhost:8080/client/get_client_data?identification=${identificationInput.value}`)
+    if(clientData[0] == false) {
+        businessDiv.style.display = "none";
+        personDiv.style.display = "flex";
+        personDiv.style.flexDirection = "column";
+        personDiv.style.animationName = "fade-in";
+        personDiv.style.animationDuration = "1s";
+        isBusiness = false;
+
+        nameInput.value = clientData[1];
+        lastnameInput.value = clientData[2];
+        addressInput.value = clientData[3];
+        phoneNumberInput.value = clientData[4];
+        emailInput.value = clientData[5];
+    } else {
+        personDiv.style.display = "none";
+        businessDiv.style.display = "flex";
+        businessDiv.style.flexDirection = "column";
+        businessDiv.style.animationName = "fade-in";
+        businessDiv.style.animationDuration = "1s";
+        isBusiness = true;
+
+        businessNameInput.value = clientData[6];
+        businessStartDateInput.value = clientData[7];
+        ownerNameInput.value = clientData[1];
+        ownerLastnameInput.value = clientData[2];
+        ownerAddressInput.value = clientData[3];
+        ownerPhoneNumberInput.value = clientData[4];
+        ownerEmailInput.value = clientData[5];
+    }
+}
+
 async function search() {
     refreshTable("./headers.json", `http://localhost:8080/client/get_by_identification?identification=${listInput.value}`)
 }
 
 
-async function saveClient() {
-    console.log("Guardado")
-    let data;
+async function modifyClient() {
+    console.log("Modificado")
     if(isBusiness == true) {
-        data = {
-            is_business: true,
-            identification_number: cuitInput.value,
-            name: ownerNameInput.value,
-            lastname: ownerLastnameInput.value,
-            address: ownerAddressInput.value,
-            phone_number: ownerPhoneNumberInput.value,
-            email: ownerEmailInput.value,
-            business_name: businessNameInput.value,
-            business_start_date: businessStartDateInput.value
-        }
+        let link = `http://localhost:8080/client/update?isBusiness=true&identification=${identificationInput.value}&name=${ownerNameInput.value}&lastname=${ownerLastnameInput.value}&address=${ownerAddressInput.value}&phoneNumber=${ownerPhoneNumberInput.value}&email=${ownerEmailInput.value}&businessName=${businessNameInput.value}&businessStartDate=${businessStartDateInput.value}`;
+        const response = await fetch(link, {
+            method: 'POST'
+        })
     } else {
-        data = {
-            is_business: false,
-            identification_number: dniInput.value,
-            name: nameInput.value,
-            lastname: lastnameInput.value,
-            address: addressInput.value,
-            phone_number: phoneNumberInput.value,
-            email: emailInput.value,
-            business_name: null,
-            business_start_date: null
-        }
+        let link = `http://localhost:8080/client/update?isBusiness=false&identification=${identificationInput.value}&name=${nameInput.value}&lastname=${lastnameInput.value}&address=${addressInput.value}&phoneNumber=${phoneNumberInput.value}&email=${emailInput.value}&businessName=&businessStartDate=`;
+        const response = await fetch(link, {
+            method: 'POST'
+        })
     }
-    const response = await fetch(addClientLink, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-        .then(res => res.json());
 
     refreshTable("./headers.json", clientListLink);
     cleanInputs()
@@ -131,6 +140,10 @@ function loadBody(data) {
     }
     for (let i = 0, row; row = table.rows[i]; i++) {
         //iterate through rows
+        row.addEventListener("click", () => {
+            identificationInput.value = row.cells[1].innerHTML;
+            loadData();
+        })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
           //iterate through columns
@@ -170,35 +183,18 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", clientListLink)
+window.onload = () => {
+    refreshTable("./headers.json", clientListLink)
+}
 
 homeButton.addEventListener("click", () => {
     open("../../Homepage/homepage.html", "_self");
 })
 
-personBtn.addEventListener("click", () => {
-    businessDiv.style.display = "none";
-    personDiv.style.display = "flex";
-    personDiv.style.flexDirection = "column";
-    personDiv.style.animationName = "fade-in";
-    personDiv.style.animationDuration = "1s";
-    isBusiness = false;
-})
-
-businessBtn.addEventListener("click", () => {
-    personDiv.style.display = "none";
-    businessDiv.style.display = "flex";
-    businessDiv.style.flexDirection = "column";
-    businessDiv.style.animationName = "fade-in";
-    businessDiv.style.animationDuration = "1s";
-    isBusiness = true;
-})
-
-addBtn.addEventListener("click", () => {
+modifyBtn.addEventListener("click", () => {
     if(!isBusiness) {
         if(nameInput.value == "" ||
          lastnameInput.value == "" ||
-          dniInput.value == "" ||
            addressInput.value == "" ||
             phoneNumberInput.value == "" ||
              emailInput.value == "") {
@@ -206,8 +202,7 @@ addBtn.addEventListener("click", () => {
                 return;
              }
     } else {
-        if(cuitInput.value == "" ||
-        businessNameInput.value == "" ||
+        if(businessNameInput.value == "" ||
          businessStartDateInput.value == "" ||
           ownerNameInput.value == "" ||
            ownerLastnameInput.value == "" ||
@@ -218,8 +213,9 @@ addBtn.addEventListener("click", () => {
                 return;
             }
     }
-
-    saveClient();
+    if(confirm("Está seguro que desea modificar los datos?") == true) {
+        modifyClient();
+    }
 })
 
 searchBtn.addEventListener("click", () => {
@@ -228,4 +224,9 @@ searchBtn.addEventListener("click", () => {
         return;
     }
     search();
+})
+
+loadBtn.addEventListener("click", () => {
+    if(identificationInput.value == "") return;
+    loadData();
 })

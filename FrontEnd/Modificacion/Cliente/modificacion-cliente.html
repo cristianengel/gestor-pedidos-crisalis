@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../modificacion.css">
+    <title>Modificación Cliente</title>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Modificacion Cliente</h1>
+        <button class="button home-btn" id="home-btn">Home</button>
+    </div>
+    <div class="center-container">
+        <div class="form">
+            <div class="top-input">
+                <h3>DNI/CUIT</h3>
+                <input type="text" id="identification-input" class="text-input">
+                <button class="button" id="load-btn">Cargar</button>
+            </div>
+            <div class="person" id="personDiv">
+                <div class="attribute-container">
+                    <h3>Nombre</h3>
+                    <input type="text" id="name" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Apellido</h3>
+                    <input type="text" id="lastname" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Dirección</h3>
+                    <input type="text" id="address" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Nro. de Teléfono</h3>
+                    <input type="text" id="phoneNumber" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Email</h3>
+                    <input type="text" id="email" class="text-input">
+                </div>
+            </div>
+            <div class="business" id="businessDiv">
+                <div class="attribute-container">
+                    <h3>Razón Social</h3>
+                    <input type="text" id="businessName" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Fecha Inicio Actividades</h3>
+                    <input type="date" id="businessStartDate" class="text-input">
+                </div>
+                <h4 class="blue-text">Datos del propietario</h4>
+                <div class="attribute-container">
+                    <h3>Nombre</h3>
+                    <input type="text" id="ownerName" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Apellido</h3>
+                    <input type="text" id="ownerLastname" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Dirección</h3>
+                    <input type="text" id="ownerAddress" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Nro. de Teléfono</h3>
+                    <input type="text" id="ownerPhoneNumber" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>Email</h3>
+                    <input type="text" id="ownerEmail" class="text-input">
+                </div>
+            </div>
+            <button class="button" id="modify-btn">Modificar</button>
+        </div>
+        <div class="list">
+            <div class="top-table-div">
+                <h2 class="list-title">Clientes Existentes</h2>
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
+                <button class="button search-btn" id="search-btn">Buscar</button>
+            </div>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="modificacionCliente.js"></script>
+</body>
+</html>

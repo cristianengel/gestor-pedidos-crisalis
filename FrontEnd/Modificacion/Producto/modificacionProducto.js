@@ -21,7 +21,7 @@ async function search() {
     refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
 }
 
-async function addProduct() {
+async function modifyProduct() {
     const response = await fetch(`http://localhost:8080/good/update?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}`, {
         method: "POST",
         headers: {
@@ -88,7 +88,7 @@ refreshTable("./headers.json", productListLink)
 
 modifyBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea modificar este producto?") == true) {
-        addProduct();
+        modifyProduct();
     }
 })
 

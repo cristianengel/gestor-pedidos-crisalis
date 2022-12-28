@@ -37,6 +37,10 @@ const cuitInput = document.querySelector("#cuit");
 const businessNameInput = document.querySelector("#businessName");
 const businessStartDateInput = document.querySelector("#businessStartDate");
 
+// Search
+const searchBtn = document.querySelector("#search-btn");
+const listInput = document.querySelector("#list-input");
+
 let isBusiness;
 
 const clientListLink = "http://localhost:8080/client/list";
@@ -58,6 +62,11 @@ function cleanInputs() {
     ownerPhoneNumberInput.value = "";
     ownerEmailInput.value = "";
 }
+
+async function search() {
+    refreshTable("./headers.json", `http://localhost:8080/client/get_by_identification?identification=${listInput.value}`)
+}
+
 
 async function saveClient() {
     console.log("Guardado")
@@ -239,4 +248,12 @@ addBtn.addEventListener("click", () => {
     }
 
     saveClient();
+})
+
+searchBtn.addEventListener("click", () => {
+    if(listInput.value == "") {
+        refreshTable("./headers.json", clientListLink);
+        return;
+    }
+    search();
 })

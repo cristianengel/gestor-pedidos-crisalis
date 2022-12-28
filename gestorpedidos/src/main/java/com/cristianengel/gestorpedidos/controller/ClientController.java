@@ -24,13 +24,13 @@ public class ClientController {
     }
 
     @GetMapping(value = "get_by_identification", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ClientDTO loadByIdentification(@RequestParam String identification) {
-        return this.clientService.loadClientByIdentification(identification);
+    public List<Client> searchClient(@RequestParam String identification) {
+        return this.clientService.searchClient(identification);
     }
 
     @PostMapping(value = "delete")
-    public void deleteClient(@RequestParam int id) {
-        this.clientService.deleteClientById(id);
+    public void deleteByIdentification(@RequestParam String identification) {
+        this.clientService.deleteByIdentification(identification);
     }
 
     @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)

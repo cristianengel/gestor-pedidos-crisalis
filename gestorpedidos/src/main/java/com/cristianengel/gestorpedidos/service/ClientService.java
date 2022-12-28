@@ -21,15 +21,12 @@ public class ClientService {
         return this.clientRepository.save(new Client(clientDTO));
     }
 
-    public void deleteClientById(int id) {
-        this.clientRepository.deleteById(id);
+    public void deleteByIdentification(String identification) {
+        this.clientRepository.deleteByIdentification(identification);
     }
 
-    public ClientDTO loadClientByIdentification(String identification) {
-        return this.clientRepository.findByIdentification(identification)
-                .orElseThrow(
-                        () -> new UnauthorizedException("Client doesn't exist")
-                ).toDTO();
+    public List<Client> searchClient(String identification) {
+        return this.clientRepository.findByIdentification(identification);
     }
 
     public List<ClientDTO> getAllClientsInDB() {

@@ -46,6 +46,13 @@ button {
     min-height: 50px;
 }
 
+.top-table-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .center-container {
     margin: 1em;
     display: flex;
@@ -164,7 +171,6 @@ button {
     border-radius: 10px;
     margin-inline: 5px;
     margin-block: 15px;
-    width: 50%;
     align-self: center;
 }
 

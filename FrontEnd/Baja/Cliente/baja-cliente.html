@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../baja.css">
+    <title>Baja Cliente</title>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Baja Cliente</h1>
+        <button class="button home-btn" id="home-btn">Home</button>
+    </div>
+    <div class="center-container">
+        <div class="form">
+            <div class="attribute-container">
+                <h3>DNI/CUIT del Cliente</h3>
+                <input type="text" id="identification-input" class="text-input" required>
+            </div>
+            <button class="button" id="delete-btn">Eliminar</button>
+        </div>
+        <div class="list">
+            <div class="top-table-div">
+                <h2 class="list-title">Clientes Existentes</h2>
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
+                <button class="button search-btn" id="search-btn">Buscar</button>
+            </div>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="bajaCliente.js"></script>
+</body>
+</html>

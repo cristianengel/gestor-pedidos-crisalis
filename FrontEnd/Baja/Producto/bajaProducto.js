@@ -45,7 +45,6 @@ function loadBody(data) {
         //iterate through rows
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;
-            loadData();
         })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {

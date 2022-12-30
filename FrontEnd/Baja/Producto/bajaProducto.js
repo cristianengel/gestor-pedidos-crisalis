@@ -2,6 +2,8 @@ const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
 const idInput = document.querySelector("#id-input");
 const deleteBtn = document.querySelector("#delete-btn");
+const listInput = document.querySelector("#list-input");
+const searchBtn = document.querySelector("#search-btn");
 const productListLink = "http://localhost:8080/good/list";
 
 function cleanInputs() {
@@ -17,6 +19,10 @@ function deleteProduct() {
         }
     })
     cleanInputs();
+}
+
+async function search() {
+    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
 }
 
 async function fetchDataFromDB(url) {
@@ -91,4 +97,8 @@ deleteBtn.addEventListener("click", () => {
         deleteProduct();
         refreshTable("./headers.json", productListLink);
     }
+})
+
+searchBtn.addEventListener("click", () => {
+    search();
 })

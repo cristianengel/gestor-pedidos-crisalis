@@ -42,13 +42,13 @@ function loadBody(data) {
         }
         tableBody.appendChild(rowElement)
     }
-    for (let i = 0, row; row = table.rows[i]; i++) {
+    for (let i = 1, row; row = table.rows[i]; i++) {
         //iterate through rows
         row.addEventListener("click", () => {
             identificationInput.value = row.cells[1].innerHTML;
         })
         //rows would be accessed using the "row" variable assigned in the for loop
-        for (let j = 1, col; col = row.cells[j]; j++) {
+        for (let j = 0, col; col = row.cells[j]; j++) {
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop
           if(col.innerHTML == "false") {

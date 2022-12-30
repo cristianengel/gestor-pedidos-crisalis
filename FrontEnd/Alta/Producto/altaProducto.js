@@ -4,6 +4,8 @@ const tableBody = document.querySelector("#tbody");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 const addBtn = document.querySelector("#add-btn");
+const listInput = document.querySelector("#list-input");
+const searchBtn = document.querySelector("#search-btn");
 const productListLink = "http://localhost:8080/good/list";
 const addProductLink = "http://localhost:8080/good/new";
 
@@ -33,6 +35,10 @@ async function addProduct() {
     cleanInputs()
 }
 
+async function search() {
+    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
+}
+
 async function fetchDataFromDB(url) {
     const response = await fetch(url)
     let data = await response.json();
@@ -57,9 +63,6 @@ function loadBody(data) {
 }
 
 async function refreshTable(urlHeaders, urlBody) {
-    
-    let responseArray;
-    
     // Headers
     const headersResponse = await fetch(urlHeaders);
     const { headers } = await headersResponse.json();
@@ -90,3 +93,8 @@ addBtn.addEventListener("click", () => {
         addProduct();
     }
 })
+
+searchBtn.addEventListener("click", () => {
+    search();
+})
+

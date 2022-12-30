@@ -41,7 +41,7 @@ function loadBody(data) {
         }
         tableBody.appendChild(rowElement);
     }
-    for (let i = 0, row; row = table.rows[i]; i++) {
+    for (let i = 1, row; row = table.rows[i]; i++) {
         //iterate through rows
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;

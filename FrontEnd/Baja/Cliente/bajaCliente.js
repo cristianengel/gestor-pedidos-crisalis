@@ -49,7 +49,7 @@ function loadBody(data) {
             identificationInput.value = row.cells[1].innerHTML;
         })
         //rows would be accessed using the "row" variable assigned in the for loop
-        for (let j = 0, col; col = row.cells[j]; j++) {
+        for (let j = 1, col; col = row.cells[j]; j++) {
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop
           if(col.innerHTML == "false") {

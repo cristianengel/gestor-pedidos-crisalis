@@ -100,12 +100,19 @@ tbody > tr:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid #3D5AFE;
+    margin-inline: 20px;
 }
 
 .attribute-container {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.id-input {
+    border-bottom: 1px solid #3D5AFE;
+    margin-inline: 20px;
 }
 
 .text-input {

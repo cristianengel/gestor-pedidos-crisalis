@@ -1,4 +1,3 @@
-const homeButton = document.querySelector("#home-btn");
 const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
@@ -91,8 +90,3 @@ addBtn.addEventListener("click", () => {
         addProduct();
     }
 })
-
-homeButton.addEventListener("click", () => {
-    open("../../Homepage/homepage.html", "_self");
-})
-

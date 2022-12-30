@@ -1,4 +1,3 @@
-const homeButton = document.querySelector("#home-btn");
 const deleteButton = document.querySelector("#delete-btn");
 const identificationInput = document.querySelector("#identification-input");
 const searchBtn = document.querySelector("#search-btn");
@@ -94,10 +93,6 @@ deleteButton.addEventListener("click", () => {
         deleteClient()
         refreshTable("./headers.json", clientListLink)
     }
-})
-
-homeButton.addEventListener("click", () => {
-    open("../../Homepage/homepage.html", "_self");
 })
 
 searchBtn.addEventListener("click", () => {

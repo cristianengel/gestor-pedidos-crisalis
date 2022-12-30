@@ -1,4 +1,3 @@
-const homeButton = document.querySelector("#home-btn");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
 const idInput = document.querySelector("#id-input");
@@ -92,8 +91,4 @@ deleteBtn.addEventListener("click", () => {
         deleteProduct();
         refreshTable("./headers.json", productListLink);
     }
-})
-
-homeButton.addEventListener("click", () => {
-    open("../../Homepage/homepage.html", "_self");
 })

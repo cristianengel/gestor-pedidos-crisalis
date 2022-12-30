@@ -1,6 +1,3 @@
-// Home Button
-const homeButton = document.querySelector("#home-btn");
-
 // Table
 const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
@@ -184,10 +181,6 @@ async function refreshTable(urlHeaders, urlBody) {
 window.onload = () => {
     refreshTable("./headers.json", clientListLink)
 }
-
-homeButton.addEventListener("click", () => {
-    open("../../Homepage/homepage.html", "_self");
-})
 
 modifyBtn.addEventListener("click", () => {
     if(!isBusiness) {

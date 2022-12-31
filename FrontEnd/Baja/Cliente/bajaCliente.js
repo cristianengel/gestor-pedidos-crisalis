@@ -20,6 +20,7 @@ async function deleteClient() {
             "Content-Length": 0
         }
     })
+    refreshTable("./headers.json", clientListLink)
 }
 
 async function fetchDataFromDB(url) {

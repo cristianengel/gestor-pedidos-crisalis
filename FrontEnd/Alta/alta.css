@@ -113,6 +113,10 @@ tbody > tr:hover {
     font-family: 'Montserrat';
 }
 
+.business-name {
+    text-transform: uppercase;
+}
+
 .text-input:hover {
     border-bottom: 1px solid #3D5AFE;
 }

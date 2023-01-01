@@ -1,24 +1,38 @@
+const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const idInput = document.querySelector("#id-input");
-const deleteBtn = document.querySelector("#delete-btn");
+const nameInput = document.querySelector("#name");
+const percentageInput = document.querySelector("#percentage");
+const addBtn = document.querySelector("#add-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-const productListLink = "http://localhost:8080/good/list";
+const productListLink = "http://localhost:8080/tax/list";
+const addProductLink = "http://localhost:8080/tax/new";
 
 function cleanInputs() {
-    idInput.value = "";
+    nameInput.value = "";
+    percentageInput.value = "";
 }
 
-function deleteTax() {
-    const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}`;
-    fetch(deleteProductLink, {
+async function addProduct() {
+    const data = {
+        name: nameInput.value,
+        percentage: percentageInput.value,
+        type: 1,
+        extra_charges: 0
+    }
+    const response = await fetch(addProductLink, {
         method: "POST",
+        body: JSON.stringify(data),
         headers: {
-            "Content-Length": 0
+            "Content-Type": "application/json"
         }
     })
-    cleanInputs();
+        .then(res => res.json())
+        .then(data => console.log(data));
+        
+    refreshTable("./headers.json", productListLink);
+    cleanInputs()
 }
 
 async function search() {
@@ -37,32 +51,16 @@ function loadBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
-            
-            const cellElement = document.createElement("td")
-
-            cellElement.textContent = dataObjectArray[i][1];
+        for(let i = 0; i < dataObjectArray.length; i++) {
+            const cellElement = document.createElement("td");
+            if(i < 2) {
+                cellElement.textContent = dataObjectArray[i][1];
+            } else {
+                cellElement.textContent = dataObjectArray[i][1] + "%";
+            }
             rowElement.appendChild(cellElement);
         }
         tableBody.appendChild(rowElement);
-    }
-    for (let i = 1, row; row = table.rows[i]; i++) {
-        //iterate through rows
-        row.addEventListener("click", () => {
-            idInput.value = row.cells[0].innerHTML;
-        })
-        //rows would be accessed using the "row" variable assigned in the for loop
-        for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if(col.innerHTML == "false") {
-            col.innerHTML = "No";
-          } else if (col.innerHTML == "true") {
-            col.innerHTML = "Sí";
-          } else if (col.innerHTML == "") {
-            col.innerHTML = "-";
-          }
-        }  
     }
 }
 
@@ -90,15 +88,16 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", taxListLink)
+refreshTable("./headers.json", productListLink)
 
-deleteBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea eliminar este producto?") == true) {
-        deleteTax();
-        refreshTable("./headers.json", taxListLink);
+addBtn.addEventListener("click", () => {
+    if(nameInput.value == "" || percentageInput.value == "") return;
+    if(confirm("Seguro que desea agregar este producto?") == true) {
+        addProduct();
     }
 })
 
 searchBtn.addEventListener("click", () => {
     search();
 })
+

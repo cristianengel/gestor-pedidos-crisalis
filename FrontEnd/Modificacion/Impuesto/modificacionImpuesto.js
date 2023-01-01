@@ -5,9 +5,9 @@ const searchBtn = document.querySelector("#search-btn");
 const listInput = document.querySelector("#list-input");
 const idInput = document.querySelector("#id-input");
 const nameInput = document.querySelector("#name");
-const priceInput = document.querySelector("#price");
+const percentageInput = document.querySelector("#percentage");
 const modifyBtn = document.querySelector("#modify-btn");
-const productListLink = "http://localhost:8080/good/list";
+const productListLink = "http://localhost:8080/tax/list";
 
 function cleanInputs() {
     idInput.value = "";
@@ -17,11 +17,11 @@ function cleanInputs() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/tax/search?name=${listInput.value}`)
 }
 
 async function modifyTax() {
-    const response = await fetch(`http://localhost:8080/good/update?id=${idInput.value}&name=${nameInput.value}&price=${percentageInput.value}`, {
+    const response = await fetch(`http://localhost:8080/tax/update?id=${idInput.value}&name=${nameInput.value}&percentage=${percentageInput.value}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -45,11 +45,13 @@ function loadBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
-            
+        for(let i = 0; i < dataObjectArray.length; i++) {
             const cellElement = document.createElement("td")
-
-            cellElement.textContent = dataObjectArray[i][1];
+            if(i < 2) {
+                cellElement.textContent = dataObjectArray[i][1];
+            } else {
+                cellElement.textContent = dataObjectArray[i][1] + "%";
+            }
             rowElement.appendChild(cellElement);
         }
         tableBody.appendChild(rowElement);
@@ -59,7 +61,7 @@ function loadBody(data) {
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;
             nameInput.value = row.cells[1].innerHTML;
-            percentageInput.value = row.cells[2].innerHTML;
+            percentageInput.value = (row.cells[2].innerHTML).slice(0,-1);
         })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -77,9 +79,6 @@ function loadBody(data) {
 }
 
 async function refreshTable(urlHeaders, urlBody) {
-    
-    let responseArray;
-    
     // Headers
     const headersResponse = await fetch(urlHeaders);
     const { headers } = await headersResponse.json();

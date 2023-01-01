@@ -28,6 +28,16 @@ public class TaxController {
         this.taxService.deleteTaxById(id);
     }
 
+    @GetMapping(value = "search", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Tax> searchTax(String name) {
+        return this.taxService.searchTax(name);
+    }
+
+    @PostMapping(value = "update")
+    public void updateProduct(@RequestParam int id, String name, double percentage) {
+        this.taxService.updateTax(id, name, percentage);
+    }
+
     @GetMapping(value = "get_by_name", produces = MediaType.APPLICATION_JSON_VALUE)
     public TaxDTO loadTaxByName(@RequestParam String name) {
         return this.taxService.loadTaxByName(name);

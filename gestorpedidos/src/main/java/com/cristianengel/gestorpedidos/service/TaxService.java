@@ -33,6 +33,14 @@ public class TaxService {
                 ).toDTO();
     }
 
+    public List<Tax> searchTax(String name) {
+        return this.taxRepository.searchTax(name);
+    }
+
+    public void updateTax(int id, String name, double percentage) {
+        this.taxRepository.updateNameAndPercentageById(name, percentage, id);
+    }
+
     public List<TaxDTO> getAllTaxesInDB() {
         return this.taxRepository
                 .findAll()

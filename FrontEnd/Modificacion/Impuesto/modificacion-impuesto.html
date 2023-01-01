@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="../modificacion.css">
-    <title>Modificación Producto</title>
+    <title>Modificación Impuesto</title>
 </head>
 <body>
     <div class="top-bar">
         <div class="title">
-            <h1>Modificación Producto</h1>
+            <h1>Modificación Impuesto</h1>
         </div>
         <div class="btns">
-            <a href="../../Alta/Producto/alta-producto.html" class="button">Alta</a>
-            <a href="../../Baja/Producto/baja-producto.html" class="button">Baja</a>
+            <a href="../../Alta/Impuesto/alta-impuesto.html" class="button">Alta</a>
+            <a href="../../Baja/Impuesto/baja-impuesto.html" class="button">Baja</a>
             <a href="../../Homepage/homepage.html" class="button home-btn">Home</a>
         </div>
     </div>
@@ -30,14 +30,14 @@
                 <input type="text" id="name" class="text-input">
             </div>
             <div class="attribute-container">
-                <h3>Precio Base</h3>
-                <input type="text" id="price" class="text-input">
+                <h3>Porcentaje</h3>
+                <input type="number" min="0" id="percentage" class="text-input">
             </div>
             <button class="button" id="modify-btn">Modificar</button>
         </div>
         <div class="list">
             <div class="top-table-div">
-                <h2 class="list-title">Productos Existentes</h2>
+                <h2 class="list-title">Impuestos Existentes</h2>
                 <input type="text" class="text-input" id="list-input" placeholder="Buscar por nombre...">
                 <button class="button search-btn" id="search-btn">Buscar</button>
             </div>
@@ -47,6 +47,6 @@
             </table>
         </div>
     </div>
-    <script src="modificacionProducto.js"></script>
+    <script src="modificacionImpuesto.js"></script>
 </body>
 </html>

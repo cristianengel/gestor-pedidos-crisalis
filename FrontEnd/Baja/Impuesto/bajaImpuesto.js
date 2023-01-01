@@ -1,36 +1,28 @@
-const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const searchBtn = document.querySelector("#search-btn");
-const listInput = document.querySelector("#list-input");
 const idInput = document.querySelector("#id-input");
-const nameInput = document.querySelector("#name");
-const priceInput = document.querySelector("#price");
-const modifyBtn = document.querySelector("#modify-btn");
-const productListLink = "http://localhost:8080/good/list";
+const deleteBtn = document.querySelector("#delete-btn");
+const listInput = document.querySelector("#list-input");
+const searchBtn = document.querySelector("#search-btn");
+const taxListLink = "http://localhost:8080/tax/list";
 
 function cleanInputs() {
     idInput.value = "";
-    nameInput.value = "";
-    percentageInput.value = "";
-    listInput.value = "";
 }
 
-async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
-}
-
-async function modifyTax() {
-    const response = await fetch(`http://localhost:8080/good/update?id=${idInput.value}&name=${nameInput.value}&price=${percentageInput.value}`, {
+function deleteTax() {
+    const deleteTaxLink = `http://localhost:8080/tax/delete?id=${idInput.value}`;
+    fetch(deleteTaxLink, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
             "Content-Length": 0
         }
     })
-        
-    refreshTable("./headers.json", productListLink);
-    cleanInputs()
+    cleanInputs();
+}
+
+async function search() {
+    refreshTable("./headers.json", `http://localhost:8080/tax/search?name=${listInput.value}`)
 }
 
 async function fetchDataFromDB(url) {
@@ -45,11 +37,13 @@ function loadBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
-            
+        for(let i = 0; i < dataObjectArray.length; i++) {
             const cellElement = document.createElement("td")
-
-            cellElement.textContent = dataObjectArray[i][1];
+            if(i < 2) {
+                cellElement.textContent = dataObjectArray[i][1];
+            } else {
+                cellElement.textContent = dataObjectArray[i][1] + "%";
+            }
             rowElement.appendChild(cellElement);
         }
         tableBody.appendChild(rowElement);
@@ -58,8 +52,6 @@ function loadBody(data) {
         //iterate through rows
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;
-            nameInput.value = row.cells[1].innerHTML;
-            percentageInput.value = row.cells[2].innerHTML;
         })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -77,9 +69,6 @@ function loadBody(data) {
 }
 
 async function refreshTable(urlHeaders, urlBody) {
-    
-    let responseArray;
-    
     // Headers
     const headersResponse = await fetch(urlHeaders);
     const { headers } = await headersResponse.json();
@@ -97,21 +86,22 @@ async function refreshTable(urlHeaders, urlBody) {
 
     // Body
     tableBody.innerHTML = "";
+
     fetchDataFromDB(urlBody).then(data => {
         loadBody(data);
     });
 }
 
 // Initial Load
-refreshTable("./headers.json", productListLink)
+refreshTable("./headers.json", taxListLink)
 
-modifyBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea modificar este producto?") == true) {
-        modifyTax();
+deleteBtn.addEventListener("click", () => {
+    if(confirm("Seguro que desea eliminar este producto?") == true) {
+        deleteTax();
+        refreshTable("./headers.json", taxListLink);
     }
 })
 
 searchBtn.addEventListener("click", () => {
     search();
 })
-

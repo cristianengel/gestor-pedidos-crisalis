@@ -23,7 +23,7 @@
         <div class="form">
             <div class="attribute-container id-input">
                 <h3>ID</h3>
-                <input type="text" id="id-input" class="text-input" placeholder="(no modificable)">
+                <input type="number" min="0" id="id-input" class="text-input" placeholder="(no modificable)">
             </div>
             <div class="attribute-container">
                 <h3>Nombre</h3>
@@ -31,7 +31,7 @@
             </div>
             <div class="attribute-container">
                 <h3>Porcentaje</h3>
-                <input type="number" min="0" id="percentage" class="text-input">
+                <input type="number" step=".1" min="0" id="percentage" class="text-input">
             </div>
             <button class="button" id="modify-btn">Modificar</button>
         </div>

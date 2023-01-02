@@ -48,6 +48,9 @@ public class Client {
     @Column(name = "fechaInicio")
     private LocalDate businessStartDate;
 
+    @Column(name = "dniPropietario")
+    private String ownerId;
+
     public Client(ClientDTO clientDTO) {
         this.isBusiness = clientDTO.isBusiness();
         this.identificationNumber = clientDTO.getIdentificationNumber();
@@ -58,6 +61,7 @@ public class Client {
         this.email = clientDTO.getEmail();
         this.businessName = clientDTO.getBusinessName();
         this.businessStartDate = clientDTO.getBusinessStartDate();
+        this.ownerId = clientDTO.getOwnerId();
     }
 
     public ClientDTO toDTO() {
@@ -71,6 +75,7 @@ public class Client {
                 .email(this.email)
                 .businessName(this.businessName)
                 .businessStartDate(this.businessStartDate)
+                .ownerId(this.ownerId)
                 .build();
     }
 
@@ -79,11 +84,11 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return id == client.id && isBusiness == client.isBusiness && Objects.equals(identificationNumber, client.identificationNumber) && Objects.equals(name, client.name) && Objects.equals(lastname, client.lastname) && Objects.equals(address, client.address) && Objects.equals(phoneNumber, client.phoneNumber) && Objects.equals(email, client.email) && Objects.equals(businessName, client.businessName) && Objects.equals(businessStartDate, client.businessStartDate);
+        return id == client.id && isBusiness == client.isBusiness && Objects.equals(identificationNumber, client.identificationNumber) && Objects.equals(name, client.name) && Objects.equals(lastname, client.lastname) && Objects.equals(address, client.address) && Objects.equals(phoneNumber, client.phoneNumber) && Objects.equals(email, client.email) && Objects.equals(businessName, client.businessName) && Objects.equals(businessStartDate, client.businessStartDate) && Objects.equals(ownerId, client.ownerId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, isBusiness, identificationNumber, name, lastname, address, phoneNumber, email, businessName, businessStartDate);
+        return Objects.hash(id, isBusiness, identificationNumber, name, lastname, address, phoneNumber, email, businessName, businessStartDate, ownerId);
     }
 }

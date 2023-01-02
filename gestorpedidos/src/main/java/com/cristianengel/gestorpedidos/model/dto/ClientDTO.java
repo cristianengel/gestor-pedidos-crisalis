@@ -39,4 +39,7 @@ public class ClientDTO {
 
     @JsonProperty("business_start_date")
     private LocalDate businessStartDate;
+
+    @JsonProperty("owner_id")
+    private String ownerId;
 }

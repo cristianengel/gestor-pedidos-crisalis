@@ -115,6 +115,10 @@ tbody > tr:hover {
     justify-content: center;
 }
 
+.business-name {
+    text-transform: uppercase;
+}
+
 .id-input {
     border-bottom: 1px solid #3D5AFE;
     margin-inline: 20px;

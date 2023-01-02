@@ -39,15 +39,14 @@ public class ClientService {
     public void updateClient(boolean isBusiness, String identification,
                              String name, String lastname, String address,
                              String phoneNumber, String email,
-                             String businessName, LocalDate businessStartDate) {
+                             String businessName, LocalDate businessStartDate, String ownerId) {
         this.clientRepository.updateClientAttributes(isBusiness, name, lastname, address,
-                phoneNumber, email, businessName, businessStartDate, identification);
+                phoneNumber, email, businessName, businessStartDate, ownerId, identification);
     }
 
     public List<Object> getClientData(String identification) {
         Client client = this.clientRepository.findByIdentification(identification).get(0);
-        List<Object> dataList = new ArrayList<Object>(Arrays.asList(client.isBusiness(), client.getName(), client.getLastname(), client.getAddress(), client.getPhoneNumber(), client.getEmail(), client.getBusinessName(), client.getBusinessStartDate()));
-        return dataList;
+        return new ArrayList<Object>(Arrays.asList(client.isBusiness(), client.getName(), client.getLastname(), client.getAddress(), client.getPhoneNumber(), client.getEmail(), client.getBusinessName(), client.getBusinessStartDate(), client.getOwnerId()));
     }
 
     public List<ClientDTO> getAllClientsInDB() {

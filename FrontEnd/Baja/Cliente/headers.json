@@ -8,6 +8,7 @@
         "Teléfono",
         "Email",
         "Razón Social",
-        "Fecha Inicio Actividades"
+        "Fecha Inicio Actividades", 
+        "DNI del Propietario"
     ]
 }

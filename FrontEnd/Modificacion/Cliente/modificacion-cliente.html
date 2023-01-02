@@ -22,7 +22,7 @@
     <div class="center-container">
         <div class="form">
             <div class="top-input">
-                <h3>DNI/CUIT</h3>
+                <h3>CUIT</h3>
                 <input type="number" min="0" id="identification-input" class="text-input" placeholder="(no modificable)">
                 <button class="button" id="load-btn">Cargar</button>
             </div>
@@ -51,7 +51,7 @@
             <div class="business" id="businessDiv">
                 <div class="attribute-container">
                     <h3>Razón Social</h3>
-                    <input type="text" id="businessName" class="text-input">
+                    <input type="text" id="businessName" class="text-input business-name">
                 </div>
                 <div class="attribute-container">
                     <h3>Fecha Inicio Actividades</h3>
@@ -65,6 +65,10 @@
                 <div class="attribute-container">
                     <h3>Apellido</h3>
                     <input type="text" id="ownerLastname" class="text-input">
+                </div>
+                <div class="attribute-container">
+                    <h3>DNI</h3>
+                    <input type="number" min="0" id="ownerDni" class="text-input">
                 </div>
                 <div class="attribute-container">
                     <h3>Dirección</h3>

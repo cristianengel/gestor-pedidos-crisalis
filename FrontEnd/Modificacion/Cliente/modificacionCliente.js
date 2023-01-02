@@ -24,6 +24,7 @@ const emailInput = document.querySelector("#email");
 // Owner Inputs
 const ownerNameInput = document.querySelector("#ownerName");
 const ownerLastnameInput = document.querySelector("#ownerLastname");
+const ownerDniInput = document.querySelector("#ownerDni");
 const ownerAddressInput = document.querySelector("#ownerAddress");
 const ownerPhoneNumberInput = document.querySelector("#ownerPhoneNumber");
 const ownerEmailInput = document.querySelector("#ownerEmail");
@@ -47,6 +48,7 @@ function cleanInputs() {
     identificationInput.value = "";
     nameInput.value = "";
     lastnameInput.value = "";
+    ownerDniInput.value = "";
     addressInput.value = "";
     phoneNumberInput.value = "";
     emailInput.value = "";
@@ -75,17 +77,18 @@ async function loadData() {
         phoneNumberInput.value = clientData[4];
         emailInput.value = clientData[5];
     } else {
+        console.log(clientData)
         personDiv.style.display = "none";
         businessDiv.style.display = "flex";
         businessDiv.style.flexDirection = "column";
         businessDiv.style.animationName = "fade-in";
         businessDiv.style.animationDuration = "1s";
         isBusiness = true;
-
         businessNameInput.value = clientData[6];
         businessStartDateInput.value = clientData[7];
         ownerNameInput.value = clientData[1];
         ownerLastnameInput.value = clientData[2];
+        ownerDniInput.value = clientData[8];
         ownerAddressInput.value = clientData[3];
         ownerPhoneNumberInput.value = clientData[4];
         ownerEmailInput.value = clientData[5];
@@ -100,12 +103,12 @@ async function search() {
 async function modifyClient() {
     console.log("Modificado")
     if(isBusiness == true) {
-        let link = `http://localhost:8080/client/update?isBusiness=true&identification=${identificationInput.value}&name=${ownerNameInput.value}&lastname=${ownerLastnameInput.value}&address=${ownerAddressInput.value}&phoneNumber=${ownerPhoneNumberInput.value}&email=${ownerEmailInput.value}&businessName=${businessNameInput.value}&businessStartDate=${businessStartDateInput.value}`;
+        let link = `http://localhost:8080/client/update?isBusiness=true&identification=${identificationInput.value}&name=${ownerNameInput.value}&lastname=${ownerLastnameInput.value}&address=${ownerAddressInput.value}&phoneNumber=${ownerPhoneNumberInput.value}&email=${ownerEmailInput.value}&businessName=${businessNameInput.value.toUpperCase()}&businessStartDate=${businessStartDateInput.value}&ownerId=${ownerDniInput.value}`;
         const response = await fetch(link, {
             method: 'POST'
         })
     } else {
-        let link = `http://localhost:8080/client/update?isBusiness=false&identification=${identificationInput.value}&name=${nameInput.value}&lastname=${lastnameInput.value}&address=${addressInput.value}&phoneNumber=${phoneNumberInput.value}&email=${emailInput.value}&businessName=&businessStartDate=`;
+        let link = `http://localhost:8080/client/update?isBusiness=false&identification=${identificationInput.value}&name=${nameInput.value}&lastname=${lastnameInput.value}&address=${addressInput.value}&phoneNumber=${phoneNumberInput.value}&email=${emailInput.value}&businessName=&businessStartDate=&ownerId=`;
         const response = await fetch(link, {
             method: 'POST'
         })
@@ -125,6 +128,7 @@ async function fetchDataFromDB(url) {
 
 function loadBody(data) {
     for (let dataObject of data) {
+        console.log(dataObject)
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
 
@@ -197,6 +201,7 @@ modifyBtn.addEventListener("click", () => {
          businessStartDateInput.value == "" ||
           ownerNameInput.value == "" ||
            ownerLastnameInput.value == "" ||
+           ownerDniInput == "" ||
             ownerAddressInput.value == "" ||
             ownerPhoneNumberInput.value == "" ||
             ownerEmailInput.value == "") {

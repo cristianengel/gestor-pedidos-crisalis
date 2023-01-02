@@ -47,9 +47,10 @@ public class ClientController {
                              String name, String lastname, String address,
                              String phoneNumber, String email,
                              String businessName,
-                             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate businessStartDate) {
+                             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate businessStartDate,
+                             String ownerId) {
         this.clientService.updateClient(isBusiness, identification, name, lastname,
-                address, phoneNumber, email, businessName, businessStartDate);
+                address, phoneNumber, email, businessName, businessStartDate, ownerId);
     }
 
     @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -24,6 +24,7 @@ const emailInput = document.querySelector("#email");
 
 // Owner Inputs
 const ownerNameInput = document.querySelector("#ownerName");
+const ownerDniInput = document.querySelector("#ownerDni");
 const ownerLastnameInput = document.querySelector("#ownerLastname");
 const ownerAddressInput = document.querySelector("#ownerAddress");
 const ownerPhoneNumberInput = document.querySelector("#ownerPhoneNumber");
@@ -54,6 +55,7 @@ function cleanInputs() {
     businessNameInput.value = "";
     businessStartDateInput.value = "";
     ownerNameInput.value = "";
+    ownerDniInput.value = "";
     ownerLastnameInput.value = "";
     ownerAddressInput.value = "";
     ownerPhoneNumberInput.value = "";
@@ -77,8 +79,9 @@ async function saveClient() {
             address: ownerAddressInput.value,
             phone_number: ownerPhoneNumberInput.value,
             email: ownerEmailInput.value,
-            business_name: businessNameInput.value,
-            business_start_date: businessStartDateInput.value
+            business_name: businessNameInput.value.toUpperCase(),
+            business_start_date: businessStartDateInput.value,
+            owner_id: ownerDniInput.value
         }
     } else {
         data = {
@@ -90,7 +93,8 @@ async function saveClient() {
             phone_number: phoneNumberInput.value,
             email: emailInput.value,
             business_name: null,
-            business_start_date: null
+            business_start_date: null,
+            owner_id: null
         }
     }
     const response = await fetch(addClientLink, {

@@ -10,7 +10,7 @@ function cleanInputs() {
     idInput.value = "";
 }
 
-function deleteTax() {
+function deleteProduct() {
     const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}`;
     fetch(deleteProductLink, {
         method: "POST",
@@ -90,12 +90,12 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", taxListLink)
+refreshTable("./headers.json", productListLink)
 
 deleteBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea eliminar este producto?") == true) {
-        deleteTax();
-        refreshTable("./headers.json", taxListLink);
+        deleteProduct();
+        refreshTable("./headers.json", productListLink);
     }
 })
 

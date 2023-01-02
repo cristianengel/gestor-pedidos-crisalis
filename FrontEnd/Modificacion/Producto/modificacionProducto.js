@@ -12,7 +12,6 @@ const productListLink = "http://localhost:8080/good/list";
 function cleanInputs() {
     idInput.value = "";
     nameInput.value = "";
-    percentageInput.value = "";
     listInput.value = "";
 }
 
@@ -20,8 +19,8 @@ async function search() {
     refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
 }
 
-async function modifyTax() {
-    const response = await fetch(`http://localhost:8080/good/update?id=${idInput.value}&name=${nameInput.value}&price=${percentageInput.value}`, {
+async function modifyProduct() {
+    const response = await fetch(`http://localhost:8080/good/update?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -59,7 +58,7 @@ function loadBody(data) {
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;
             nameInput.value = row.cells[1].innerHTML;
-            percentageInput.value = row.cells[2].innerHTML;
+            priceInput.value = row.cells[2].innerHTML;
         })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -107,7 +106,7 @@ refreshTable("./headers.json", productListLink)
 
 modifyBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea modificar este producto?") == true) {
-        modifyTax();
+        modifyProduct();
     }
 })
 

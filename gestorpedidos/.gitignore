@@ -3,8 +3,7 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-**/ht/
-*ht/
+
 
 ### STS ###
 .apt_generated
@@ -20,6 +19,8 @@ target/
 *.iws
 *.iml
 *.ipr
+**/ht/
+*ht/
 
 ### NetBeans ###
 /nbproject/private/
@@ -33,3 +34,5 @@ build/
 
 ### VS Code ###
 .vscode/
+**/ht/
+*ht/

@@ -4,7 +4,7 @@ const removeBtn = document.querySelector("#remove-btn");
 const modifyBtn = document.querySelector("#modify-btn");
 
 homeButton.addEventListener("click", () => {
-    open("../../Homepage/homepage.html", "_self");
+    open("../../Home/home.html", "_self");
 })
 
 addBtn.addEventListener("click", () => {

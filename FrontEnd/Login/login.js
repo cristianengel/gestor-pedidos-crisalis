@@ -14,7 +14,7 @@ function login() {
     xhr.onload = () => {
         console.log(xhr.status);
         if(xhr.status == 200) {
-            open("../Homepage/homepage.html", "_self");
+            open("../Home/home.html", "_self");
         }
         if(xhr.status == 400) {
             alert("Hay datos faltantes.")

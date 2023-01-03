@@ -4,14 +4,14 @@ const idInput = document.querySelector("#id-input");
 const deleteBtn = document.querySelector("#delete-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-const productListLink = "http://localhost:8080/good/list";
+const productListLink = "http://localhost:8080/good/products";
 
 function cleanInputs() {
     idInput.value = "";
 }
 
 function deleteProduct() {
-    const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}`;
+    const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}&type=1`;
     fetch(deleteProductLink, {
         method: "POST",
         headers: {
@@ -22,7 +22,7 @@ function deleteProduct() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}&type=1`)
 }
 
 async function fetchDataFromDB(url) {

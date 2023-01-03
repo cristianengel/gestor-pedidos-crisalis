@@ -21,11 +21,11 @@ public class GoodService {
         return this.goodRepository.save(new Good(goodDTO));
     }
 
-    public void deleteGoodById(int id) {
-        this.goodRepository.deleteById(id);
+    public void deleteGoodById(int id, int type) {
+        this.goodRepository.deleteByIdAndType(id, type);
     }
 
-    public GoodDTO loadGoodById(int id) {
+    public GoodDTO findById(int id) {
         return this.goodRepository.findById(id)
                 .orElseThrow(
                         () -> new UnauthorizedException("Non Existing Good.")
@@ -33,11 +33,28 @@ public class GoodService {
     }
 
     public void updateProduct(int id, String name, double price) {
-        this.goodRepository.updateNameAndPriceById(name, price, id);
+        this.goodRepository.updateProductNameAndPriceById(name, price, id);
     }
 
-    public List<Good> searchProduct(String name) {
-        return this.goodRepository.searchProduct(name);
+    public void updateService(int id, String name, double price, double extraCharges) {
+        this.goodRepository.updateNameAndPriceAndExtraChargesById(name, price, extraCharges, id);
+    }
+
+    public List<Good> findAllGoods(String name, int type) {
+        return this.goodRepository.findAllByNameAndType(name, type);
+    }
+    public List<GoodDTO> getAllProductsInDB() {
+        return this.goodRepository.findAllByType(1)
+                .stream()
+                .map(Good::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<GoodDTO> getAllServicesInDB() {
+        return this.goodRepository.findAllByType(2)
+                .stream()
+                .map(Good::toDTO)
+                .collect(Collectors.toList());
     }
 
     public List<GoodDTO> getAllGoodsInDB() {

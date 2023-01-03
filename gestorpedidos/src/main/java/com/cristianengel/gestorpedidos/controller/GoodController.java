@@ -25,26 +25,43 @@ public class GoodController {
     }
 
     @GetMapping(value = "search", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Good> getAllProductsByName(@RequestParam String name) {
-        return this.goodService.searchProduct(name);
+    public List<Good> getAllGoodsByName(@RequestParam String name, int type) {
+        return this.goodService.findAllGoods(name, type);
     }
 
     @PostMapping(value = "delete")
-    public void deleteGood(@RequestParam int id) {
-        this.goodService.deleteGoodById(id);
+    public void deleteGood(@RequestParam int id, int type) {
+        this.goodService.deleteGoodById(id, type);
     }
 
     @GetMapping(value = "get_by_id", produces = MediaType.APPLICATION_JSON_VALUE)
-    public GoodDTO loadGoodById(@RequestParam int id) {
-        return this.goodService.loadGoodById(id);
+    public GoodDTO findById(@RequestParam int id) {
+        return this.goodService.findById(id);
     }
 
     @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<GoodDTO> getAllGoods() {
         return this.goodService.getAllGoodsInDB();
     }
-    @PostMapping(value = "update")
+
+    @GetMapping(value = "products", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<GoodDTO> getAllProducts() {
+        return this.goodService.getAllProductsInDB();
+    }
+
+    @GetMapping(value = "services", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<GoodDTO> getAllServices() {
+        return this.goodService.getAllServicesInDB();
+    }
+
+    @PostMapping(value = "update_product")
     public void updateProduct(@RequestParam int id, String name, double price){
         this.goodService.updateProduct(id, name, price);
     }
+
+    @PostMapping(value = "update_service")
+    public void updateService(@RequestParam int id, String name, double price, double extra_charges){
+        this.goodService.updateService(id, name, price, extra_charges);
+    }
+
 }

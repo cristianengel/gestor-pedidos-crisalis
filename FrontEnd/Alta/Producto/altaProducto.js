@@ -6,7 +6,7 @@ const priceInput = document.querySelector("#price");
 const addBtn = document.querySelector("#add-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-const productListLink = "http://localhost:8080/good/list";
+const productListLink = "http://localhost:8080/good/products";
 const addProductLink = "http://localhost:8080/good/new";
 
 function cleanInputs() {
@@ -36,7 +36,7 @@ async function addProduct() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}&type=1`)
 }
 
 async function fetchDataFromDB(url) {

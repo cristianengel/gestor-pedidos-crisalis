@@ -12,16 +12,19 @@ import java.util.Optional;
 
 @Repository
 public interface GoodRepository extends JpaRepository<Good, Integer> {
-    @Query("select g from Good g where upper(g.name) like upper(concat('%', ?1, '%'))")
-    List<Good> searchProduct(String name);
+    @Transactional
+    @Modifying
+    @Query("update Good g set g.name = ?1, g.price = ?2, g.extraCharges = ?3 where g.id = ?4")
+    void updateNameAndPriceAndExtraChargesById(String name, double price, double extraCharges, int id);
+    void deleteByIdAndType(int id, int type);
+    @Query("select g from Good g where upper(g.name) like upper(concat('%', ?1, '%')) and g.type = ?2")
+    List<Good> findAllByNameAndType(String name, int type);
+
     @Transactional
     @Modifying
     @Query("update Good g set g.name = ?1, g.price = ?2 where g.id = ?3")
-    void updateNameAndPriceById(String name, double price, int id);
-    Optional<Good> findById(int id);
-    Optional<Good> findByName(String name);
+    void updateProductNameAndPriceById(String name, double price, int id);
 
-    @Query("select g from Good g where upper(g.name) = upper(?1)")
-    List<Good> findAllByName(String name);
-
+    @Query("select g from Good g where g.type = ?1")
+    List<Good> findAllByType(int type);
 }

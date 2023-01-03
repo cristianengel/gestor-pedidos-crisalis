@@ -29,7 +29,6 @@ public class Good {
     @Column(name = "tipo")
     // Type 1: Product
     // Type 2: Service
-    // Type 3: Special Service
     private int type;
 
     @Column(name = "cargo_soporte")

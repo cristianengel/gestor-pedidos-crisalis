@@ -11,7 +11,7 @@ function cleanInputs() {
 }
 
 function deleteProduct() {
-    const deleteProductLink = `http://localhost:8080/good/delete?id=${idInput.value}&type=1`;
+    const deleteProductLink = `http://localhost:8080/good/delete_product?id=${idInput.value}`;
     fetch(deleteProductLink, {
         method: "POST",
         headers: {
@@ -22,7 +22,7 @@ function deleteProduct() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}&type=1`)
+    refreshTable("./headers.json", `http://localhost:8080/good/search_product?name=${listInput.value}`)
 }
 
 async function fetchDataFromDB(url) {

@@ -21,8 +21,12 @@ public class GoodService {
         return this.goodRepository.save(new Good(goodDTO));
     }
 
-    public void deleteGoodById(int id, int type) {
-        this.goodRepository.deleteByIdAndType(id, type);
+    public void deleteProductById(int id) {
+        this.goodRepository.deleteByIdAndType(id, 1);
+    }
+
+    public void deleteServiceById(int id) {
+        this.goodRepository.deleteByIdAndType(id, 2);
     }
 
     public GoodDTO findById(int id) {
@@ -32,15 +36,15 @@ public class GoodService {
                 ).toDTO();
     }
 
-    public void updateProduct(int id, String name, double price) {
+    public void updateProduct(int id, String name, Double price) {
         this.goodRepository.updateProductNameAndPriceById(name, price, id);
     }
 
-    public void updateService(int id, String name, double price, double extraCharges) {
+    public void updateService(int id, String name, Double price, Double extraCharges) {
         this.goodRepository.updateNameAndPriceAndExtraChargesById(name, price, extraCharges, id);
     }
 
-    public List<Good> findAllGoods(String name, int type) {
+    public List<Good> findAllGoodsByNameAndType(String name, int type) {
         return this.goodRepository.findAllByNameAndType(name, type);
     }
     public List<GoodDTO> getAllProductsInDB() {

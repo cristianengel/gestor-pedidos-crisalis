@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../baja.css">
+    <title>Baja Servicio</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="title">
+            <h1>Baja Servicio</h1>
+        </div>
+        <div class="btns">
+            <a href="../../Alta/Servicio/alta-servicio.html" class="button">Alta</a>
+            <a href="../../Modificacion/Servicio/modificacion-servicio.html" class="button">Modificación</a>
+            <a href="../../Home/home.html" class="button home-btn">Home</a>
+        </div>
+    </div>
+    <div class="center-container">
+        <div class="form">
+            <div class="attribute-container">
+                <h3>ID del Servicio</h3>
+                <input type="number" min="0" id="id-input" class="text-input" required>
+            </div>
+            <button class="button" id="delete-btn">Eliminar</button>
+        </div>
+        <div class="list">
+            <div class="top-table-div">
+                <h2 class="list-title">Servicios Existentes</h2>
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por nombre...">
+                <button class="button search-btn" id="search-btn">Buscar</button>
+            </div>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="bajaServicio.js"></script>
+</body>
+</html>

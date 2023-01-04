@@ -1,42 +1,28 @@
-const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const nameInput = document.querySelector("#name");
-const priceInput = document.querySelector("#price");
-const addBtn = document.querySelector("#add-btn");
+const idInput = document.querySelector("#id-input");
+const deleteBtn = document.querySelector("#delete-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-const productListLink = "http://localhost:8080/good/products";
-const addProductLink = "http://localhost:8080/good/new";
+const serviceLinkList = "http://localhost:8080/good/services";
 
 function cleanInputs() {
-    nameInput.value = "";
-    priceInput.value = "";
+    idInput.value = "";
 }
 
-async function addProduct() {
-    const data = {
-        name: nameInput.value,
-        price: priceInput.value,
-        type: 1,
-        extra_charges: 0
-    }
-    const response = await fetch(addProductLink, {
+function deleteService() {
+    const deleteServiceLink = `http://localhost:8080/good/delete_service?id=${idInput.value}`;
+    fetch(deleteServiceLink, {
         method: "POST",
-        body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json"
+            "Content-Length": 0
         }
     })
-        .then(res => res.json())
-        .then(data => console.log(data));
-        
-    refreshTable("./headers.json", productListLink);
-    cleanInputs()
+    cleanInputs();
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search_product?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/good/search_service?name=${listInput.value}`)
 }
 
 async function fetchDataFromDB(url) {
@@ -51,7 +37,8 @@ function loadBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
+        for(let i = 0; i < dataObjectArray.length; i++) {
+            if(i == 3) continue;
             
             const cellElement = document.createElement("td")
 
@@ -59,6 +46,24 @@ function loadBody(data) {
             rowElement.appendChild(cellElement);
         }
         tableBody.appendChild(rowElement);
+    }
+    for (let i = 1, row; row = table.rows[i]; i++) {
+        //iterate through rows
+        row.addEventListener("click", () => {
+            idInput.value = row.cells[0].innerHTML;
+        })
+        //rows would be accessed using the "row" variable assigned in the for loop
+        for (let j = 0, col; col = row.cells[j]; j++) {
+          //iterate through columns
+          //columns would be accessed using the "col" variable assigned in the for loop
+          if(col.innerHTML == "false") {
+            col.innerHTML = "No";
+          } else if (col.innerHTML == "true") {
+            col.innerHTML = "Sí";
+          } else if (col.innerHTML == "") {
+            col.innerHTML = "-";
+          }
+        }  
     }
 }
 
@@ -86,15 +91,15 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", productListLink)
+refreshTable("./headers.json", serviceLinkList)
 
-addBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea agregar este producto?") == true) {
-        addProduct();
+deleteBtn.addEventListener("click", () => {
+    if(confirm("Seguro que desea eliminar este servicio?") == true) {
+        deleteService();
+        refreshTable("./headers.json", serviceLinkList);
     }
 })
 
 searchBtn.addEventListener("click", () => {
     search();
 })
-

@@ -3,25 +3,27 @@ const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
+const extraChargesInput = document.querySelector("#extra-charges");
 const addBtn = document.querySelector("#add-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-const productListLink = "http://localhost:8080/good/products";
-const addProductLink = "http://localhost:8080/good/new";
+const serviceLinkList = "http://localhost:8080/good/services";
+const addServiceLink = "http://localhost:8080/good/new";
 
 function cleanInputs() {
     nameInput.value = "";
     priceInput.value = "";
+    extraChargesInput.value = "";
 }
 
-async function addProduct() {
+async function addService() {
     const data = {
         name: nameInput.value,
         price: priceInput.value,
-        type: 1,
-        extra_charges: 0
+        type: 2,
+        extra_charges: extraChargesInput.value
     }
-    const response = await fetch(addProductLink, {
+    const response = await fetch(addServiceLink, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -31,12 +33,12 @@ async function addProduct() {
         .then(res => res.json())
         .then(data => console.log(data));
         
-    refreshTable("./headers.json", productListLink);
+    refreshTable("./headers.json", serviceLinkList);
     cleanInputs()
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search_product?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/good/search_service?name=${listInput.value}`)
 }
 
 async function fetchDataFromDB(url) {
@@ -51,8 +53,8 @@ function loadBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
-            
+        for(let i = 0; i < dataObjectArray.length; i++) {
+            if(i == 3) continue;
             const cellElement = document.createElement("td")
 
             cellElement.textContent = dataObjectArray[i][1];
@@ -86,11 +88,11 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", productListLink)
+refreshTable("./headers.json", serviceLinkList)
 
 addBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea agregar este producto?") == true) {
-        addProduct();
+    if(confirm("Seguro que desea agregar este servicio?") == true) {
+        addService();
     }
 })
 

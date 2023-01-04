@@ -6,21 +6,32 @@ const listInput = document.querySelector("#list-input");
 const idInput = document.querySelector("#id-input");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
+const extraChargesInput = document.querySelector("#extra-charges");
 const modifyBtn = document.querySelector("#modify-btn");
-const productListLink = "http://localhost:8080/good/products";
+const serviceListLink = "http://localhost:8080/good/services";
 
 function cleanInputs() {
     idInput.value = "";
     nameInput.value = "";
+    priceInput.value = "";
+    extraChargesInput.value = "";
     listInput.value = "";
 }
 
-async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search_product?name=${listInput.value}`)
+function nullInputs() {
+    if(idInput.value == "" ||
+     nameInput.value == "" ||
+      priceInput.value == "" ||
+       extraChargesInput.value == "") return true;
+    return false;
 }
 
-async function modifyProduct() {
-    const response = await fetch(`http://localhost:8080/good/update_product?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}`, {
+async function search() {
+    refreshTable("./headers.json", `http://localhost:8080/good/search_service?name=${listInput.value}`)
+}
+
+async function modifyService() {
+    const response = await fetch(`http://localhost:8080/good/update_service?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&extra_charges=${extraChargesInput.value}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -28,7 +39,7 @@ async function modifyProduct() {
         }
     })
         
-    refreshTable("./headers.json", productListLink);
+    refreshTable("./headers.json", serviceListLink);
     cleanInputs()
 }
 
@@ -44,7 +55,8 @@ function loadBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
+        for(let i = 0; i < dataObjectArray.length; i++) {
+            if(i == 3) continue;
             
             const cellElement = document.createElement("td")
 
@@ -59,6 +71,7 @@ function loadBody(data) {
             idInput.value = row.cells[0].innerHTML;
             nameInput.value = row.cells[1].innerHTML;
             priceInput.value = row.cells[2].innerHTML;
+            extraChargesInput.value = row.cells[3].innerHTML;
         })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -76,8 +89,6 @@ function loadBody(data) {
 }
 
 async function refreshTable(urlHeaders, urlBody) {
-    
-    let responseArray;
     
     // Headers
     const headersResponse = await fetch(urlHeaders);
@@ -102,11 +113,12 @@ async function refreshTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", productListLink)
+refreshTable("./headers.json", serviceListLink)
 
 modifyBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea modificar este producto?") == true) {
-        modifyProduct();
+    if(nullInputs() == true) return;
+    if(confirm("Seguro que desea modificar este servicio?") == true) {
+        modifyService();
     }
 })
 

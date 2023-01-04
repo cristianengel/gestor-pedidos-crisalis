@@ -79,7 +79,7 @@ ul {
 .nav-sub-item {
     float: none;
     margin: 5px;
-    background-color: #536DFE;
+    background-color: #3D5AFE;
     display: block;
     text-decoration: none;
     color: azure;
@@ -89,7 +89,7 @@ ul {
 }
 
 .nav-sub-item:hover {
-    background-color: #3D5AFE;
+    background-color: #536DFE;
     transition: .1s ease-in;
 }
 

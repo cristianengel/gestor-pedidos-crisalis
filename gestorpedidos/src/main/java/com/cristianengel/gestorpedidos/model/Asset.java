@@ -1,7 +1,7 @@
 package com.cristianengel.gestorpedidos.model;
 
 
-import com.cristianengel.gestorpedidos.model.dto.GoodDTO;
+import com.cristianengel.gestorpedidos.model.dto.AssetDTO;
 import lombok.*;
 import org.hibernate.Hibernate;
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "bien")
-public class Good {
+public class Asset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,16 +35,16 @@ public class Good {
     // Only with type = 3
     private double extraCharges;
 
-    public Good(GoodDTO goodDTO) {
-        this.name = goodDTO.getName();
-        this.price = goodDTO.getPrice();
-        this.type = goodDTO.getType();
-        this.extraCharges = goodDTO.getExtraCharges();
+    public Asset(AssetDTO assetDTO) {
+        this.name = assetDTO.getName();
+        this.price = assetDTO.getPrice();
+        this.type = assetDTO.getType();
+        this.extraCharges = assetDTO.getExtraCharges();
     }
 
-    public GoodDTO toDTO() {
+    public AssetDTO toDTO() {
         return
-                GoodDTO.builder()
+                AssetDTO.builder()
                         .id(this.id)
                         .name(this.name)
                         .price(this.price)
@@ -57,7 +57,7 @@ public class Good {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Good good = (Good) o;
+        Asset asset = (Asset) o;
         return false;
     }
 

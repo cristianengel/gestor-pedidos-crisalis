@@ -8,7 +8,7 @@ const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 const extraChargesInput = document.querySelector("#extra-charges");
 const modifyBtn = document.querySelector("#modify-btn");
-const serviceListLink = "http://localhost:8080/good/services";
+const serviceListLink = "http://localhost:8080/asset/services";
 
 function cleanInputs() {
     idInput.value = "";
@@ -27,11 +27,11 @@ function nullInputs() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search_service?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/asset/search_service?name=${listInput.value}`)
 }
 
 async function modifyService() {
-    const response = await fetch(`http://localhost:8080/good/update_service?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&extra_charges=${extraChargesInput.value}`, {
+    const response = await fetch(`http://localhost:8080/asset/update_service?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&extra_charges=${extraChargesInput.value}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

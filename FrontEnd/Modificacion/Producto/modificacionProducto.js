@@ -7,7 +7,7 @@ const idInput = document.querySelector("#id-input");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 const modifyBtn = document.querySelector("#modify-btn");
-const productListLink = "http://localhost:8080/good/products";
+const productListLink = "http://localhost:8080/asset/products";
 
 function cleanInputs() {
     idInput.value = "";
@@ -16,11 +16,11 @@ function cleanInputs() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search_product?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/asset/search_product?name=${listInput.value}`)
 }
 
 async function modifyProduct() {
-    const response = await fetch(`http://localhost:8080/good/update_product?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}`, {
+    const response = await fetch(`http://localhost:8080/asset/update_product?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

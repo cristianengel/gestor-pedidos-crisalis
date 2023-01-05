@@ -1,8 +1,8 @@
 package com.cristianengel.gestorpedidos.service;
 
 import com.cristianengel.gestorpedidos.exception.custom.UnauthorizedException;
-import com.cristianengel.gestorpedidos.model.Good;
-import com.cristianengel.gestorpedidos.model.dto.GoodDTO;
+import com.cristianengel.gestorpedidos.model.Asset;
+import com.cristianengel.gestorpedidos.model.dto.AssetDTO;
 import com.cristianengel.gestorpedidos.repository.GoodRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +10,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class GoodService {
+public class AssetService {
     private final GoodRepository goodRepository;
 
-    public GoodService(GoodRepository goodRepository) {
+    public AssetService(GoodRepository goodRepository) {
         this.goodRepository = goodRepository;
     }
 
-    public Good saveGood(GoodDTO goodDTO) {
-        return this.goodRepository.save(new Good(goodDTO));
+    public Asset saveGood(AssetDTO assetDTO) {
+        return this.goodRepository.save(new Asset(assetDTO));
     }
 
     public void deleteProductById(int id) {
@@ -29,10 +29,10 @@ public class GoodService {
         this.goodRepository.deleteByIdAndType(id, 2);
     }
 
-    public GoodDTO findById(int id) {
+    public AssetDTO findById(int id) {
         return this.goodRepository.findById(id)
                 .orElseThrow(
-                        () -> new UnauthorizedException("Non Existing Good.")
+                        () -> new UnauthorizedException("Non Existing Asset.")
                 ).toDTO();
     }
 
@@ -44,28 +44,28 @@ public class GoodService {
         this.goodRepository.updateNameAndPriceAndExtraChargesById(name, price, extraCharges, id);
     }
 
-    public List<Good> findAllGoodsByNameAndType(String name, int type) {
+    public List<Asset> findAllGoodsByNameAndType(String name, int type) {
         return this.goodRepository.findAllByNameAndType(name, type);
     }
-    public List<GoodDTO> getAllProductsInDB() {
+    public List<AssetDTO> getAllProductsInDB() {
         return this.goodRepository.findAllByType(1)
                 .stream()
-                .map(Good::toDTO)
+                .map(Asset::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<GoodDTO> getAllServicesInDB() {
+    public List<AssetDTO> getAllServicesInDB() {
         return this.goodRepository.findAllByType(2)
                 .stream()
-                .map(Good::toDTO)
+                .map(Asset::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<GoodDTO> getAllGoodsInDB() {
+    public List<AssetDTO> getAllGoodsInDB() {
         return this.goodRepository
                 .findAll()
                 .stream()
-                .map(Good::toDTO)
+                .map(Asset::toDTO)
                 .collect(Collectors.toList());
     }
 }

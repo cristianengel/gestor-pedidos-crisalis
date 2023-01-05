@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Builder
-public class GoodDTO {
+public class AssetDTO {
     private int id;
     @JsonProperty("name")
     private String name;

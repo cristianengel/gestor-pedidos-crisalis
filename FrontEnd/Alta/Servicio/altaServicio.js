@@ -7,8 +7,8 @@ const extraChargesInput = document.querySelector("#extra-charges");
 const addBtn = document.querySelector("#add-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-const serviceLinkList = "http://localhost:8080/good/services";
-const addServiceLink = "http://localhost:8080/good/new";
+const serviceLinkList = "http://localhost:8080/asset/services";
+const addServiceLink = "http://localhost:8080/asset/new";
 
 function cleanInputs() {
     nameInput.value = "";
@@ -38,7 +38,7 @@ async function addService() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search_service?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/asset/search_service?name=${listInput.value}`)
 }
 
 async function fetchDataFromDB(url) {

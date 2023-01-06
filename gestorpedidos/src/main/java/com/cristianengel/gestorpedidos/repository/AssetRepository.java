@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface GoodRepository extends JpaRepository<Asset, Integer> {
+public interface AssetRepository extends JpaRepository<Asset, Integer> {
     @Transactional
     @Modifying
     @Query("delete from Asset g where g.id = ?1 and g.type = ?2")

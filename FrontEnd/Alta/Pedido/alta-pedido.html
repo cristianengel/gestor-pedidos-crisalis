@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="../alta.css">
-    <title>Alta Producto</title>
+    <title>Nuevo Pedido</title>
 </head>
 <body>
     <div class="top-bar">
         <div class="title">
-            <h1>Alta Cliente</h1>
+            <h1>Nuevo Pedido</h1>
         </div>
         <div class="btns">
-            <a href="../../Baja/Cliente/baja-cliente.html" class="button">Baja</a>
-            <a href="../../Modificacion/Cliente/modificacion-cliente.html" class="button">Modificación</a>
-            <a href="../../Home/home.html" class="button home-btn" id="home-btn">Home</a>
+            <a href="../../Home/home.html" class="button home-btn">Home</a>
         </div>
     </div>
     <div class="center-container">
         <div class="form">
             <div class="top-btns">
+                <button class="top-btn" id="new-client">Nuevo Cliente</button>
+                <button class="top-btn" id="existing-client">Cliente Existente</button>
+            </div>
+            <div class="top-btns-client">
                 <button class="top-btn" id="personBtn">Persona Física</button>
                 <button class="top-btn" id="businessBtn">Empresa</button>
             </div>
@@ -90,12 +92,16 @@
                     <input type="text" id="ownerEmail" class="text-input">
                 </div>
             </div>
+            <div class="attribute-container existing-identification">
+                <h3>DNI/CUIT Empresa</h3>
+                <input type="number" min="0" id="identification-input" class="text-input" required>
+            </div>
             <button class="button" id="add-btn">Agregar</button>
         </div>
         <div class="list">
             <div class="top-table-div">
                 <h2 class="list-title">Clientes Existentes</h2>
-                <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por nombre...">
                 <button class="button search-btn" id="search-btn">Buscar</button>
             </div>
             <table class="table" id="table">
@@ -104,6 +110,6 @@
             </table>
         </div>
     </div>
-    <script src="altaCliente.js"></script>
+    <script src="altaPedido.js"></script>
 </body>
 </html>

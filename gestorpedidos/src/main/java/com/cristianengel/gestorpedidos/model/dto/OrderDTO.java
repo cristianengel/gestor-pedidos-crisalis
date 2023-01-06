@@ -1,10 +1,12 @@
 package com.cristianengel.gestorpedidos.model.dto;
 
+import com.cristianengel.gestorpedidos.model.Asset;
 import com.cristianengel.gestorpedidos.model.Client;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,6 +16,9 @@ import java.time.LocalDate;
 public class OrderDTO {
     @JsonProperty("client")
     private Client clientId;
+
+    @JsonProperty("asset")
+    private List<Asset> assets;
 
     @JsonProperty("date")
     private LocalDate date;

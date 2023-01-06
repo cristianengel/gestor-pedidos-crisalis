@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +25,10 @@ public class Order {
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Client client;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "asset_id", referencedColumnName = "id")
+    private List<Asset> assets;
+
     @Column(name = "fecha")
     private LocalDate date;
 
@@ -35,6 +40,7 @@ public class Order {
 
     public Order(OrderDTO orderDTO) {
         this.client = orderDTO.getClientId();
+        this.assets = orderDTO.getAssets();
         this.date = orderDTO.getDate();
         this.voucher = orderDTO.getVoucher();
         this.total = orderDTO.getTotal();
@@ -43,6 +49,7 @@ public class Order {
     public OrderDTO toDTO() {
         return OrderDTO.builder()
                 .clientId(this.client)
+                .assets(this.assets)
                 .date(this.date)
                 .voucher(this.voucher)
                 .total(this.total)

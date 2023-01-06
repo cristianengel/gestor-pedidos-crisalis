@@ -97,6 +97,10 @@ tbody > tr:hover {
     margin-block: 15px;
 }
 
+.top-btns-client {
+    display: none;
+}
+
 .top-btn:hover {
     background-color: #536DFE;
 }
@@ -105,6 +109,10 @@ tbody > tr:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.existing-identification {
+    display: none;
 }
 
 .text-input {

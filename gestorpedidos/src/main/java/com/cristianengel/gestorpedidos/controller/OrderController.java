@@ -4,10 +4,7 @@ import com.cristianengel.gestorpedidos.model.Order;
 import com.cristianengel.gestorpedidos.model.dto.OrderDTO;
 import com.cristianengel.gestorpedidos.service.OrderService;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("order")
@@ -20,7 +17,7 @@ public class OrderController {
     }
 
     @PostMapping(value = "new", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Order saveOrder(@RequestBody OrderDTO orderDTO) {
+    public Order saveOrderWithNewClient(@RequestBody OrderDTO orderDTO) {
         return this.orderService.saveOrder(orderDTO);
     }
 }

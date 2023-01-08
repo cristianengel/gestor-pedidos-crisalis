@@ -21,11 +21,11 @@ public class Order {
     @Column(name = "id")
     private int id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     private Client client;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "asset_id", referencedColumnName = "id")
     private List<Asset> assets;
 
@@ -39,7 +39,7 @@ public class Order {
     private double total;
 
     public Order(OrderDTO orderDTO) {
-        this.client = orderDTO.getClientId();
+        this.client = orderDTO.getClient();
         this.assets = orderDTO.getAssets();
         this.date = orderDTO.getDate();
         this.voucher = orderDTO.getVoucher();
@@ -48,7 +48,7 @@ public class Order {
 
     public OrderDTO toDTO() {
         return OrderDTO.builder()
-                .clientId(this.client)
+                .client(this.client)
                 .assets(this.assets)
                 .date(this.date)
                 .voucher(this.voucher)

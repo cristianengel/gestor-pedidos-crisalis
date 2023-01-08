@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 public class OrderDTO {
     @JsonProperty("client")
-    private Client clientId;
+    private Client client;
 
     @JsonProperty("asset")
     private List<Asset> assets;

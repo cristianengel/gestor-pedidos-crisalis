@@ -1,6 +1,5 @@
 package com.cristianengel.gestorpedidos.service;
 
-import com.cristianengel.gestorpedidos.exception.custom.UnauthorizedException;
 import com.cristianengel.gestorpedidos.model.Client;
 import com.cristianengel.gestorpedidos.model.dto.ClientDTO;
 import com.cristianengel.gestorpedidos.repository.ClientRepository;
@@ -10,7 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service

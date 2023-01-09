@@ -1,2 +1,9 @@
-package com.cristianengel.gestorpedidos.repository;public interface OrderDetailRepository {
+package com.cristianengel.gestorpedidos.repository;
+
+import com.cristianengel.gestorpedidos.model.OrderDetail;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, Integer> {
 }

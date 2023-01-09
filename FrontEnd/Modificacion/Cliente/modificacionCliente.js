@@ -148,9 +148,9 @@ function loadBody(data) {
 
         for (let j = 0, col; col = row.cells[j]; j++) {
           if(col.innerHTML == "false") {
-            col.innerHTML = "No";
+            col.innerHTML = "Persona";
           } else if (col.innerHTML == "true") {
-            col.innerHTML = "Sí";
+            col.innerHTML = "Empresa";
           } else if (col.innerHTML == "") {
             col.innerHTML = "-";
           }

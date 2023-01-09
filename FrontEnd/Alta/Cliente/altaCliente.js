@@ -137,9 +137,9 @@ function loadBody(data) {
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop
           if(col.innerHTML == "false") {
-            col.innerHTML = "No";
+            col.innerHTML = "Persona";
           } else if (col.innerHTML == "true") {
-            col.innerHTML = "Sí";
+            col.innerHTML = "Empresa";
           } else if (col.innerHTML == "") {
             col.innerHTML = "-";
           }

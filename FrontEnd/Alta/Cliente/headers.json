@@ -1,6 +1,6 @@
 {
     "headers": [
-        "Empresa",
+        "Tipo",
         "Identificación",
         "Nombre",
         "Apellido",

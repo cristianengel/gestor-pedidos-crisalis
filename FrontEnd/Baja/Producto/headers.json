@@ -2,6 +2,7 @@
     "headers": [
         "ID",
         "Nombre",
-        "Precio"
+        "Precio",
+        "Impuestos Asociados"
     ]
 }

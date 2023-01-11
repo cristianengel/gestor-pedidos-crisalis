@@ -37,10 +37,21 @@ function loadBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < (dataObjectArray.length) - 2; i++) {
+        for(let i = 0; i < dataObjectArray.length; i++) {
+
+            if(i == 3 || i == 4) continue;
             
             const cellElement = document.createElement("td")
-
+            if(i == 5) {
+                let taxesArray = []
+                for(let j of dataObjectArray[i][1]) {
+                    let dataTaxesArray = Object.entries(j)
+                    taxesArray.push(dataTaxesArray[1][1])
+                }
+                cellElement.textContent = taxesArray;
+                rowElement.appendChild(cellElement);
+                continue;
+            }
             cellElement.textContent = dataObjectArray[i][1];
             rowElement.appendChild(cellElement);
         }

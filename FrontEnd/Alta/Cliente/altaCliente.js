@@ -219,7 +219,7 @@ addBtn.addEventListener("click", () => {
     saveClient();
 })
 
-searchBtn.addEventListener("click", () => {
+searchBtn.addEventListener("keyup", () => {
     if(listInput.value == "") {
         refreshTable("./headers.json", clientListLink);
         return;

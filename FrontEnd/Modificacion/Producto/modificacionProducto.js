@@ -181,7 +181,7 @@ modifyBtn.addEventListener("click", () => {
     }
 })
 
-searchBtn.addEventListener("click", () => {
+listInput.addEventListener("keyup", () => {
     search();
 })
 

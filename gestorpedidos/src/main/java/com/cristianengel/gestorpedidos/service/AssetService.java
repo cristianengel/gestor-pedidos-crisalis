@@ -2,6 +2,7 @@ package com.cristianengel.gestorpedidos.service;
 
 import com.cristianengel.gestorpedidos.exception.custom.UnauthorizedException;
 import com.cristianengel.gestorpedidos.model.Asset;
+import com.cristianengel.gestorpedidos.model.Tax;
 import com.cristianengel.gestorpedidos.model.dto.AssetDTO;
 import com.cristianengel.gestorpedidos.repository.AssetRepository;
 import com.cristianengel.gestorpedidos.repository.TaxRepository;
@@ -50,8 +51,8 @@ public class AssetService {
         this.assetRepository.updateProductNameAndPriceById(name, price, id);
     }
 
-    public void updateService(int id, String name, Double price, Double extraCharges) {
-        this.assetRepository.updateNameAndPriceAndExtraChargesById(name, price, extraCharges, id);
+    public void updateService(int id, String name, Double price, Double extraCharges, List<Tax> taxesId) {
+        this.assetRepository.updateNameAndPriceAndExtraChargesAndTaxesById(name, price, extraCharges, taxesId, id);
     }
 
     public List<Asset> findAllGoodsByNameAndType(String name, int type) {

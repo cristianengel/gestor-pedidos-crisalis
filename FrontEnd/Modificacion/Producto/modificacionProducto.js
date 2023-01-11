@@ -1,18 +1,25 @@
 const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
+const taxesTable = document.querySelector("#taxes-table");
+const taxesTableHead = document.querySelector("#taxes-thead");
+const taxesTableBody = document.querySelector("#taxes-tbody");
 const searchBtn = document.querySelector("#search-btn");
 const listInput = document.querySelector("#list-input");
 const idInput = document.querySelector("#id-input");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 const modifyBtn = document.querySelector("#modify-btn");
+let taxesList = [];
 const productListLink = "http://localhost:8080/asset/products";
+const taxListLink = "http://localhost:8080/tax/list"
 
 function cleanInputs() {
     idInput.value = "";
     nameInput.value = "";
     listInput.value = "";
+    taxesList = []
+    refreshTaxesTable("./taxes-headers.json", taxListLink)
 }
 
 async function search() {
@@ -66,24 +73,52 @@ function loadBody(data) {
         tableBody.appendChild(rowElement);
     }
     for (let i = 1, row; row = table.rows[i]; i++) {
-        //iterate through rows
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;
             nameInput.value = row.cells[1].innerHTML;
             priceInput.value = row.cells[2].innerHTML;
+
+            for(let k = 1, taxRow; taxRow = taxesTable.rows[k]; k++) {
+                // TODO
+            }
         })
-        //rows would be accessed using the "row" variable assigned in the for loop
+
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if(col.innerHTML == "false") {
-            col.innerHTML = "No";
-          } else if (col.innerHTML == "true") {
-            col.innerHTML = "Sí";
-          } else if (col.innerHTML == "") {
+          if(col.innerHTML == "") {
             col.innerHTML = "-";
           }
         }  
+    }
+}
+
+function loadTaxesBody(data) {
+    for(let dataObject of data) {
+        const rowElement = document.createElement("tr");
+        let dataObjectArray = Object.entries(dataObject);
+        for(let i = 1; i < dataObjectArray.length; i++) {
+            
+            const cellElement = document.createElement("td")
+
+            cellElement.textContent = dataObjectArray[i][1];
+            if(i == 2) {
+                cellElement.textContent = dataObjectArray[i][1] + "%";
+            }
+            rowElement.appendChild(cellElement);
+        }
+        const check = document.createElement("INPUT");
+        check.setAttribute("type", "checkbox");
+        rowElement.appendChild(check);
+
+        check.addEventListener("change", () => {
+            if(check.checked) {
+                taxesList.push(dataObjectArray[0][1]);
+            } else {
+                const index = taxesList.indexOf(dataObjectArray[0][1]);
+                taxesList.splice(index, 1);
+            }
+        })
+
+        taxesTableBody.appendChild(rowElement);
     }
 }
 
@@ -113,8 +148,32 @@ async function refreshTable(urlHeaders, urlBody) {
     });
 }
 
+async function refreshTaxesTable(urlHeaders, urlBody) {
+    // Headers
+    const headersResponse = await fetch(urlHeaders);
+    const { headers } = await headersResponse.json();
+
+    // Clear the headers
+    taxesTableHead.innerHTML = "<tr></tr>";
+
+    // Populate Headers
+    for (const headerText of headers) {
+        const headerElement = document.createElement("th");
+
+        headerElement.textContent = headerText;
+        taxesTableHead.querySelector("tr").appendChild(headerElement); 
+    }
+
+    // Body
+    taxesTableBody.innerHTML = "";
+    fetchDataFromDB(urlBody).then(data => {
+        loadTaxesBody(data);
+    });
+}
+
 // Initial Load
 refreshTable("./headers.json", productListLink)
+refreshTaxesTable("./taxes-headers.json", taxListLink)
 
 modifyBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea modificar este producto?") == true) {

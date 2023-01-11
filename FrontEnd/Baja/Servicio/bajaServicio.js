@@ -41,6 +41,16 @@ function loadBody(data) {
             if(i == 3) continue;
             
             const cellElement = document.createElement("td")
+            if(i == 5) {
+                let taxesArray = []
+                for(let j of dataObjectArray[i][1]) {
+                    let dataTaxesArray = Object.entries(j)
+                    taxesArray.push(dataTaxesArray[1][1])
+                }
+                cellElement.textContent = taxesArray;
+                rowElement.appendChild(cellElement);
+                continue;
+            }
 
             cellElement.textContent = dataObjectArray[i][1];
             rowElement.appendChild(cellElement);
@@ -48,19 +58,11 @@ function loadBody(data) {
         tableBody.appendChild(rowElement);
     }
     for (let i = 1, row; row = table.rows[i]; i++) {
-        //iterate through rows
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;
         })
-        //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if(col.innerHTML == "false") {
-            col.innerHTML = "No";
-          } else if (col.innerHTML == "true") {
-            col.innerHTML = "Sí";
-          } else if (col.innerHTML == "") {
+          if(col.innerHTML == "") {
             col.innerHTML = "-";
           }
         }  

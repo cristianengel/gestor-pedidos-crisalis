@@ -1,6 +1,7 @@
 package com.cristianengel.gestorpedidos.controller;
 
 import com.cristianengel.gestorpedidos.model.Asset;
+import com.cristianengel.gestorpedidos.model.Tax;
 import com.cristianengel.gestorpedidos.model.dto.AssetDTO;
 import com.cristianengel.gestorpedidos.service.AssetService;
 import org.springframework.http.MediaType;
@@ -70,8 +71,8 @@ public class AssetController {
     }
 
     @PostMapping(value = "update_service")
-    public void updateService(@RequestParam int id, String name, Double price, Double extra_charges){
-        this.assetService.updateService(id, name, price, extra_charges);
+    public void updateService(@RequestParam int id, String name, Double price, Double extra_charges, List<Tax> taxesId){
+        this.assetService.updateService(id, name, price, extra_charges, taxesId);
     }
 
 }

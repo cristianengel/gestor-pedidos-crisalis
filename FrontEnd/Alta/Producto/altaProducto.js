@@ -9,13 +9,9 @@ const priceInput = document.querySelector("#price");
 const addBtn = document.querySelector("#add-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-const taxesInput = document.querySelector("#taxes-input");
 let taxesList = [];
 const productListLink = "http://localhost:8080/asset/products";
 let addProductLink = "http://localhost:8080/asset/new?taxesId=";
-
-
-
 const taxListLink = "http://localhost:8080/tax/list"
 
 function cleanInputs() {

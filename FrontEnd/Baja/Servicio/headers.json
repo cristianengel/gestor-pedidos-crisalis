@@ -3,6 +3,7 @@
         "ID",
         "Nombre",
         "Precio",
-        "Cargo Soporte"
+        "Cargo Soporte",
+        "Impuestos Asociados"
     ]
 }

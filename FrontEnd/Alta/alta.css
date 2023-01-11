@@ -79,6 +79,10 @@ tbody > tr:hover {
     height: min-content;
 }
 
+.asociated-taxes {
+    list-style-type: circle;
+}
+
 .blue-text {
     color: #3D5AFE;
 }
@@ -111,6 +115,11 @@ tbody > tr:hover {
     justify-content: center;
 }
 
+.select-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .existing-identification {
     display: none;
 }
@@ -124,6 +133,10 @@ tbody > tr:hover {
     height: 20px;
     font-size: 18px;
     font-family: 'Montserrat';
+}
+
+.select-input {
+    margin-inline: 1em;
 }
 
 .business-name {
@@ -196,6 +209,20 @@ tbody > tr:hover {
     text-decoration: none;
 }
 
+.button-small {
+    font-size: small;
+    background-color: #3D5AFE;
+    color: azure;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+    align-self: center;
+    text-decoration: none;
+}
+
 .home-btn {
     margin-top: 1em;
     background-color: #FF6961;
@@ -204,6 +231,11 @@ tbody > tr:hover {
 }
 
 .button:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.button-small:hover {
     background-color: #536DFE;
     transition: .1s ease-in;
 }

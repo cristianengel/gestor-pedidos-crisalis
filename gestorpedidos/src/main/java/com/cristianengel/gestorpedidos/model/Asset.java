@@ -5,6 +5,7 @@ import com.cristianengel.gestorpedidos.model.dto.AssetDTO;
 import lombok.*;
 import org.hibernate.Hibernate;
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,11 +36,18 @@ public class Asset {
     // Only with type = 3
     private double extraCharges;
 
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    private List<Tax> taxes;
+
     public Asset(AssetDTO assetDTO) {
         this.name = assetDTO.getName();
         this.price = assetDTO.getPrice();
         this.type = assetDTO.getType();
         this.extraCharges = assetDTO.getExtraCharges();
+        this.taxes = assetDTO.getTaxes();
     }
 
     public AssetDTO toDTO() {
@@ -50,6 +58,7 @@ public class Asset {
                         .price(this.price)
                         .type(this.type)
                         .extraCharges(this.extraCharges)
+                        .taxes(this.taxes)
                         .build();
     }
 

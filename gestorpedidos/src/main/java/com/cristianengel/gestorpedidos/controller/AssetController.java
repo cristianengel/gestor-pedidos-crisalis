@@ -20,8 +20,8 @@ public class AssetController {
     }
 
     @PostMapping(value = "new", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Asset saveGood(@RequestBody AssetDTO assetDTO) {
-        return this.assetService.saveGood(assetDTO);
+    public Asset saveGood(@RequestBody AssetDTO assetDTO, @RequestParam List<Integer> taxesId) {
+        return this.assetService.saveGood(assetDTO, taxesId);
     }
 
     @GetMapping(value = "search_product", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -2,6 +2,7 @@ let nameInput = document.querySelector("#name")
 let lastnameInput = document.querySelector("#lastname")
 let usernameInput = document.querySelector("#username");
 let passwordInput = document.querySelector("#password");
+let adminKeyInput = document.querySelector("#admin-key");
 let mostrarBtn = document.querySelector("#mostrar-btn");
 let registerBtn = document.querySelector("#register-btn");
 let goToLoginBtn = document.querySelector("#go-to-login-btn");
@@ -59,7 +60,16 @@ registerBtn.addEventListener("click", () => {
         alert("Hay datos faltantes.");
         return;
     }
-    register();
+    if(adminKeyInput.value == "clave-administrador-backoffice") {
+        register();
+        nameInput.value = "";
+        lastnameInput.value = "";
+        usernameInput.value = "";
+        passwordInput.value = "";
+        adminKeyInput.value = "";
+    } else {
+        alert("Ingresar clave de administrador para poder continuar.")
+    }
 });
 goToLoginBtn.addEventListener("click", () => {
     open("../Login/login.html", "_self");

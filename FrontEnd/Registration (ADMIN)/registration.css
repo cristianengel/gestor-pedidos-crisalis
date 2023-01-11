@@ -76,13 +76,13 @@ body {
     padding-inline: 7px;
 }
 
-.name-div, .lastname-div, .username-div, .password-div {
+.name-div, .lastname-div, .username-div, .password-div, .admin-key-div {
     display: inline-flex;
     height: 30px;
     column-gap: 20px;
 }
 
-#name, #lastname, #username, #password {
+#name, #lastname, #username, #password, #admin-key {
     font-size: large;
     background: none;
     color: black;
@@ -91,7 +91,7 @@ body {
     outline: none;
 }
 
-#name::placeholder, #lastname::placeholder, #password::placeholder, #username::placeholder {
+#name::placeholder, #lastname::placeholder, #password::placeholder, #username::placeholder, #admin-key::placeholder {
     color: rgb(65, 65, 65);
 }
 
@@ -100,7 +100,7 @@ body {
     transition: .1s ease-in;
 }
 
-#username:hover, #password:hover, #name:hover, #lastname:hover {
+#username:hover, #password:hover, #name:hover, #lastname:hover, #admin-key:hover {
     border-bottom: 1px solid #3D5AFE;
     transition: .1s ease-in;
 }

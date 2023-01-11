@@ -3,6 +3,7 @@ let usernameInput = document.querySelector("#username");
 let passwordInput = document.querySelector("#password");
 let mostrarBtn = document.querySelector("#mostrar-btn");
 let loginBtn = document.querySelector("#login-btn");
+let registerBtn = document.querySelector("#register-btn");
 
 function login() {
     mostrarBtn.style.display = "none";
@@ -55,4 +56,8 @@ passwordInput.addEventListener("keydown", function(event) {
     if(event.key == "Enter") {
         login()
     }
+})
+
+registerBtn.addEventListener("click", () => {
+    open("../Registration (ADMIN)/registration.html", "_self");
 })

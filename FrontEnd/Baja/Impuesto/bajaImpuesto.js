@@ -3,7 +3,6 @@ const tableBody = document.querySelector("#tbody");
 const idInput = document.querySelector("#id-input");
 const deleteBtn = document.querySelector("#delete-btn");
 const listInput = document.querySelector("#list-input");
-const searchBtn = document.querySelector("#search-btn");
 const taxListLink = "http://localhost:8080/tax/list";
 
 function cleanInputs() {
@@ -102,6 +101,6 @@ deleteBtn.addEventListener("click", () => {
     }
 })
 
-searchBtn.addEventListener("click", () => {
+listInput.addEventListener("keyup", () => {
     search();
 })

@@ -70,15 +70,6 @@ tbody > tr:hover {
     animation-duration: 1s;
 }
 
-.form {
-    background-color: azure;
-    border-radius: 20px;
-    display: flex;
-    width: 48%;
-    flex-direction: column;
-    height: min-content;
-}
-
 .blue-text {
     color: #3D5AFE;
 }

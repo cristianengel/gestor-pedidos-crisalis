@@ -49,7 +49,6 @@ async function addProduct() {
 }
 
 async function search() {
-    console.log("santi gay")
     refreshTable("./headers.json", `http://localhost:8080/asset/search_product?name=${listInput.value}`)
 }
 

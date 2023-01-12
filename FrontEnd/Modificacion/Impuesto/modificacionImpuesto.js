@@ -1,7 +1,6 @@
 const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const searchBtn = document.querySelector("#search-btn");
 const listInput = document.querySelector("#list-input");
 const idInput = document.querySelector("#id-input");
 const nameInput = document.querySelector("#name");
@@ -110,7 +109,7 @@ modifyBtn.addEventListener("click", () => {
     }
 })
 
-searchBtn.addEventListener("click", () => {
+listInput.addEventListener("keyup", () => {
     search();
 })
 

@@ -5,7 +5,6 @@ const nameInput = document.querySelector("#name");
 const percentageInput = document.querySelector("#percentage");
 const addBtn = document.querySelector("#add-btn");
 const listInput = document.querySelector("#list-input");
-const searchBtn = document.querySelector("#search-btn");
 const productListLink = "http://localhost:8080/tax/list";
 const addProductLink = "http://localhost:8080/tax/new";
 
@@ -36,7 +35,7 @@ async function addProduct() {
 }
 
 async function search() {
-    refreshTable("./headers.json", `http://localhost:8080/good/search?name=${listInput.value}`)
+    refreshTable("./headers.json", `http://localhost:8080/tax/search?name=${listInput.value}`)
 }
 
 async function fetchDataFromDB(url) {
@@ -97,7 +96,7 @@ addBtn.addEventListener("click", () => {
     }
 })
 
-searchBtn.addEventListener("click", () => {
+listInput.addEventListener("keyup", () => {
     search();
 })
 

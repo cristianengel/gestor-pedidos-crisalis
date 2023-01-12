@@ -1,24 +1,24 @@
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
-const idInput = document.querySelector("#id-input");
-const deleteBtn = document.querySelector("#delete-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
+const idText = document.querySelector("#id-text");
+const nameText = document.querySelector("#name-text");
+const masterContainer = document.querySelector(".delete-master-container");
+const deleteCenterContainer = document.querySelector(".delete-center-container");
+const confirmBtn = document.querySelector("#confirm-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
 const productListLink = "http://localhost:8080/asset/products";
-
-function cleanInputs() {
-    idInput.value = "";
-}
+let elementToDelete;
 
 function deleteProduct() {
-    const deleteProductLink = `http://localhost:8080/asset/delete_product?id=${idInput.value}`;
+    const deleteProductLink = `http://localhost:8080/asset/delete_product?id=${elementToDelete}`;
     fetch(deleteProductLink, {
         method: "POST",
         headers: {
             "Content-Length": 0
         }
     })
-    cleanInputs();
 }
 
 async function search() {
@@ -59,7 +59,15 @@ function loadBody(data) {
     }
     for (let i = 1, row; row = table.rows[i]; i++) {
         row.addEventListener("click", () => {
-            idInput.value = row.cells[0].innerHTML;
+            masterContainer.style.display = "block";
+            masterContainer.style.animationName = "fade-in";
+            masterContainer.style.animationDuration = ".5s";
+            deleteCenterContainer.style.display = "block";
+            deleteCenterContainer.style.animationName = "scaleUp";
+            deleteCenterContainer.style.animationDuration = ".3s";
+            elementToDelete = row.cells[0].innerHTML;
+            idText.textContent = `ID: ${row.cells[0].innerHTML}`;
+            nameText.textContent = `Nombre: ${row.cells[1].innerHTML}`;
         })
         for (let j = 0, col; col = row.cells[j]; j++) {
           if(col.innerHTML == "") {
@@ -95,13 +103,18 @@ async function refreshTable(urlHeaders, urlBody) {
 // Initial Load
 refreshTable("./headers.json", productListLink)
 
-deleteBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea eliminar este producto?") == true) {
-        deleteProduct();
-        refreshTable("./headers.json", productListLink);
-    }
-})
-
 listInput.addEventListener("keyup", () => {
     search();
+})
+
+confirmBtn.addEventListener("click", () => {
+    deleteProduct();
+    masterContainer.style.display = "none";
+    deleteCenterContainer.style.display = "none";
+    refreshTable("./headers.json", productListLink);
+})
+
+cancelBtn.addEventListener("click", () => {
+    masterContainer.style.display = "none";
+    deleteCenterContainer.style.display = "none";
 })

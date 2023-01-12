@@ -95,7 +95,7 @@ async function refreshTable(urlHeaders, urlBody) {
 refreshTable("./headers.json", taxListLink)
 
 deleteBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea eliminar este producto?") == true) {
+    if(confirm("Seguro que desea eliminar este impuesto?") == true) {
         deleteTax();
         refreshTable("./headers.json", taxListLink);
     }

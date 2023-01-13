@@ -20,13 +20,6 @@
         </div>
     </div>
     <div class="center-container">
-        <div class="form">
-            <div class="attribute-container">
-                <h3>ID del Impuesto</h3>
-                <input type="number" min="0" id="id-input" class="text-input" required>
-            </div>
-            <button class="button" id="delete-btn">Eliminar</button>
-        </div>
         <div class="list">
             <div class="top-table-div">
                 <h2 class="list-title">Impuestos Existentes</h2>
@@ -36,6 +29,19 @@
                 <thead class="thead" id="thead"></thead>
                 <tbody class="tbody" id="tbody"></tbody>
             </table>
+        </div>
+    </div>
+    <div class="delete-master-container">
+        <div class="delete-center-container">
+            <h2>Seguro que desea eliminar este impuesto?</h2>
+            <div class="properties">
+                <h3 id="id-text" class="id-text">ID: (id)</h3>
+                <h3 id="name-text" class="name-text">Nombre: (nombre)</h3>
+            </div>
+            <div class="delete-btns">
+                <button id="confirm-btn" class="button">Confirmar</button>
+                <button id="cancel-btn" class="button home-btn">Cancelar</button>
+            </div>
         </div>
     </div>
     <script src="bajaImpuesto.js"></script>

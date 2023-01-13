@@ -66,12 +66,12 @@ public class AssetController {
     }
 
     @PostMapping(value = "update_product")
-    public void updateProduct(@RequestParam int id, String name, Double price){
-        this.assetService.updateProduct(id, name, price);
+    public void updateProduct(@RequestParam int id, String name, Double price, @RequestParam List<Integer> taxesId){
+        this.assetService.updateProduct(id, name, price, taxesId);
     }
 
     @PostMapping(value = "update_service")
-    public void updateService(@RequestParam int id, String name, Double price, Double extra_charges, List<Tax> taxesId){
+    public void updateService(@RequestParam int id, String name, Double price, Double extra_charges, @RequestParam List<Integer> taxesId){
         this.assetService.updateService(id, name, price, extra_charges, taxesId);
     }
 

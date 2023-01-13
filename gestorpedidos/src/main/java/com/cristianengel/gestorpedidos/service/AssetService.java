@@ -8,6 +8,7 @@ import com.cristianengel.gestorpedidos.repository.AssetRepository;
 import com.cristianengel.gestorpedidos.repository.TaxRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,12 +48,28 @@ public class AssetService {
                 ).toDTO();
     }
 
-    public void updateProduct(int id, String name, Double price) {
-        this.assetRepository.updateProductNameAndPriceById(name, price, id);
+    public void updateProduct(int id, String name, Double price, List<Integer> taxesId) {
+        List<Tax> taxes = new ArrayList<>();
+        for(int i = 0; i < taxesId.size(); i++) {
+            taxes.add(this.taxRepository.findById(taxesId.get(i)).orElseThrow(
+                    () -> {
+                        throw new RuntimeException("No se encontró el impuesto");
+                    }
+            ));
+        }
+        this.assetRepository.updateNameAndPriceAndTaxesById(name, price, taxes, id);
     }
 
-    public void updateService(int id, String name, Double price, Double extraCharges, List<Tax> taxesId) {
-        this.assetRepository.updateNameAndPriceAndExtraChargesAndTaxesById(name, price, extraCharges, taxesId, id);
+    public void updateService(int id, String name, Double price, Double extraCharges, List<Integer> taxesId) {
+        List<Tax> taxes = new ArrayList<>();
+        for(int i = 0; i < taxesId.size(); i++) {
+            taxes.add(this.taxRepository.findById(taxesId.get(i)).orElseThrow(
+                    () -> {
+                        throw new RuntimeException("No se encontró el impuesto");
+                    }
+            ));
+        }
+        this.assetRepository.updateNameAndPriceAndExtraChargesAndTaxesById(name, price, extraCharges, taxes, id);
     }
 
     public List<Asset> findAllGoodsByNameAndType(String name, int type) {

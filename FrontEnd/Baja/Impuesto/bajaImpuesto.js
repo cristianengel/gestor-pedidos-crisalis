@@ -1,23 +1,25 @@
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
 const idInput = document.querySelector("#id-input");
-const deleteBtn = document.querySelector("#delete-btn");
 const listInput = document.querySelector("#list-input");
+const idText = document.querySelector("#id-text");
+const nameText = document.querySelector("#name-text");
+const masterContainer = document.querySelector(".delete-master-container");
+const deleteCenterContainer = document.querySelector(".delete-center-container");
+const confirmBtn = document.querySelector("#confirm-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
 const taxListLink = "http://localhost:8080/tax/list";
+let elementToDelete;
 
-function cleanInputs() {
-    idInput.value = "";
-}
 
 function deleteTax() {
-    const deleteTaxLink = `http://localhost:8080/tax/delete?id=${idInput.value}`;
+    const deleteTaxLink = `http://localhost:8080/tax/delete?id=${elementToDelete}`;
     fetch(deleteTaxLink, {
         method: "POST",
         headers: {
             "Content-Length": 0
         }
     })
-    cleanInputs();
 }
 
 async function search() {
@@ -50,7 +52,15 @@ function loadBody(data) {
     for (let i = 1, row; row = table.rows[i]; i++) {
         //iterate through rows
         row.addEventListener("click", () => {
-            idInput.value = row.cells[0].innerHTML;
+            masterContainer.style.display = "block";
+            masterContainer.style.animationName = "fade-in";
+            masterContainer.style.animationDuration = ".5s";
+            deleteCenterContainer.style.display = "block";
+            deleteCenterContainer.style.animationName = "scaleUp";
+            deleteCenterContainer.style.animationDuration = ".3s";
+            elementToDelete = row.cells[0].innerHTML;
+            idText.textContent = `ID: ${row.cells[0].innerHTML}`;
+            nameText.textContent = `Nombre: ${row.cells[1].innerHTML}`;
         })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -94,11 +104,16 @@ async function refreshTable(urlHeaders, urlBody) {
 // Initial Load
 refreshTable("./headers.json", taxListLink)
 
-deleteBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea eliminar este impuesto?") == true) {
-        deleteTax();
-        refreshTable("./headers.json", taxListLink);
-    }
+confirmBtn.addEventListener("click", () => {
+    deleteTax();
+    masterContainer.style.display = "none";
+    deleteCenterContainer.style.display = "none";
+    refreshTable("./headers.json", taxListLink);
+})
+
+cancelBtn.addEventListener("click", () => {
+    masterContainer.style.display = "none";
+    deleteCenterContainer.style.display = "none";
 })
 
 listInput.addEventListener("keyup", () => {

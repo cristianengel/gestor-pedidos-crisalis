@@ -27,7 +27,12 @@ async function search() {
 }
 
 async function modifyProduct() {
-    const response = await fetch(`http://localhost:8080/asset/update_product?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}`, {
+    let link = `http://localhost:8080/asset/update_product?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&taxesId=`;
+    for(let i of taxesList) {
+        link = link + `${i},`
+    }
+    link = link.slice(0,-1);
+    const response = await fetch(link , {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -79,7 +84,13 @@ function loadBody(data) {
             priceInput.value = row.cells[2].innerHTML;
 
             for(let k = 1, taxRow; taxRow = taxesTable.rows[k]; k++) {
-                // TODO
+                document.querySelector(`#checkbox${taxRow.cells[0].innerHTML}`).checked = false;
+            }
+
+            for(let k = 1, taxRow; taxRow = taxesTable.rows[k]; k++) {
+                if(row.cells[3].innerHTML.includes(taxRow.cells[1].innerHTML)) {
+                    document.querySelector(`#checkbox${taxRow.cells[0].innerHTML}`).checked = true;
+                }
             }
         })
 
@@ -95,7 +106,7 @@ function loadTaxesBody(data) {
     for(let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 1; i < dataObjectArray.length; i++) {
+        for(let i = 0; i < dataObjectArray.length; i++) {
             
             const cellElement = document.createElement("td")
 
@@ -107,6 +118,7 @@ function loadTaxesBody(data) {
         }
         const check = document.createElement("INPUT");
         check.setAttribute("type", "checkbox");
+        check.setAttribute("id", `checkbox${dataObjectArray[0][1]}`)
         rowElement.appendChild(check);
 
         check.addEventListener("change", () => {
@@ -123,8 +135,6 @@ function loadTaxesBody(data) {
 }
 
 async function refreshTable(urlHeaders, urlBody) {
-    
-    let responseArray;
     
     // Headers
     const headersResponse = await fetch(urlHeaders);

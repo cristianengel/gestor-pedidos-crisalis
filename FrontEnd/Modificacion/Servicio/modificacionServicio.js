@@ -1,6 +1,9 @@
 const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
+const taxesTable = document.querySelector("#taxes-table");
+const taxesTableHead = document.querySelector("#taxes-thead");
+const taxesTableBody = document.querySelector("#taxes-tbody");
 const searchBtn = document.querySelector("#search-btn");
 const listInput = document.querySelector("#list-input");
 const idInput = document.querySelector("#id-input");
@@ -8,7 +11,9 @@ const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 const extraChargesInput = document.querySelector("#extra-charges");
 const modifyBtn = document.querySelector("#modify-btn");
+let taxesList = [];
 const serviceListLink = "http://localhost:8080/asset/services";
+const taxListLink = "http://localhost:8080/tax/list"
 
 function cleanInputs() {
     idInput.value = "";
@@ -16,6 +21,8 @@ function cleanInputs() {
     priceInput.value = "";
     extraChargesInput.value = "";
     listInput.value = "";
+    taxesList = []
+    refreshTaxesTable("./taxes-headers.json", taxListLink)
 }
 
 function nullInputs() {
@@ -31,7 +38,12 @@ async function search() {
 }
 
 async function modifyService() {
-    const response = await fetch(`http://localhost:8080/asset/update_service?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&extra_charges=${extraChargesInput.value}`, {
+    let link = `http://localhost:8080/asset/update_service?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&extra_charges=${extraChargesInput.value}%taxesId=`;
+    for(let i of taxesList) {
+        link = link + `${i},`
+    }
+    link = link.slice(0,-1);
+    const response = await fetch(link, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

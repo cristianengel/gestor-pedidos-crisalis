@@ -42,6 +42,7 @@ async function modifyProduct() {
         
     refreshTable("./headers.json", productListLink);
     cleanInputs()
+    console.log(link)
 }
 
 async function fetchDataFromDB(url) {
@@ -59,7 +60,7 @@ function loadBody(data) {
         for(let i = 0; i < dataObjectArray.length; i++) {
             if(i == 3 || i == 4) continue;
             
-            const cellElement = document.createElement("td")
+            const cellElement = document.createElement("td");
 
             if(i == 5) {
                 let taxesArray = []
@@ -82,7 +83,7 @@ function loadBody(data) {
             idInput.value = row.cells[0].innerHTML;
             nameInput.value = row.cells[1].innerHTML;
             priceInput.value = row.cells[2].innerHTML;
-
+            taxesList = []
             for(let k = 1, taxRow; taxRow = taxesTable.rows[k]; k++) {
                 document.querySelector(`#checkbox${taxRow.cells[0].innerHTML}`).checked = false;
             }
@@ -90,6 +91,13 @@ function loadBody(data) {
             for(let k = 1, taxRow; taxRow = taxesTable.rows[k]; k++) {
                 if(row.cells[3].innerHTML.includes(taxRow.cells[1].innerHTML)) {
                     document.querySelector(`#checkbox${taxRow.cells[0].innerHTML}`).checked = true;
+                    taxesList.push(taxRow.cells[0].innerHTML)
+                    console.log(taxesList)
+                } else {
+                    const index = taxesList.indexOf(taxRow.cells[0].innerHTML);
+                    if(index > -1) {
+                        taxesList.splice(index, 1);
+                    }
                 }
             }
         })
@@ -122,11 +130,15 @@ function loadTaxesBody(data) {
         rowElement.appendChild(check);
 
         check.addEventListener("change", () => {
-            if(check.checked) {
+            if(check.checked == true) {
                 taxesList.push(dataObjectArray[0][1]);
+                console.log("Agregado " + dataObjectArray[0][1])
             } else {
-                const index = taxesList.indexOf(dataObjectArray[0][1]);
-                taxesList.splice(index, 1);
+                const index = taxesList.indexOf(`${dataObjectArray[0][1]}`);
+                if(index > -1) {
+                    taxesList.splice(index, 1);
+                    console.log("Eliminado " + dataObjectArray[0][1])
+                }
             }
         })
 
@@ -182,8 +194,9 @@ async function refreshTaxesTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", productListLink)
 refreshTaxesTable("./taxes-headers.json", taxListLink)
+refreshTable("./headers.json", productListLink)
+
 
 modifyBtn.addEventListener("click", () => {
     if(confirm("Seguro que desea modificar este producto?") == true) {

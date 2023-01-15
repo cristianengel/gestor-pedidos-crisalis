@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class AssetService {
@@ -57,12 +58,27 @@ public class AssetService {
                     }
             ));
         }
-        this.assetRepository.updateNameAndPriceAndTaxesById(name, price, taxes, id);
+        Asset prueba = this.assetRepository.findById(id).orElseThrow(() -> new RuntimeException("No se encontró el impuesto"));
+        prueba.setName(name);
+        prueba.setPrice(price);
+        //List<Tax> taxesInDB = prueba.getTaxes();
+        prueba.setTaxes(taxes);
+        /*
+        taxes.forEach(
+                tax -> {
+                    if(!taxesInDB.contains(tax)) {
+                        taxesInDB.add(tax);
+                    }
+                }
+        );
+        */
+        this.assetRepository.save(prueba);
+        //this.assetRepository.updateNameAndPriceAndTaxesById(name, price, taxes, id);
     }
 
     public void updateService(int id, String name, Double price, Double extraCharges, List<Integer> taxesId) {
         List<Tax> taxes = new ArrayList<>();
-        for(int i = 0; i < taxesId.size(); i++) {
+        for(int i = 0; i < taxesId.size() - 1; i++) {
             taxes.add(this.taxRepository.findById(taxesId.get(i)).orElseThrow(
                     () -> {
                         throw new RuntimeException("No se encontró el impuesto");

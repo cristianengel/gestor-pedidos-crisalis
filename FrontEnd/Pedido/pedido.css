@@ -181,6 +181,12 @@ tbody > tr:hover {
     border-bottom: 1px solid #3D5AFE;
 }
 
+.date-div {
+    display: flex;
+    align-items: center;
+    color: gray;
+}
+
 .list {
     margin: .5em;
     background-color: azure;

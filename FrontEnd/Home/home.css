@@ -22,17 +22,22 @@ body {
     from {font-size: xx-large;}
     to {font-size: x-large;}
 }
+
 .top-bar {
-    background-color: azure;
     display: flex;
-    max-width: 90%;
+    flex-direction: row;
+    background-color: azure;
     justify-content: space-between;
-    margin-top: 15px;
     align-items: center;
     border-radius: 20px;
+    height: fit-content;
+    margin-inline: .5em;
+    margin-top: .5em;
     padding-inline: 50px;
     animation-name: fade-in;
     animation-duration: 1s;
+    height: 8vh;
+    min-height: 50px;
 }
 
 .title {
@@ -123,8 +128,8 @@ ul {
     position: absolute;
     top: 99%;
     left: 50%;
-    transform: translate(-50%, -100%);
-    width: 90%;
+    transform: translate(-50%, -99%);
+    width: 95vw;
     height: 10%;
     border-radius: 20px;
     display: inline-flex;

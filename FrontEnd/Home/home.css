@@ -77,7 +77,7 @@ ul {
 .nav-list .nav-sub-list ul {
     display: none;
     position: absolute;
-    right: -150px;
+    right: -145px;
     transform: translate(0%, -35%);
     padding: 0;
 }

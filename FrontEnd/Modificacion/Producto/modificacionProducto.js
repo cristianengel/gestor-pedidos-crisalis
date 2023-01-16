@@ -10,6 +10,8 @@ const idInput = document.querySelector("#id-input");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 const modifyBtn = document.querySelector("#modify-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
+const formContainer = document.querySelector(".form-container");
 let taxesList = [];
 const productListLink = "http://localhost:8080/asset/products";
 const taxListLink = "http://localhost:8080/tax/list"
@@ -20,6 +22,7 @@ function cleanInputs() {
     priceInput.value = "";
     listInput.value = "";
     taxesList = []
+    formContainer.style.display = "none";
     refreshTaxesTable("./taxes-headers.json", taxListLink)
 }
 
@@ -100,6 +103,7 @@ function loadBody(data) {
                     }
                 }
             }
+            formContainer.style.display = "flex";
         })
 
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -200,6 +204,10 @@ refreshTable("./headers.json", productListLink)
 
 modifyBtn.addEventListener("click", () => {
     modifyProduct();
+})
+
+cancelBtn.addEventListener("click", () => {
+    cleanInputs();
 })
 
 listInput.addEventListener("keyup", () => {

@@ -20,10 +20,22 @@
         </div>
     </div>
     <div class="center-container">
+        <div class="list">
+            <div class="top-table-div">
+                <h2 class="list-title">Productos Existentes</h2>
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por nombre...">
+            </div>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-container">
         <div class="form">
             <div class="attribute-container id-input">
-                <h3>ID</h3>
-                <input type="number" min="0" id="id-input" class="text-input" placeholder="(no modificable)">
+                <h3>Nro. de Producto</h3>
+                <input type="number" min="0" id="id-input" class="text-input" readonly>
             </div>
             <div class="attribute-container">
                 <h3>Nombre</h3>
@@ -40,17 +52,10 @@
                 <thead class="thead" id="taxes-thead"></thead>
                 <tbody class="tbody" id="taxes-tbody"></tbody>
             </table>
-            <button class="button" id="modify-btn">Modificar</button>
-        </div>
-        <div class="list">
-            <div class="top-table-div">
-                <h2 class="list-title">Productos Existentes</h2>
-                <input type="text" class="text-input" id="list-input" placeholder="Buscar por nombre...">
+            <div>
+                <button class="button" id="modify-btn">Modificar</button>
+                <button class="button home-btn" id="cancel-btn">Cancelar</button>
             </div>
-            <table class="table" id="table">
-                <thead class="thead" id="thead"></thead>
-                <tbody class="tbody" id="tbody"></tbody>
-            </table>
         </div>
     </div>
     <script src="modificacionProducto.js"></script>

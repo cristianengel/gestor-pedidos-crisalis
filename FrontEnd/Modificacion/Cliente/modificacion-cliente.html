@@ -20,11 +20,23 @@
         </div>
     </div>
     <div class="center-container">
+        <div class="list">
+            <div class="top-table-div">
+                <h2 class="list-title">Clientes Existentes</h2>
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
+                <button class="button search-btn" id="search-btn">Buscar</button>
+            </div>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-container">
         <div class="form">
             <div class="top-input">
                 <h3>DNI/CUIT Empresa</h3>
-                <input type="number" min="0" id="identification-input" class="text-input" placeholder="(no modificable)">
-                <button class="button" id="load-btn">Cargar</button>
+                <input type="number" min="0" id="identification-input" class="text-input" readonly>
             </div>
             <div class="person" id="personDiv">
                 <div class="attribute-container">
@@ -83,18 +95,10 @@
                     <input type="text" id="ownerEmail" class="text-input">
                 </div>
             </div>
-            <button class="button" id="modify-btn">Modificar</button>
-        </div>
-        <div class="list">
-            <div class="top-table-div">
-                <h2 class="list-title">Clientes Existentes</h2>
-                <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
-                <button class="button search-btn" id="search-btn">Buscar</button>
+            <div>
+                <button class="button" id="modify-btn">Modificar</button>
+                <button class="button home-btn" id="cancel-btn">Cancelar</button>
             </div>
-            <table class="table" id="table">
-                <thead class="thead" id="thead"></thead>
-                <tbody class="tbody" id="tbody"></tbody>
-            </table>
         </div>
     </div>
     <script src="modificacionCliente.js"></script>

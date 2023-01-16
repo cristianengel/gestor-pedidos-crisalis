@@ -1,6 +1,6 @@
 {
     "headers": [
-        "ID",
+        "Nro. de Producto",
         "Nombre",
         "Precio Base",
         "Impuestos Asociados"

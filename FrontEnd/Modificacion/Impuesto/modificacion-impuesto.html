@@ -20,21 +20,6 @@
         </div>
     </div>
     <div class="center-container">
-        <div class="form">
-            <div class="attribute-container id-input">
-                <h3>ID</h3>
-                <input type="number" min="0" id="id-input" class="text-input" placeholder="(no modificable)">
-            </div>
-            <div class="attribute-container">
-                <h3>Nombre</h3>
-                <input type="text" id="name" class="text-input">
-            </div>
-            <div class="attribute-container">
-                <h3>Porcentaje</h3>
-                <input type="number" step=".1" min="0" id="percentage" class="text-input">
-            </div>
-            <button class="button" id="modify-btn">Modificar</button>
-        </div>
         <div class="list">
             <div class="top-table-div">
                 <h2 class="list-title">Impuestos Existentes</h2>
@@ -44,6 +29,26 @@
                 <thead class="thead" id="thead"></thead>
                 <tbody class="tbody" id="tbody"></tbody>
             </table>
+        </div>
+    </div>
+    <div class="form-container">
+        <div class="form">
+            <div class="attribute-container id-input">
+                <h3>ID</h3>
+                <input type="number" min="0" id="id-input" class="text-input" readonly>
+            </div>
+            <div class="attribute-container">
+                <h3>Nombre</h3>
+                <input type="text" id="name" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h3>Porcentaje</h3>
+                <input type="number" step=".1" min="0" id="percentage" class="text-input">
+            </div>
+            <div>
+                <button class="button" id="modify-btn">Modificar</button>
+                <button class="button home-btn" id="cancel-btn">Cancelar</button>
+            </div>
         </div>
     </div>
     <script src="modificacionImpuesto.js"></script>

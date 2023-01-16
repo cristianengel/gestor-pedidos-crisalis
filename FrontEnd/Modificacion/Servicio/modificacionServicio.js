@@ -11,6 +11,8 @@ const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 const extraChargesInput = document.querySelector("#extra-charges");
 const modifyBtn = document.querySelector("#modify-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
+const formContainer = document.querySelector(".form-container");
 let taxesList = [];
 const serviceListLink = "http://localhost:8080/asset/services";
 const taxListLink = "http://localhost:8080/tax/list"
@@ -22,6 +24,7 @@ function cleanInputs() {
     extraChargesInput.value = "";
     listInput.value = "";
     taxesList = []
+    formContainer.style.display = "none";
     refreshTaxesTable("./taxes-headers.json", taxListLink)
 }
 
@@ -111,6 +114,7 @@ function loadBody(data) {
                     }
                 }
             }
+            formContainer.style.display = "flex";
         })
         for (let j = 0, col; col = row.cells[j]; j++) {
           if(col.innerHTML == "") {
@@ -210,6 +214,10 @@ refreshTable("./headers.json", serviceListLink)
 modifyBtn.addEventListener("click", () => {
     if(nullInputs() == true) return;
     modifyService();
+})
+
+cancelBtn.addEventListener("click", () => {
+    cleanInputs();
 })
 
 listInput.addEventListener("keyup", () => {

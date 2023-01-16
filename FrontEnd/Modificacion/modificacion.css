@@ -38,6 +38,15 @@ tbody > tr:hover {
     to {opacity: 100%;}
 }
 
+@keyframes scaleUp {
+    from{
+        scale: .5;
+    }
+    to{
+        scale: 1
+    }
+}
+
 .top-bar {
     display: flex;
     flex-direction: row;
@@ -71,14 +80,33 @@ tbody > tr:hover {
     animation-duration: 1s;
 }
 
+.form-container {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5 );
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: fade-in;
+    animation-duration: .3s;
+}
+
 .form {
+    padding: 2em;
     background-color: azure;
     border-radius: 20px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
     display: flex;
-    width: 50%;
     flex-direction: column;
     height: min-content;
     margin-right: .25em;
+    animation-name: scaleUp;
+    animation-duration: .3s;
 }
 
 .blue-text {
@@ -148,12 +176,11 @@ tbody > tr:hover {
 .list {
     background-color: azure;
     border-radius: 20px;
-    width: 50%;
     overflow: hidden;
     overflow-y: scroll;
     overflow-x: scroll;
     height: 84vh;
-    margin-left: .25em;
+    width: 100vw;
 }
 
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {

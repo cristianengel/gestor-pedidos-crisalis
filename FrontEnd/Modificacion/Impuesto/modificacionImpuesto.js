@@ -6,6 +6,8 @@ const idInput = document.querySelector("#id-input");
 const nameInput = document.querySelector("#name");
 const percentageInput = document.querySelector("#percentage");
 const modifyBtn = document.querySelector("#modify-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
+const formContainer = document.querySelector(".form-container");
 const productListLink = "http://localhost:8080/tax/list";
 
 function cleanInputs() {
@@ -13,6 +15,7 @@ function cleanInputs() {
     nameInput.value = "";
     percentageInput.value = "";
     listInput.value = "";
+    formContainer.style.display = "none";
 }
 
 async function search() {
@@ -61,6 +64,8 @@ function loadBody(data) {
             idInput.value = row.cells[0].innerHTML;
             nameInput.value = row.cells[1].innerHTML;
             percentageInput.value = (row.cells[2].innerHTML).slice(0,-1);
+
+            formContainer.style.display = "flex";
         })
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -111,3 +116,6 @@ listInput.addEventListener("keyup", () => {
     search();
 })
 
+cancelBtn.addEventListener("click", () => {
+    cleanInputs();
+})

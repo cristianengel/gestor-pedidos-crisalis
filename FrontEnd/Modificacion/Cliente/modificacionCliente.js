@@ -3,12 +3,14 @@ const table = document.querySelector("#table");
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
 
-// Add Button
+// Bottom Buttons
 const modifyBtn = document.querySelector("#modify-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
 
 // Divs
 const personDiv = document.querySelector("#personDiv");
 const businessDiv = document.querySelector("#businessDiv");
+const formContainer = document.querySelector(".form-container");
 
 // Top Buttons
 const personBtn = document.querySelector("#personBtn");
@@ -39,7 +41,6 @@ const listInput = document.querySelector("#list-input");
 
 let isBusiness;
 const identificationInput = document.querySelector("#identification-input");
-const loadBtn = document.querySelector("#load-btn");
 
 const clientListLink = "http://localhost:8080/client/list";
 const updateClientLink = "http://localhost:8080/client/update";
@@ -59,6 +60,7 @@ function cleanInputs() {
     ownerAddressInput.value = "";
     ownerPhoneNumberInput.value = "";
     ownerEmailInput.value = "";
+    formContainer.style.display = "none"
 }
 
 async function loadData() {
@@ -144,6 +146,7 @@ function loadBody(data) {
         row.addEventListener("click", () => {
             identificationInput.value = row.cells[1].innerHTML;
             loadData();
+            formContainer.style.display = "flex";
         })
 
         for (let j = 0, col; col = row.cells[j]; j++) {
@@ -209,9 +212,7 @@ modifyBtn.addEventListener("click", () => {
                 return;
             }
     }
-    if(confirm("Está seguro que desea modificar los datos?") == true) {
-        modifyClient();
-    }
+    modifyClient();
 })
 
 searchBtn.addEventListener("click", () => {
@@ -222,7 +223,6 @@ searchBtn.addEventListener("click", () => {
     search();
 })
 
-loadBtn.addEventListener("click", () => {
-    if(identificationInput.value == "") return;
-    loadData();
+cancelBtn.addEventListener("click", () => {
+    cleanInputs();
 })

@@ -74,6 +74,43 @@ ul {
     padding: 0;
 }
 
+.nav-list .nav-sub-list ul {
+    display: none;
+    position: absolute;
+    right: -150px;
+    transform: translate(0%, -35%);
+    padding: 0;
+}
+
+.nav-list .nav-sub-list ul li {
+    float:none;
+    width:150px;
+}
+
+.nav-list .nav-sub-list ul a {
+    float: none;
+    margin: 5px;
+    background-color: #3D5AFE;
+    display: block;
+    z-index: 9;
+    text-decoration: none;
+    color: azure;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 10px;
+    animation-name: fade-in;
+    animation-duration: .2s;
+}
+
+.nav-list .nav-sub-list ul a:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.nav-list ul li:hover > ul {
+    display:block;
+}
+
 .nav-element-container:hover > .nav-sub-list {
     display: block;
     z-index: 9;

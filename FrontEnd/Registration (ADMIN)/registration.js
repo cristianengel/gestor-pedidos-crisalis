@@ -60,7 +60,7 @@ registerBtn.addEventListener("click", () => {
         alert("Hay datos faltantes.");
         return;
     }
-    if(adminKeyInput.value == "clave-administrador-backoffice") {
+    if(adminKeyInput.value == "clave-admin") {
         register();
         nameInput.value = "";
         lastnameInput.value = "";

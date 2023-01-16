@@ -58,7 +58,8 @@ tbody > tr:hover {
 .top-table-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    margin-left: 1em;
+    justify-content: left;
     align-items: center;
 }
 

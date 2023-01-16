@@ -17,6 +17,7 @@ const taxListLink = "http://localhost:8080/tax/list"
 function cleanInputs() {
     idInput.value = "";
     nameInput.value = "";
+    priceInput.value = "";
     listInput.value = "";
     taxesList = []
     refreshTaxesTable("./taxes-headers.json", taxListLink)
@@ -32,7 +33,7 @@ async function modifyProduct() {
         link = link + `${i},`
     }
     link = link.slice(0,-1);
-    const response = await fetch(link , {
+    const response = await fetch(link, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -42,7 +43,6 @@ async function modifyProduct() {
         
     refreshTable("./headers.json", productListLink);
     cleanInputs()
-    console.log(link)
 }
 
 async function fetchDataFromDB(url) {

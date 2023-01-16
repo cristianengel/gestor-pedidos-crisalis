@@ -38,11 +38,13 @@ async function search() {
 }
 
 async function modifyService() {
-    let link = `http://localhost:8080/asset/update_service?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&extra_charges=${extraChargesInput.value}%taxesId=`;
+    let link = `http://localhost:8080/asset/update_service?id=${idInput.value}&name=${nameInput.value}&price=${priceInput.value}&extra_charges=${extraChargesInput.value}&taxesId=`;
     for(let i of taxesList) {
         link = link + `${i},`
     }
     link = link.slice(0,-1);
+    console.log(link)
+    console.log(taxesList)
     const response = await fetch(link, {
         method: "POST",
         headers: {
@@ -93,12 +95,64 @@ function loadBody(data) {
             nameInput.value = row.cells[1].innerHTML;
             priceInput.value = row.cells[2].innerHTML;
             extraChargesInput.value = row.cells[3].innerHTML;
+            taxesList = []
+            for(let k = 1, taxRow; taxRow = taxesTable.rows[k]; k++) {
+                document.querySelector(`#checkbox${taxRow.cells[0].innerHTML}`).checked = false;
+            }
+
+            for(let k = 1, taxRow; taxRow = taxesTable.rows[k]; k++) {
+                if(row.cells[4].innerHTML.includes(taxRow.cells[1].innerHTML)) {
+                    document.querySelector(`#checkbox${taxRow.cells[0].innerHTML}`).checked = true;
+                    taxesList.push(taxRow.cells[0].innerHTML)
+                } else {
+                    const index = taxesList.indexOf(taxRow.cells[0].innerHTML);
+                    if(index > -1) {
+                        taxesList.splice(index, 1);
+                    }
+                }
+            }
         })
         for (let j = 0, col; col = row.cells[j]; j++) {
           if(col.innerHTML == "") {
             col.innerHTML = "-";
           }
         }  
+    }
+}
+
+function loadTaxesBody(data) {
+    for(let dataObject of data) {
+        const rowElement = document.createElement("tr");
+        let dataObjectArray = Object.entries(dataObject);
+        for(let i = 0; i < dataObjectArray.length; i++) {
+            
+            const cellElement = document.createElement("td")
+
+            cellElement.textContent = dataObjectArray[i][1];
+            if(i == 2) {
+                cellElement.textContent = dataObjectArray[i][1] + "%";
+            }
+            rowElement.appendChild(cellElement);
+        }
+        const check = document.createElement("INPUT");
+        check.setAttribute("type", "checkbox");
+        check.setAttribute("id", `checkbox${dataObjectArray[0][1]}`)
+        rowElement.appendChild(check);
+
+        check.addEventListener("change", () => {
+            if(check.checked == true) {
+                taxesList.push(`${dataObjectArray[0][1]}`);
+                console.log("Agregado " + dataObjectArray[0][1])
+            } else {
+                const index = taxesList.indexOf(`${dataObjectArray[0][1]}`);
+                if(index > -1) {
+                    taxesList.splice(index, 1);
+                    console.log("Eliminado " + dataObjectArray[0][1])
+                }
+            }
+        })
+
+        taxesTableBody.appendChild(rowElement);
     }
 }
 
@@ -126,7 +180,31 @@ async function refreshTable(urlHeaders, urlBody) {
     });
 }
 
+async function refreshTaxesTable(urlHeaders, urlBody) {
+    // Headers
+    const headersResponse = await fetch(urlHeaders);
+    const { headers } = await headersResponse.json();
+
+    // Clear the headers
+    taxesTableHead.innerHTML = "<tr></tr>";
+
+    // Populate Headers
+    for (const headerText of headers) {
+        const headerElement = document.createElement("th");
+
+        headerElement.textContent = headerText;
+        taxesTableHead.querySelector("tr").appendChild(headerElement); 
+    }
+
+    // Body
+    taxesTableBody.innerHTML = "";
+    fetchDataFromDB(urlBody).then(data => {
+        loadTaxesBody(data);
+    });
+}
+
 // Initial Load
+refreshTaxesTable("./taxes-headers.json", taxListLink)
 refreshTable("./headers.json", serviceListLink)
 
 modifyBtn.addEventListener("click", () => {

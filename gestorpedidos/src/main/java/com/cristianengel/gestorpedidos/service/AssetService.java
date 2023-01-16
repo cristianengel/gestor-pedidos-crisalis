@@ -58,34 +58,28 @@ public class AssetService {
                     }
             ));
         }
-        Asset prueba = this.assetRepository.findById(id).orElseThrow(() -> new RuntimeException("No se encontró el impuesto"));
-        prueba.setName(name);
-        prueba.setPrice(price);
-        //List<Tax> taxesInDB = prueba.getTaxes();
-        prueba.setTaxes(taxes);
-        /*
-        taxes.forEach(
-                tax -> {
-                    if(!taxesInDB.contains(tax)) {
-                        taxesInDB.add(tax);
-                    }
-                }
-        );
-        */
-        this.assetRepository.save(prueba);
-        //this.assetRepository.updateNameAndPriceAndTaxesById(name, price, taxes, id);
+        Asset product = this.assetRepository.findById(id).orElseThrow(() -> new RuntimeException("No se encontró el impuesto"));
+        product.setName(name);
+        product.setPrice(price);
+        product.setTaxes(taxes);
+        this.assetRepository.save(product);
     }
 
     public void updateService(int id, String name, Double price, Double extraCharges, List<Integer> taxesId) {
         List<Tax> taxes = new ArrayList<>();
-        for(int i = 0; i < taxesId.size() - 1; i++) {
+        for(int i = 0; i < taxesId.size(); i++) {
             taxes.add(this.taxRepository.findById(taxesId.get(i)).orElseThrow(
                     () -> {
                         throw new RuntimeException("No se encontró el impuesto");
                     }
             ));
         }
-        this.assetRepository.updateNameAndPriceAndExtraChargesAndTaxesById(name, price, extraCharges, taxes, id);
+        Asset service = this.assetRepository.findById(id).orElseThrow(() -> new RuntimeException("No se encontró el impuesto"));
+        service.setName(name);
+        service.setPrice(price);
+        service.setExtraCharges(extraCharges);
+        service.setTaxes(taxes);
+        this.assetRepository.save(service);
     }
 
     public List<Asset> findAllGoodsByNameAndType(String name, int type) {

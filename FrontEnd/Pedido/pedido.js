@@ -4,13 +4,19 @@ const dniInput = document.querySelector("#dni-input");
 const addressInput = document.querySelector("#address-input");
 const phoneNumberInput = document.querySelector("#phone-number-input");
 const emailInput = document.querySelector("#email-input");
-const confirmBtn = document.querySelector("#confirm-btn");
+const confirmBtnPerson = document.querySelector("#confirm-btn-person");
+const confirmBtnBusiness = document.querySelector("#confirm-btn-business");
 const cancelBtn = document.querySelector("#cancel-btn");
-const cancelBtn2 = document.querySelector("#cancel-btn-2");
+const cancelBtnPerson = document.querySelector("#cancel-btn-person");
+const cancelBtnBusiness = document.querySelector("#cancel-btn-business");
+const backBtnPerson = document.querySelector("#back-btn-person");
+const backBtnBusiness = document.querySelector("#back-btn-business");
 const newClientBackground = document.querySelector(".new-client-background");
 const createNewBtn = document.querySelector("#create-new-btn");
 const clientTypeDiv = document.querySelector(".client-type-div");
-const newPersonDiv = document.querySelector(".new-person-div");
+const newClientDiv = document.querySelector(".new-client-attributes");
+const newPersonDiv = document.querySelector("#new-person-attributes");
+const newBusinessDiv = document.querySelector("#new-business-attributes");
 const personBtn = document.querySelector("#person-btn");
 const businessBtn = document.querySelector("#business-btn"); 
 const table = document.querySelector("#table");
@@ -97,7 +103,7 @@ searchBtn.addEventListener("click", () => {
     search();
 })
 
-confirmBtn.addEventListener("click", () => {
+confirmBtnPerson.addEventListener("click", () => {
     newClientBackground.style.display = "none";
     newPersonDiv.style.display = "none"
     clientTypeDiv.style.display = "none"
@@ -109,8 +115,16 @@ cancelBtn.addEventListener("click", () => {
     clientTypeDiv.style.display = "none"
 })
 
-cancelBtn2.addEventListener("click", () => {
+cancelBtnPerson.addEventListener("click", () => {
     newClientBackground.style.display = "none";
+    newPersonDiv.style.display = "none"
+    newBusinessDiv.style.display = "none"
+    clientTypeDiv.style.display = "none"
+})
+
+cancelBtnBusiness.addEventListener("click", () => {
+    newClientBackground.style.display = "none";
+    newBusinessDiv.style.display = "none"
     newPersonDiv.style.display = "none"
     clientTypeDiv.style.display = "none"
 })
@@ -120,7 +134,24 @@ createNewBtn.addEventListener("click", () => {
     clientTypeDiv.style.display = "inline";
 })
 
+backBtnPerson.addEventListener("click", () => {
+    clientTypeDiv.style.display = "inline";
+    newPersonDiv.style.display = "none";
+})
+
+backBtnBusiness.addEventListener("click", () => {
+    clientTypeDiv.style.display = "inline";
+    newBusinessDiv.style.display = "none";
+})
+
 personBtn.addEventListener("click", () => {
     clientTypeDiv.style.display = "none";
     newPersonDiv.style.display = "flex";
+    newBusinessDiv.style.display = "none";
+})
+
+businessBtn.addEventListener("click", () => {
+    clientTypeDiv.style.display = "none";
+    newPersonDiv.style.display = "none";
+    newBusinessDiv.style.display = "flex";
 })

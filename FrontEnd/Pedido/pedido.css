@@ -60,7 +60,7 @@ tbody > tr:hover {
     animation-duration: .3s;
 }
 
-.new-person-div {
+.new-client-attributes {
     display: none;
     flex-direction: column;
     position: absolute;

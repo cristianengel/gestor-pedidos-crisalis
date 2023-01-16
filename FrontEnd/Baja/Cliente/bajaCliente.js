@@ -2,6 +2,12 @@ const deleteButton = document.querySelector("#delete-btn");
 const identificationInput = document.querySelector("#identification-input");
 const searchBtn = document.querySelector("#search-btn");
 const listInput = document.querySelector("#list-input");
+const idText = document.querySelector("#id-text");
+const nameText = document.querySelector("#name-text");
+const masterContainer = document.querySelector(".delete-master-container");
+const deleteCenterContainer = document.querySelector(".delete-center-container");
+const confirmBtn = document.querySelector("#confirm-btn");
+const cancelBtn = document.querySelector("#cancel-btn");
 
 // Table
 const table = document.querySelector("#table");
@@ -44,21 +50,25 @@ function loadBody(data) {
         tableBody.appendChild(rowElement)
     }
     for (let i = 1, row; row = table.rows[i]; i++) {
-        //iterate through rows
         row.addEventListener("click", () => {
-            identificationInput.value = row.cells[1].innerHTML;
+            masterContainer.style.display = "block";
+            masterContainer.style.animationName = "fade-in";
+            masterContainer.style.animationDuration = ".5s";
+            deleteCenterContainer.style.display = "block";
+            deleteCenterContainer.style.animationName = "scaleUp";
+            deleteCenterContainer.style.animationDuration = ".3s";
+            elementToDelete = row.cells[0].innerHTML;
+            idText.textContent = `ID: ${row.cells[0].innerHTML}`;
+            nameText.textContent = `Nombre: ${row.cells[1].innerHTML}`;
         })
-        //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if(col.innerHTML == "false") {
-            col.innerHTML = "Persona";
-          } else if (col.innerHTML == "true") {
-            col.innerHTML = "Empresa";
-          } else if (col.innerHTML == "") {
-            col.innerHTML = "-";
-          }
+            if(col.innerHTML == "false") {
+                col.innerHTML = "Persona";
+            } else if (col.innerHTML == "true") {
+                col.innerHTML = "Empresa";
+            } else if (col.innerHTML == "") {
+                col.innerHTML = "-";
+            }
         }  
     }
 }
@@ -88,12 +98,16 @@ async function refreshTable(urlHeaders, urlBody) {
 
 refreshTable("./headers.json", clientListLink)
 
-deleteButton.addEventListener("click", () => {
-    if(identificationInput.value == "") return;
-    if(confirm(`Seguro que desea eliminar el cliente ${identificationInput.value}?`) == true) {
-        deleteClient()
-        refreshTable("./headers.json", clientListLink)
-    }
+confirmBtn.addEventListener("click", () => {
+    deleteClient();
+    masterContainer.style.display = "none";
+    deleteCenterContainer.style.display = "none";
+    refreshTable("./headers.json", clientListLink);
+})
+
+cancelBtn.addEventListener("click", () => {
+    masterContainer.style.display = "none";
+    deleteCenterContainer.style.display = "none";
 })
 
 searchBtn.addEventListener("click", () => {

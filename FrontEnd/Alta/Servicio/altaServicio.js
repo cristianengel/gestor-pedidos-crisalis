@@ -177,9 +177,7 @@ refreshTaxesTable("./taxes-headers.json", taxListLink)
 
 
 addBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea agregar este servicio?") == true) {
-        addService();
-    }
+    addService(); 
 })
 
 listInput.addEventListener("keyup", () => {

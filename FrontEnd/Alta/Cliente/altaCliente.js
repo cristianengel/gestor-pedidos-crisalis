@@ -208,6 +208,7 @@ addBtn.addEventListener("click", () => {
          businessStartDateInput.value == "" ||
           ownerNameInput.value == "" ||
            ownerLastnameInput.value == "" ||
+           ownerDniInput.value == "" ||
             ownerAddressInput.value == "" ||
             ownerPhoneNumberInput.value == "" ||
             ownerEmailInput.value == "") {

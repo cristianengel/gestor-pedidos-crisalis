@@ -1,0 +1,14 @@
+{
+    "headers": [
+        "Tipo",
+        "Identificación",
+        "Nombre",
+        "Apellido",
+        "Dirección",
+        "Teléfono",
+        "Email",
+        "Razón Social",
+        "Fecha Inicio Actividades", 
+        "DNI del Propietario"
+    ]
+}

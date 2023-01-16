@@ -1,0 +1,279 @@
+body {
+    margin: 0;
+    min-width: 850px;
+    background-image: url(../Images/material-background.png);
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Montserrat';
+}
+
+body::-webkit-scrollbar {
+    background-color: #536DFE;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #3D5AFE;
+    border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+button {
+    font-family: 'Montserrat';
+}
+
+tbody > tr:hover {
+    color: grey;
+}
+
+@keyframes fade-in {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes scaleUp {
+    from{
+        scale: .5;
+    }
+    to{
+        scale: 1
+    }
+}
+
+.client-type-div {
+    position: absolute;
+    display: none;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: azure;
+    border-radius: 20px;
+    padding: 20px;
+    animation-name: scaleUp;
+    animation-duration: .3s;
+}
+
+.new-person-div {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: azure;
+    padding: 20px;
+    border-radius: 20px;
+    animation-name: scaleUp;
+    animation-duration: .3s;
+}
+
+.new-client-background {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: fade-in;
+    animation-duration: .3s;
+}
+
+.top-bar {
+    display: flex;
+    background-color: azure;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    width: 50%;
+    height: fit-content;
+    margin: 10px;
+    align-self: center;
+    padding-inline: 50px;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    height: 10vh;
+    min-height: 50px;
+}
+
+.top-table-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.blue-text {
+    color: #3D5AFE;
+}
+
+.top-btn {
+    background-color: #3D5AFE;
+    color: azure;
+    border: none;
+    border-radius: 10px;
+    font-size: larger;
+    width: 45%;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+}
+
+.top-btns-client {
+    display: none;
+}
+
+.top-btn:hover {
+    background-color: #536DFE;
+}
+
+.attribute-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.existing-identification {
+    display: none;
+}
+
+.text-input {
+    height: fit-content;
+    margin-inline: 1em;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid black;
+    height: 20px;
+    font-size: 16px;
+    font-family: 'Montserrat';
+    margin-block: 10px;
+}
+
+.select-input {
+    margin-inline: 1em;
+}
+
+.business-name {
+    text-transform: uppercase;
+}
+
+.text-input:hover {
+    border-bottom: 1px solid #3D5AFE;
+}
+
+.text-input:focus {
+    outline: none;
+    border-bottom: 1px solid #3D5AFE;
+}
+
+.list {
+    background-color: azure;
+    border-radius: 20px;
+    width: 90vw;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: 80vh;
+    align-self: center;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.list::-webkit-scrollbar, .form::-webkit-scrollbar {
+    background-color: #536DFE;
+    width: 20px;
+    border-radius: 20px;
+}
+
+.list::-webkit-scrollbar-thumb, .form::-webkit-scrollbar-thumb {
+    background-color: #3D5AFE;
+    border-radius: 20px;
+}
+
+.list::-webkit-scrollbar-corner {
+    background: none;
+}
+
+.table {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.thead {
+    background-color: #3D5AFE;
+    color: azure;
+    border-radius: 10px;
+}
+
+.person {
+    display: none;
+}
+
+.business {
+    display: none;
+}
+
+.button {
+    font-size: large;
+    background-color: #3D5AFE;
+    color: azure;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+    align-self: center;
+    text-decoration: none;
+}
+
+.button-small {
+    font-size: small;
+    background-color: #3D5AFE;
+    color: azure;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+    align-self: center;
+    text-decoration: none;
+}
+
+.home-btn {
+    margin-top: 1em;
+    background-color: #FF6961;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.button:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.button-small:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.home-btn:hover {
+    background-color: #ff908a;
+    transition: .1s ease-in;
+} 

@@ -199,9 +199,7 @@ refreshTable("./headers.json", productListLink)
 
 
 modifyBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea modificar este producto?") == true) {
-        modifyProduct();
-    }
+    modifyProduct();
 })
 
 listInput.addEventListener("keyup", () => {

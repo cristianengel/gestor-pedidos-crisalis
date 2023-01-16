@@ -104,9 +104,7 @@ async function refreshTable(urlHeaders, urlBody) {
 refreshTable("./headers.json", productListLink)
 
 modifyBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea modificar este producto?") == true) {
-        modifyTax();
-    }
+    modifyTax();
 })
 
 listInput.addEventListener("keyup", () => {

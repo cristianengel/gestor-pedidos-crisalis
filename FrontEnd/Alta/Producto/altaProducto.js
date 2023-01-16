@@ -173,9 +173,7 @@ refreshTable("./headers.json", productListLink)
 refreshTaxesTable("./taxes-headers.json", taxListLink)
 
 addBtn.addEventListener("click", () => {
-    if(confirm("Seguro que desea agregar este producto?") == true) {
-        addProduct();
-    }
+    addProduct();
 })
 
 listInput.addEventListener("keyup", () => {

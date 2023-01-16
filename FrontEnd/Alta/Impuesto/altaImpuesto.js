@@ -13,7 +13,7 @@ function cleanInputs() {
     percentageInput.value = "";
 }
 
-async function addProduct() {
+async function addTax() {
     const data = {
         name: nameInput.value,
         percentage: percentageInput.value,
@@ -91,9 +91,7 @@ refreshTable("./headers.json", productListLink)
 
 addBtn.addEventListener("click", () => {
     if(nameInput.value == "" || percentageInput.value == "") return;
-    if(confirm("Seguro que desea agregar este producto?") == true) {
-        addProduct();
-    }
+    addTax();
 })
 
 listInput.addEventListener("keyup", () => {

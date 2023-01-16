@@ -209,9 +209,7 @@ refreshTable("./headers.json", serviceListLink)
 
 modifyBtn.addEventListener("click", () => {
     if(nullInputs() == true) return;
-    if(confirm("Seguro que desea modificar este servicio?") == true) {
-        modifyService();
-    }
+    modifyService();
 })
 
 listInput.addEventListener("keyup", () => {

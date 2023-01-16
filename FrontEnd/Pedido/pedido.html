@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="pedido.css">
+    <title>Nuevo Pedido</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="title">
+            <h1>Nuevo Pedido</h1>
+        </div>
+        <div class="btns">
+            <a href="../Home/home.html" class="button home-btn">Home</a>
+        </div>
+    </div>
+    <div class="list">
+        <div class="top-table-div">
+            <h2 class="list-title">Seleccionar Cliente</h2>
+            <div>
+                <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
+                <button class="button search-btn" id="search-btn">Buscar</button>
+            </div>
+        </div>
+        <table class="table" id="table">
+            <thead class="thead" id="thead"></thead>
+            <tbody class="tbody" id="tbody"></tbody>
+        </table>
+    </div>
+    <div class="btns">
+        <button id="create-new-btn" class="button">Cliente Nuevo</button>
+    </div>
+    <div class="new-client-background">
+        <div class="client-type-div">
+            <h3>Tipo de Cliente</h3>
+            <button class="button" id="person-btn">Persona Física</button>
+            <button class="button" id="business-btn">Empresa</button>
+            <div>
+                <button id="cancel-btn" class="button home-btn">Cancelar</button>
+            </div>
+        </div>
+        <div class="new-person-div">
+            <h3>Ingresar Datos del Cliente</h3>
+            <input type="text" id="name-input" class="text-input" placeholder="Nombre">
+            <input type="text" id="lastname-input" class="text-input" placeholder="Apellido">
+            <input type="number" min="0" id="dni-input" class="text-input" placeholder="DNI">
+            <input type="text" id="address-input" class="text-input" placeholder="Dirección">
+            <input type="number" min="0" id="phone-number-input" class="text-input" placeholder="Número de Teléfono">
+            <input type="text" id="email-input" class="text-input" placeholder="Email">
+            <div>
+                <button id="confirm-btn" class="button">Confirmar</button>
+                <button id="cancel-btn-2" class="button home-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="pedido.js"></script>
+</body>
+</html>

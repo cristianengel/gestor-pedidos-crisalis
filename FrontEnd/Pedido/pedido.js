@@ -19,11 +19,15 @@ const newPersonDiv = document.querySelector("#new-person-attributes");
 const newBusinessDiv = document.querySelector("#new-business-attributes");
 const personBtn = document.querySelector("#person-btn");
 const businessBtn = document.querySelector("#business-btn"); 
-const table = document.querySelector("#table");
-const tableBody = document.querySelector("#tbody");
-const tableHead = document.querySelector("#thead");
+const clientTable = document.querySelector("#client-table");
+const clientTableBody = document.querySelector("#client-tbody");
+const clientTableHead = document.querySelector("#client-thead");
+const detailTable = document.querySelector("#detail-table");
+const detailTableBody = document.querySelector("#detail-tbody");
+const detailTableHead = document.querySelector("#detail-thead");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
+
 const clientListLink = "http://localhost:8080/client/list";
 
 async function search() {
@@ -38,6 +42,20 @@ async function fetchDataFromDB(url) {
     return data;
 }
 
+function nullInputsPerson() {
+    if(nameInput.value == "" ||
+     lastnameInput.value == "" ||
+      dniInput.value == "" ||
+       addressInput.value == "" ||
+       phoneNumberInput == "" ||
+       emailInput == "") return true;
+    return false;
+}
+
+function newClient() {
+    // TODO
+}
+
 function loadBody(data) {
     for (let dataObject of data) {
         const rowElement = document.createElement("tr");
@@ -48,13 +66,16 @@ function loadBody(data) {
             cellElement.textContent = i[1];
             rowElement.appendChild(cellElement);
         }
-        tableBody.appendChild(rowElement)
+        clientTableBody.appendChild(rowElement)
     }
-    for (let i = 1, row; row = table.rows[i]; i++) {
+    for (let i = 1, row; row = clientTable.rows[i]; i++) {
         //iterate through rows
         row.addEventListener("click", () => {
             return;
         })
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
           //iterate through columns
@@ -76,18 +97,18 @@ async function refreshTable(urlHeaders, urlBody) {
     const { headers } = await headersResponse.json();
 
     // Clear the headers
-    tableHead.innerHTML = "<tr></tr>";
+    clientTableHead.innerHTML = "<tr></tr>";
 
     // Populate Headers
     for (const headerText of headers) {
         const headerElement = document.createElement("th");
 
         headerElement.textContent = headerText;
-        tableHead.querySelector("tr").appendChild(headerElement);
+        clientTableHead.querySelector("tr").appendChild(headerElement);
     }
 
     // Body
-    tableBody.innerHTML = "";
+    clientTableBody.innerHTML = "";
     fetchDataFromDB(urlBody).then(data => {
         loadBody(data);
     });
@@ -106,6 +127,17 @@ searchBtn.addEventListener("click", () => {
 confirmBtnPerson.addEventListener("click", () => {
     newClientBackground.style.display = "none";
     newPersonDiv.style.display = "none"
+    clientTypeDiv.style.display = "none"
+    if(nullInputsPerson()){
+        alert("Faltan Datos");
+        return;
+    }
+    newClient();
+})
+
+confirmBtnBusiness.addEventListener("click", () => {
+    newClientBackground.style.display = "none";
+    newBusinessDiv.style.display = "none"
     clientTypeDiv.style.display = "none"
 })
 

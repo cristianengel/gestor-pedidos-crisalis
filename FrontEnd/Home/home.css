@@ -26,7 +26,7 @@ body {
 .top-bar {
     display: flex;
     flex-direction: row;
-    background-color: azure;
+    background-color: white;
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
@@ -94,7 +94,7 @@ ul {
     display: block;
     z-index: 9;
     text-decoration: none;
-    color: azure;
+    color: white;
     border-radius: 10px;
     font-size: 15px;
     padding: 10px;
@@ -124,7 +124,7 @@ ul {
     background-color: #3D5AFE;
     display: block;
     text-decoration: none;
-    color: azure;
+    color: white;
     border-radius: 10px;
     font-size: 15px;
     padding: 10px;
@@ -161,7 +161,7 @@ ul {
 }
 
 .footer {
-    background-color: azure;
+    background-color: white;
     position: absolute;
     top: 99%;
     left: 50%;

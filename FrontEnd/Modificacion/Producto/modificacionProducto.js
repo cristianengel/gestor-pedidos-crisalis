@@ -105,7 +105,9 @@ function loadBody(data) {
             }
             formContainer.style.display = "flex";
         })
-
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
         for (let j = 0, col; col = row.cells[j]; j++) {
           if(col.innerHTML == "") {
             col.innerHTML = "-";
@@ -145,6 +147,12 @@ function loadTaxesBody(data) {
                 }
             }
         })
+
+        for (let i = 1, row; row = taxesTable.rows[i]; i++) {
+            if(i % 2 == 0 && i > 0) {
+                row.style.backgroundColor = "#EEEEEE"
+            }
+        }
 
         taxesTableBody.appendChild(rowElement);
     }

@@ -17,7 +17,7 @@
             <a href="../Home/home.html" class="button home-btn">Home</a>
         </div>
     </div>
-    <div class="list">
+    <div class="list client-list">
         <div class="top-table-div">
             <h2 class="list-title">Seleccionar Cliente</h2>
             <div>
@@ -25,12 +25,12 @@
                 <button class="button search-btn" id="search-btn">Buscar</button>
             </div>
         </div>
-        <table class="table" id="table">
-            <thead class="thead" id="thead"></thead>
-            <tbody class="tbody" id="tbody"></tbody>
+        <table class="table" id="client-table">
+            <thead class="thead" id="client-thead"></thead>
+            <tbody class="tbody" id="client-tbody"></tbody>
         </table>
     </div>
-    <div class="btns">
+    <div class="btns client-list">
         <button id="create-new-btn" class="button">Cliente Nuevo</button>
     </div>
     <div class="new-client-background">
@@ -75,6 +75,34 @@
                 <button id="cancel-btn-business" class="button home-btn">Cancelar</button>
             </div>
             <button id="back-btn-business" class="button home-btn">Atras</button>
+        </div>
+    </div>
+    <div class="list detail-list">
+        <div class="top-table-div">
+            <button class="button" id="add-detail-btn">Agregar Pedido</button>
+            <button class="button home-btn" id="back-btn-order">Atrás</button>
+        </div>
+        <table class="table" id="detail-table">
+            <thead class="thead" id="detail-thead">
+                <tr>
+                    <td>Nro.</td>
+                    <td>Nombre Producto</td>
+                    <td>Precio Unitario</td>
+                    <td>Cantidad</td>
+                    <td>Precio Total</td>
+                </tr>
+            </thead>
+            <tbody class="tbody" id="detail-tbody"></tbody>
+        </table>
+    </div>
+    <div class="asset-form">
+        <div class="asset-type-div">
+            <h3>Tipo de Bien</h3>
+            <button class="button">Producto</button>
+            <button class="button">Servicio</button>
+            <div>
+                <button class="button home-btn">Atrás</button>
+            </div>
         </div>
     </div>
     <script src="pedido.js"></script>

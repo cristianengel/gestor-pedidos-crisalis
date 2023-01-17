@@ -12,7 +12,7 @@ body {
 }
 
 .center-panel {
-    background-color: azure;
+    background-color: white;
     padding-top: 2%;
     padding-bottom: 3%;
     width: 500px;
@@ -59,7 +59,7 @@ body {
     border: none;
     border-radius: .5em;
     border-color: black;
-    color: azure;
+    color: white;
     font-size: larger;
     margin-inline: 2%;
     padding-block: 5px;
@@ -96,7 +96,7 @@ body {
 }
 
 .footer {
-    background-color: azure;
+    background-color: white;
     position: absolute;
     top: 99%;
     left: 50%;

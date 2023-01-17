@@ -33,6 +33,10 @@ tbody > tr:hover {
     color: grey;
 }
 
+td {
+    padding-inline: 5px;
+}
+
 @keyframes fade-in {
     from {opacity: 0%;}
     to {opacity: 100%;}
@@ -47,13 +51,17 @@ tbody > tr:hover {
     }
 }
 
-.client-type-div {
+.detail-list {
+    display: none;
+}
+
+.client-type-div, .asset-type-div {
     position: absolute;
     display: none;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -20%);
-    background-color: azure;
+    background-color: white;
     border-radius: 20px;
     padding: 20px;
     animation-name: scaleUp;
@@ -67,14 +75,14 @@ tbody > tr:hover {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -20%);
-    background-color: azure;
+    background-color: white;
     padding: 20px;
     border-radius: 20px;
     animation-name: scaleUp;
     animation-duration: .3s;
 }
 
-.new-client-background {
+.new-client-background, .asset-form {
     display: none;
     width: 100vw;
     height: 100vh;
@@ -90,7 +98,7 @@ tbody > tr:hover {
 .top-bar {
     display: flex;
     flex-direction: row;
-    background-color: azure;
+    background-color: white;
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
@@ -107,7 +115,8 @@ tbody > tr:hover {
 .top-table-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    margin-left: 1em;
+    justify-content: left;
     align-items: center;
 }
 
@@ -117,7 +126,7 @@ tbody > tr:hover {
 
 .top-btn {
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border: none;
     border-radius: 10px;
     font-size: larger;
@@ -189,7 +198,7 @@ tbody > tr:hover {
 
 .list {
     margin: .5em;
-    background-color: azure;
+    background-color: white;
     border-radius: 20px;
     overflow: hidden;
     overflow-y: scroll;
@@ -221,7 +230,7 @@ tbody > tr:hover {
 
 .thead {
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border-radius: 10px;
 }
 
@@ -236,7 +245,7 @@ tbody > tr:hover {
 .button {
     font-size: large;
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border: none;
     padding-block: 5px;
     padding-inline: 7px;
@@ -250,7 +259,7 @@ tbody > tr:hover {
 .button-small {
     font-size: small;
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border: none;
     padding-block: 5px;
     padding-inline: 7px;
@@ -262,7 +271,6 @@ tbody > tr:hover {
 }
 
 .home-btn {
-    margin-top: 1em;
     background-color: #FF6961;
     animation-name: fade-in;
     animation-duration: 1s;

@@ -14,7 +14,7 @@ body {
 }
 
 .center-panel {
-    background-color: azure;
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +38,7 @@ body {
 .button {
     font-size: large;
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border: none;
     padding-block: 5px;
     padding-inline: 7px;
@@ -66,7 +66,7 @@ body {
 }
 
 .footer {
-    background-color: azure;
+    background-color: white;
     position: absolute;
     top: 99%;
     left: 50%;

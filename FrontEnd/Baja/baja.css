@@ -33,6 +33,10 @@ tbody > tr:hover {
     color: grey;
 }
 
+td {
+    padding-inline: 5px;
+}
+
 @keyframes fade-in {
     from {opacity: 0%;}
     to {opacity: 100%;}
@@ -50,7 +54,7 @@ tbody > tr:hover {
 .top-bar {
     display: flex;
     flex-direction: row;
-    background-color: azure;
+    background-color: white;
     justify-content: space-between;
     align-items: center;
     border-radius: 20px;
@@ -86,7 +90,7 @@ tbody > tr:hover {
 
 .top-btn {
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border: none;
     border-radius: 10px;
     font-size: larger;
@@ -124,7 +128,7 @@ tbody > tr:hover {
 
 .delete-center-container {
     display: none;
-    background-color: azure;
+    background-color: white;
     width: fit-content;
     height: min-content;
     position: absolute;
@@ -161,7 +165,7 @@ tbody > tr:hover {
 }
 
 .list {
-    background-color: azure;
+    background-color: white;
     border-radius: 20px;
     width: 100vw;
     overflow: hidden;
@@ -192,7 +196,7 @@ tbody > tr:hover {
 
 .thead {
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border-radius: 10px;
 }
 
@@ -207,7 +211,7 @@ tbody > tr:hover {
 .button {
     font-size: large;
     background-color: #3D5AFE;
-    color: azure;
+    color: white;
     border: none;
     padding-block: 5px;
     padding-inline: 7px;

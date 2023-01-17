@@ -148,7 +148,9 @@ function loadBody(data) {
             loadData();
             formContainer.style.display = "flex";
         })
-
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
         for (let j = 0, col; col = row.cells[j]; j++) {
           if(col.innerHTML == "false") {
             col.innerHTML = "Persona";

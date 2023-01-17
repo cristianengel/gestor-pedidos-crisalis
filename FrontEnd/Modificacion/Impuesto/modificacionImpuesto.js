@@ -67,6 +67,9 @@ function loadBody(data) {
 
             formContainer.style.display = "flex";
         })
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
           //iterate through columns

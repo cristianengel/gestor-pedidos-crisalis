@@ -58,6 +58,9 @@ function loadBody(data) {
         tableBody.appendChild(rowElement);
     }
     for (let i = 1, row; row = table.rows[i]; i++) {
+        if(i % 2 == 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
         row.addEventListener("click", () => {
             masterContainer.style.display = "block";
             masterContainer.style.animationName = "fade-in";

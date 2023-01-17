@@ -61,6 +61,11 @@ function loadBody(data) {
         }
         tableBody.appendChild(rowElement);
     }
+    for (let i = 0, row; row = table.rows[i]; i++) {
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
+    }
 }
 
 async function refreshTable(urlHeaders, urlBody) {

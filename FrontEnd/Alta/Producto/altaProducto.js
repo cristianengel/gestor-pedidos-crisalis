@@ -83,6 +83,9 @@ function loadBody(data) {
         tableBody.appendChild(rowElement);
     }
     for (let i = 0, row; row = table.rows[i]; i++) {
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
         for (let j = 0, col; col = row.cells[j]; j++) {
             if(col.innerHTML == "") {
                 col.innerHTML = "-"
@@ -119,6 +122,11 @@ function loadTaxesBody(data) {
         })
 
         taxesTableBody.appendChild(rowElement);
+    }
+    for (let i = 0, row; row = taxesTable.rows[i]; i++) {
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
     }
 }
 

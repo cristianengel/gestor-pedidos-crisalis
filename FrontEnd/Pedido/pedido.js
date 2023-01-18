@@ -4,6 +4,15 @@ const dniInput = document.querySelector("#dni-input");
 const addressInput = document.querySelector("#address-input");
 const phoneNumberInput = document.querySelector("#phone-number-input");
 const emailInput = document.querySelector("#email-input");
+const cuitInput = document.querySelector("#cuit-input");
+const businessNameInput = document.querySelector("#business-name-input");
+const businessStartDateInput = document.querySelector("#date-input");
+const ownerNameInput = document.querySelector("#owner-name-input");
+const ownerLastnameInput = document.querySelector("#owner-lastname-input");
+const ownerDniInput = document.querySelector("#owner-dni-input");
+const ownerAddressInput = document.querySelector("#owner-address-input");
+const ownerPhoneNumberInput = document.querySelector("#owner-phone-number-input");
+const ownerEmailInput = document.querySelector("#owner-email-input");
 const confirmBtnPerson = document.querySelector("#confirm-btn-person");
 const confirmBtnBusiness = document.querySelector("#confirm-btn-business");
 const cancelBtn = document.querySelector("#cancel-btn");
@@ -22,11 +31,16 @@ const businessBtn = document.querySelector("#business-btn");
 const clientTable = document.querySelector("#client-table");
 const clientTableBody = document.querySelector("#client-tbody");
 const clientTableHead = document.querySelector("#client-thead");
+const clientBottomBar = document.querySelector("#client-bottom-bar");
 const detailTable = document.querySelector("#detail-table");
 const detailTableBody = document.querySelector("#detail-tbody");
 const detailTableHead = document.querySelector("#detail-thead");
+const addDetailBtn = document.querySelector("#add-detail-btn");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
+let isNewClient = false;
+let newClientData = {};
+let isClientSelected = false;
 
 const clientListLink = "http://localhost:8080/client/list";
 
@@ -52,8 +66,51 @@ function nullInputsPerson() {
     return false;
 }
 
-function newClient() {
-    // TODO
+function nullInputsBusiness() {
+    if(cuitInput.value == "" ||
+        businessNameInput.value == "" ||
+        businessStartDateInput.value == "" ||
+        ownerNameInput.value == "" ||
+        ownerLastnameInput.value == "" ||
+        ownerDniInput.value == "" ||
+        ownerAddressInput.value == "" ||
+        ownerPhoneNumberInput == "" ||
+        ownerEmailInput == "") return true;
+    return false;
+}
+
+function newClient(isBusiness) {
+    if(!isBusiness) {
+        newClientData = {
+            is_business: false,
+            identification_number: dniInput.value,
+            name: nameInput.value,
+            lastname: lastnameInput.value,
+            address: addressInput.value,
+            phone_number: phoneNumberInput.value,
+            email: emailInput.value,
+            business_name: null,
+            business_start_date: null,
+            owner_id: null
+        }
+        clientBottomBar.value = dniInput.value;
+        isClientSelected = true;
+    } else {
+        newClientData = {
+            is_business: true,
+            identification_number: cuitInput.value,
+            name: ownerNameInput.value,
+            lastname: ownerLastnameInput.value,
+            address: ownerAddressInput.value,
+            phone_number: ownerPhoneNumberInput.value,
+            email: ownerEmailInput.value,
+            business_name: businessNameInput.value,
+            business_start_date: businessStartDateInput.value,
+            owner_id: ownerDniInput.value
+        }
+        clientBottomBar.value = cuitInput.value;
+        isClientSelected = true;
+    }
 }
 
 function loadBody(data) {
@@ -71,7 +128,7 @@ function loadBody(data) {
     for (let i = 1, row; row = clientTable.rows[i]; i++) {
         //iterate through rows
         row.addEventListener("click", () => {
-            return;
+            clientBottomBar.value = row.cells[1].innerHTML;
         })
         if(i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
@@ -119,6 +176,7 @@ refreshTable("./headers.json", clientListLink)
 searchBtn.addEventListener("click", () => {
     if(listInput.value == "") {
         refreshTable("./headers.json", clientListLink);
+        clientBottomBar.value = "";
         return;
     }
     search();
@@ -132,13 +190,18 @@ confirmBtnPerson.addEventListener("click", () => {
         alert("Faltan Datos");
         return;
     }
-    newClient();
+    newClient(false);
 })
 
 confirmBtnBusiness.addEventListener("click", () => {
     newClientBackground.style.display = "none";
     newBusinessDiv.style.display = "none"
     clientTypeDiv.style.display = "none"
+    if(nullInputsBusiness()){
+        alert("Faltan Datos");
+        return;
+    }
+    newClient(true);
 })
 
 cancelBtn.addEventListener("click", () => {

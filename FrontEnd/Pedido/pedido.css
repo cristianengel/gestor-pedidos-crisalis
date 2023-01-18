@@ -51,10 +51,6 @@ td {
     }
 }
 
-.detail-list {
-    display: none;
-}
-
 .client-type-div, .asset-type-div {
     position: absolute;
     display: none;
@@ -197,15 +193,42 @@ td {
 }
 
 .list {
-    margin: .5em;
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
     overflow-y: scroll;
     overflow-x: scroll;
-    height: 82vh;
+    height: 81vh;
+    width: 50vw;
     animation-name: fade-in;
     animation-duration: 1s;
+}
+
+.client-list {
+    margin-block: .5em;
+    margin-left: .5em;
+    margin-right: .25em;
+}
+
+.detail-list {
+    margin-block: .5em;
+    margin-left: .25em;
+    margin-right: .5em;
+}
+
+.client-id-container {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    margin-block: .5em;
+    margin-left: .5em;
+    margin-right: .25em;
+    align-items: center;
+}
+
+.list-container {
+    display: flex;
 }
 
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {

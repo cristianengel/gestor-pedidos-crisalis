@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -39,12 +40,13 @@ public class Order {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL
     )
-    Set<OrderDetail> orderDetails = new HashSet<>();
+    List<OrderDetail> orderDetails;
 
     public Order(OrderDTO orderDTO) {
         this.client = orderDTO.getClient();
         this.date = orderDTO.getDate();
         this.total = orderDTO.getTotal();
+        this.orderDetails = orderDTO.getOrderDetails();
     }
 
     public OrderDTO toDTO() {
@@ -52,6 +54,7 @@ public class Order {
                 .client(this.client)
                 .date(this.date)
                 .total(this.total)
+                .orderDetails(this.orderDetails)
                 .build();
     }
 }

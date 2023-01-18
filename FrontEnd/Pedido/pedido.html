@@ -17,21 +17,43 @@
             <a href="../Home/home.html" class="button home-btn">Home</a>
         </div>
     </div>
-    <div class="list client-list">
-        <div class="top-table-div">
-            <h2 class="list-title">Seleccionar Cliente</h2>
-            <div>
-                <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
-                <button class="button search-btn" id="search-btn">Buscar</button>
+    <div class="list-container">
+        <div>
+            <div class="list client-list">
+                <div class="top-table-div">
+                    <button id="create-new-btn" class="button">Cliente Nuevo</button>
+                    <div style="display: flex; align-items: center;">
+                        <input type="text" class="text-input" id="list-input" placeholder="Buscar por DNI/CUIT...">
+                        <button class="button search-btn" id="search-btn">Buscar</button>
+                    </div>
+                </div>
+                <table class="table" id="client-table">
+                    <thead class="thead" id="client-thead"></thead>
+                    <tbody class="tbody" id="client-tbody"></tbody>
+                </table>
+            </div>
+            <div class="client-id-container">
+                <h3>Cliente</h3>
+                <input type="text" class="text-input" id="client-bottom-bar" placeholder="Seleccione un cliente o cree uno nuevo" style="width: 60%;" readonly>
             </div>
         </div>
-        <table class="table" id="client-table">
-            <thead class="thead" id="client-thead"></thead>
-            <tbody class="tbody" id="client-tbody"></tbody>
-        </table>
-    </div>
-    <div class="btns client-list">
-        <button id="create-new-btn" class="button">Cliente Nuevo</button>
+        <div class="list detail-list">
+            <div class="top-table-div">
+                <button class="button" id="add-detail-btn">Agregar Pedido</button>
+            </div>
+            <table class="table" id="detail-table">
+                <thead class="thead" id="detail-thead">
+                    <tr>
+                        <td>Nro.</td>
+                        <td>Nombre Producto</td>
+                        <td>Precio Unitario</td>
+                        <td>Cantidad</td>
+                        <td>Precio Total</td>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="detail-tbody"></tbody>
+            </table>
+        </div>
     </div>
     <div class="new-client-background">
         <div class="client-type-div">
@@ -64,9 +86,10 @@
                 <h4>Inicio Actividades</h4>
                 <input type="date" id="date-input" class="text-input" placeholder="Fecha Inicio de Actividades">
             </div>
+            <h3 style="color: #3D5AFE;">Datos del Propietario</h3>
             <input type="text" id="owner-name-input" class="text-input" placeholder="Nombre">
             <input type="text" id="owner-lastname-input" class="text-input" placeholder="Apellido">
-            <input type="number" min="0" id="owner-dni-input" class="text-input" placeholder="DNI del Propietario">
+            <input type="number" min="0" id="owner-dni-input" class="text-input" placeholder="DNI">
             <input type="text" id="owner-address-input" class="text-input" placeholder="Dirección">
             <input type="number" min="0" id="owner-phone-number-input" class="text-input" placeholder="Número de Teléfono">
             <input type="text" id="owner-email-input" class="text-input" placeholder="Email">
@@ -76,24 +99,6 @@
             </div>
             <button id="back-btn-business" class="button home-btn">Atras</button>
         </div>
-    </div>
-    <div class="list detail-list">
-        <div class="top-table-div">
-            <button class="button" id="add-detail-btn">Agregar Pedido</button>
-            <button class="button home-btn" id="back-btn-order">Atrás</button>
-        </div>
-        <table class="table" id="detail-table">
-            <thead class="thead" id="detail-thead">
-                <tr>
-                    <td>Nro.</td>
-                    <td>Nombre Producto</td>
-                    <td>Precio Unitario</td>
-                    <td>Cantidad</td>
-                    <td>Precio Total</td>
-                </tr>
-            </thead>
-            <tbody class="tbody" id="detail-tbody"></tbody>
-        </table>
     </div>
     <div class="asset-form">
         <div class="asset-type-div">

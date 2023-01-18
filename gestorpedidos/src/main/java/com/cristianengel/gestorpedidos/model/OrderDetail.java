@@ -1,5 +1,6 @@
 package com.cristianengel.gestorpedidos.model;
 
+import com.cristianengel.gestorpedidos.model.dto.OrderDetailDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,5 +37,23 @@ public class OrderDetail {
             cascade = CascadeType.ALL
     )
     @JoinColumn(name = "order_id")
+    @ToString.Exclude
     private Order order;
+
+    public OrderDetail(OrderDetailDTO orderDetailDTO) {
+        this.asset = orderDetailDTO.getAsset();
+        this.priceSell = orderDetailDTO.getPriceSell();
+        this.quantity = orderDetailDTO.getQuantity();
+        this.order = orderDetailDTO.getOrder();
+    }
+
+    public OrderDetailDTO toDTO() {
+        return OrderDetailDTO.builder()
+                .id(this.id)
+                .asset(this.asset)
+                .priceSell(this.priceSell)
+                .quantity(this.quantity)
+                .order(this.order)
+                .build();
+    }
 }

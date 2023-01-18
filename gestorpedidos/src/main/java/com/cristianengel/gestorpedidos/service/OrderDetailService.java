@@ -9,6 +9,9 @@ import com.cristianengel.gestorpedidos.repository.OrderDetailRepository;
 import com.cristianengel.gestorpedidos.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class OrderDetailService {
     private final OrderDetailRepository orderDetailRepository;
@@ -27,5 +30,17 @@ public class OrderDetailService {
         );
         orderDetailDTO.setAsset(asset);
         return this.orderDetailRepository.save(new OrderDetail(orderDetailDTO));
+    }
+
+    public void deleteOrderDetail(int orderDetailId) {
+        this.orderDetailRepository.deleteById(orderDetailId);
+    }
+
+    public List<OrderDetailDTO> getAllOrderDetails() {
+        return this.orderDetailRepository
+                .findAll()
+                .stream()
+                .map(OrderDetail::toDTO)
+                .collect(Collectors.toList());
     }
 }

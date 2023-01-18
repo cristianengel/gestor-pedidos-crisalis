@@ -97,7 +97,7 @@ async function saveClient() {
             owner_id: null
         }
     }
-    const response = await fetch(addClientLink, {
+    await fetch(addClientLink, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

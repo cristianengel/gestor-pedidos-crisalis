@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class OrderDTO {
-    @JsonProperty("client")
     private Client client = null;
 
     @JsonProperty("date")
@@ -23,7 +22,6 @@ public class OrderDTO {
     @JsonProperty("total")
     private double total;
 
-    @JsonProperty("order_details")
     private List<OrderDetail> orderDetails;
 
     public OrderDTO() {

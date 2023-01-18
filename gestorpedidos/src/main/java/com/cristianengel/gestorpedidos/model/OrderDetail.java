@@ -31,20 +31,10 @@ public class OrderDetail {
 
     @Column(name = "cantidad")
     private int quantity;
-
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
-    @JoinColumn(name = "order_id")
-    @ToString.Exclude
-    private Order order;
-
     public OrderDetail(OrderDetailDTO orderDetailDTO) {
         this.asset = orderDetailDTO.getAsset();
         this.priceSell = orderDetailDTO.getPriceSell();
         this.quantity = orderDetailDTO.getQuantity();
-        this.order = orderDetailDTO.getOrder();
     }
 
     public OrderDetailDTO toDTO() {
@@ -53,7 +43,6 @@ public class OrderDetail {
                 .asset(this.asset)
                 .priceSell(this.priceSell)
                 .quantity(this.quantity)
-                .order(this.order)
                 .build();
     }
 }

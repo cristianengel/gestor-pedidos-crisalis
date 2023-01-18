@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class OrderDetailDTO {
-    // id asset pricesell quantity order
+    // id asset pricesell quantity
     private int id;
 
     @JsonProperty("asset")
@@ -22,7 +22,4 @@ public class OrderDetailDTO {
 
     @JsonProperty("quantity")
     private int quantity;
-
-    @JsonProperty("order")
-    private Order order = null;
 }

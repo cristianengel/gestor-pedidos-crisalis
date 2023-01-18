@@ -39,7 +39,7 @@
         </div>
         <div class="list detail-list">
             <div class="top-table-div">
-                <button class="button" id="add-detail-btn">Agregar Pedido</button>
+                <button class="button" id="add-detail-btn">Agregar Detalle</button>
             </div>
             <table class="table" id="detail-table">
                 <thead class="thead" id="detail-thead">
@@ -103,11 +103,18 @@
     <div class="asset-form">
         <div class="asset-type-div">
             <h3>Tipo de Bien</h3>
-            <button class="button">Producto</button>
-            <button class="button">Servicio</button>
+            <button class="button" id="product-btn">Producto</button>
+            <button class="button" id="service-btn">Servicio</button>
             <div>
-                <button class="button home-btn">Atrás</button>
+                <button class="button home-btn" id="back-btn-asset-type">Atrás</button>
             </div>
+        </div>
+        <div class="product-list-div">
+            <h3>Productos</h3>
+            <table class="table" id="product-table">
+                <thead class="thead" id="product-thead"></thead>
+                <tbody class="tbody" id="product-tbody"></tbody>
+            </table>
         </div>
     </div>
     <script src="pedido.js"></script>

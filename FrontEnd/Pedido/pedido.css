@@ -51,7 +51,7 @@ td {
     }
 }
 
-.client-type-div, .asset-type-div {
+.client-type-div, .asset-type-div, .product-list-div {
     position: absolute;
     display: none;
     top: 20%;

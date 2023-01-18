@@ -23,4 +23,9 @@ public class OrderController {
     public Order saveOrder(@RequestBody OrderDTO orderDTO, @RequestParam List<Integer> orderDetailsId, String clientId) {
         return this.orderService.saveOrder(orderDTO, orderDetailsId, clientId);
     }
+
+    @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrderDTO> getAllOrders() {
+        return this.orderService.getAllOrders();
+    }
 }

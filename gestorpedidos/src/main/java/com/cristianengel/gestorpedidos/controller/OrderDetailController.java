@@ -6,6 +6,8 @@ import com.cristianengel.gestorpedidos.service.OrderDetailService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("order_detail")
 public class OrderDetailController {
@@ -19,4 +21,10 @@ public class OrderDetailController {
     public OrderDetail saveOrderDetail(@RequestBody OrderDetailDTO orderDetailDTO, @RequestParam int assetId) {
         return this.orderDetailService.saveOrderDetail(orderDetailDTO, assetId);
     }
+
+    @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrderDetailDTO> getAllOrderDetails() {
+        return this.orderDetailService.getAllOrderDetails();
+    }
+
 }

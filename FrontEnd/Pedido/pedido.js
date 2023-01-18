@@ -36,16 +36,33 @@ const detailTable = document.querySelector("#detail-table");
 const detailTableBody = document.querySelector("#detail-tbody");
 const detailTableHead = document.querySelector("#detail-thead");
 const addDetailBtn = document.querySelector("#add-detail-btn");
+const assetFormDiv = document.querySelector(".asset-form");
+const assetTypeDiv = document.querySelector(".asset-type-div");
+const productBtn = document.querySelector("#product-btn");
+const serviceBtn = document.querySelector("#service-btn");
+const backBtnAssetType = document.querySelector("#back-btn-asset-type");
+const productListDiv = document.querySelector(".product-list-div");
+const productTable = document.querySelector("#product-table");
+const productTableHead = document.querySelector("#product-thead");
+const productTableBody = document.querySelector("#product-tbody");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
-let isNewClient = false;
 let newClientData = {};
 let isClientSelected = false;
 
 const clientListLink = "http://localhost:8080/client/list";
+const addClientLink = "http://localhost:8080/client/new";
+const productListLink = "http://localhost:8080/asset/products";
 
 async function search() {
     refreshTable("./headers.json", `http://localhost:8080/client/get_by_identification?identification=${listInput.value}`)
+}
+
+function cleanInputs() {
+    newClientData = {};
+    isClientSelected = false;
+    clientBottomBar.value = "";
+    listInput.value = "";
 }
 
 async function fetchDataFromDB(url) {
@@ -79,7 +96,7 @@ function nullInputsBusiness() {
     return false;
 }
 
-function newClient(isBusiness) {
+async function newClient(isBusiness) {
     if(!isBusiness) {
         newClientData = {
             is_business: false,
@@ -111,6 +128,16 @@ function newClient(isBusiness) {
         clientBottomBar.value = cuitInput.value;
         isClientSelected = true;
     }
+    await fetch(addClientLink, {
+        method: "POST",
+        body: JSON.stringify(newClientData),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    refreshTable("./headers.json", clientListLink)
 }
 
 function loadBody(data) {
@@ -148,6 +175,47 @@ function loadBody(data) {
     }
 }
 
+function loadAssetsBody(data) {
+    for (let dataObject of data) {
+        const rowElement = document.createElement("tr");
+        let dataObjectArray = Object.entries(dataObject);
+        for(let i of dataObjectArray) {
+            if(dataObjectArray.indexOf(i) == 3 || dataObjectArray.indexOf(i) == 4) continue;
+            let cellElement = document.createElement("td");
+            if(dataObjectArray.indexOf(i) == 5) {
+                let taxesArray = []
+                for(let j of dataObjectArray[dataObjectArray.indexOf(i)][1]) {
+                    let dataTaxesArray = Object.entries(j)
+                    taxesArray.push(dataTaxesArray[1][1])
+                }
+                cellElement.textContent = taxesArray;
+                rowElement.appendChild(cellElement);
+                continue;
+            }
+            cellElement.textContent = i[1];
+            rowElement.appendChild(cellElement);
+        }
+        productTableBody.appendChild(rowElement)
+    }
+    for (let i = 1, row; row = productTable.rows[i]; i++) {
+        //iterate through rows
+        row.addEventListener("click", () => {
+            //TODO
+        })
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
+        //rows would be accessed using the "row" variable assigned in the for loop
+        for (let j = 0, col; col = row.cells[j]; j++) {
+          //iterate through columns
+          //columns would be accessed using the "col" variable assigned in the for loop
+          if (col.innerHTML == "") {
+            col.innerHTML = "-";
+          }
+        }  
+    }
+}
+
 async function refreshTable(urlHeaders, urlBody) {
     // Headers
     const headersResponse = await fetch(urlHeaders);
@@ -168,6 +236,29 @@ async function refreshTable(urlHeaders, urlBody) {
     clientTableBody.innerHTML = "";
     fetchDataFromDB(urlBody).then(data => {
         loadBody(data);
+    });
+}
+
+async function refreshAssetsTable(urlHeaders, urlBody) {
+    // Headers
+    const headersResponse = await fetch(urlHeaders);
+    const { headers } = await headersResponse.json();
+
+    // Clear the headers
+    productTableHead.innerHTML = "<tr></tr>";
+
+    // Populate Headers
+    for (const headerText of headers) {
+        const headerElement = document.createElement("th");
+
+        headerElement.textContent = headerText;
+        productTableHead.querySelector("tr").appendChild(headerElement);
+    }
+
+    // Body
+    productTableBody.innerHTML = "";
+    fetchDataFromDB(urlBody).then(data => {
+        loadAssetsBody(data);
     });
 }
 
@@ -249,4 +340,24 @@ businessBtn.addEventListener("click", () => {
     clientTypeDiv.style.display = "none";
     newPersonDiv.style.display = "none";
     newBusinessDiv.style.display = "flex";
+})
+
+addDetailBtn.addEventListener("click", () => {
+    assetFormDiv.style.display = "flex";
+    assetTypeDiv.style.display = "inline";
+})
+
+backBtnAssetType.addEventListener("click", () => {
+    assetFormDiv.style.display = "none";
+    assetTypeDiv.style.display = "none";
+})
+
+productBtn.addEventListener("click", () => {
+    assetTypeDiv.style.display = "none";
+    productListDiv.style.display = "inline";
+    refreshAssetsTable("./product-headers.json", productListLink)
+})
+
+serviceBtn.addEventListener("click", () => {
+
 })

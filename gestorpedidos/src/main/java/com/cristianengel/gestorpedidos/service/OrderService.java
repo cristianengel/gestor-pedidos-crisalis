@@ -8,6 +8,7 @@ import com.cristianengel.gestorpedidos.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -30,5 +31,13 @@ public class OrderService {
                 () -> new RuntimeException("Client not found")
         ));
         return this.orderRepository.save(new Order(orderDTO));
+    }
+
+    public List<OrderDTO> getAllOrders() {
+        return this.orderRepository
+                .findAll()
+                .stream()
+                .map(Order::toDTO)
+                .collect(Collectors.toList());
     }
 }

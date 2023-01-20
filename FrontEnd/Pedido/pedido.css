@@ -20,8 +20,8 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-outer-spin-button :not(.quantity),
+input::-webkit-inner-spin-button :not(.quantity) {
   -webkit-appearance: none;
 }
 
@@ -51,7 +51,7 @@ td {
     }
 }
 
-.client-type-div, .asset-type-div, .product-list-div {
+.client-type-div, .asset-type-div, .product-list-div, .service-list-div {
     position: absolute;
     display: none;
     top: 20%;
@@ -199,7 +199,7 @@ td {
     overflow-y: scroll;
     overflow-x: scroll;
     height: 81vh;
-    width: 50vw;
+    width: 49vw;
     animation-name: fade-in;
     animation-duration: 1s;
 }
@@ -216,15 +216,24 @@ td {
     margin-right: .5em;
 }
 
-.client-id-container {
+.bottom-bar-container {
     background-color: white;
     display: flex;
     justify-content: center;
     border-radius: 20px;
+    align-items: center;
+}
+
+.client-bar {
     margin-block: .5em;
     margin-left: .5em;
     margin-right: .25em;
-    align-items: center;
+}
+
+.order-bar {
+    margin-block: .5em;
+    margin-left: .25em;
+    margin-right: .5em;
 }
 
 .list-container {

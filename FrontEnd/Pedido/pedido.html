@@ -32,27 +32,35 @@
                     <tbody class="tbody" id="client-tbody"></tbody>
                 </table>
             </div>
-            <div class="client-id-container">
+            <div class="bottom-bar-container client-bar">
                 <h3>Cliente</h3>
                 <input type="text" class="text-input" id="client-bottom-bar" placeholder="Seleccione un cliente o cree uno nuevo" style="width: 60%;" readonly>
             </div>
         </div>
-        <div class="list detail-list">
-            <div class="top-table-div">
-                <button class="button" id="add-detail-btn">Agregar Detalle</button>
+        <div>
+            <div class="list detail-list">
+                <div class="top-table-div">
+                    <button class="button" id="add-detail-btn">Agregar Detalle</button>
+                </div>
+                <table class="table" id="detail-table">
+                    <thead class="thead" id="detail-thead">
+                        <tr>
+                            <td>Nro. Prod.</td>
+                            <td>Nombre Bien</td>
+                            <td>P. Unit. + Impuestos</td>
+                            <td>Cargo Soporte</td>
+                            <td>Cantidad</td>
+                            <td>Precio Total</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody" id="detail-tbody"></tbody>
+                </table>
             </div>
-            <table class="table" id="detail-table">
-                <thead class="thead" id="detail-thead">
-                    <tr>
-                        <td>Nro.</td>
-                        <td>Nombre Producto</td>
-                        <td>Precio Unitario</td>
-                        <td>Cantidad</td>
-                        <td>Precio Total</td>
-                    </tr>
-                </thead>
-                <tbody class="tbody" id="detail-tbody"></tbody>
-            </table>
+            <div class="bottom-bar-container order-bar">
+                <h3>Total</h3>
+                <input type="text" class="text-input" id="order-bottom-bar" style="width: 30%;" readonly>
+                <button class="button" id="confirm-order-btn">Confirmar Pedido</button>
+            </div>
         </div>
     </div>
     <div class="new-client-background">
@@ -114,6 +122,17 @@
             <table class="table" id="product-table">
                 <thead class="thead" id="product-thead"></thead>
                 <tbody class="tbody" id="product-tbody"></tbody>
+            </table>
+            <div>
+                <h4>Cantidad</h4>
+                <input type="number" class="text-input quantity"  min="1" max="100" name="quantity-input" id="quantity-input">
+            </div>
+        </div>
+        <div class="service-list-div">
+            <h3>Servicios</h3>
+            <table class="table" id="service-table">
+                <thead class="thead" id="service-thead"></thead>
+                <tbody class="tbody" id="service-tbody"></tbody>
             </table>
         </div>
     </div>

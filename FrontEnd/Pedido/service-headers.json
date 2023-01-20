@@ -1,0 +1,9 @@
+{
+    "headers": [
+        "Nro.",
+        "Nombre",
+        "Precio Base",
+        "Cargo Soporte",
+        "Impuestos Asociados"
+    ]
+}

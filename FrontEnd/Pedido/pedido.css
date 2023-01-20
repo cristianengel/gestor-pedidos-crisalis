@@ -51,7 +51,16 @@ td {
     }
 }
 
-.client-type-div, .asset-type-div, .product-list-div, .service-list-div {
+@keyframes scaleUp2 {
+    from{
+        scale: 1;
+    }
+    to{
+        scale: 1.4;
+    }
+}
+
+.client-type-div, .asset-type-div, .product-list-div, .service-list-div{
     position: absolute;
     display: none;
     top: 20%;
@@ -78,7 +87,7 @@ td {
     animation-duration: .3s;
 }
 
-.new-client-background, .asset-form {
+.new-client-background, .asset-form{
     display: none;
     width: 100vw;
     height: 100vh;
@@ -264,6 +273,11 @@ td {
     background-color: #3D5AFE;
     color: white;
     border-radius: 10px;
+}
+
+.thead-voucher {
+    background-color: gray;
+    color: white;
 }
 
 .person {

@@ -37,7 +37,7 @@
                 <input type="text" class="text-input" id="client-bottom-bar" placeholder="Seleccione un cliente o cree uno nuevo" style="width: 60%;" readonly>
             </div>
         </div>
-        <div>
+        <div class="detail-list-background">
             <div class="list detail-list">
                 <div class="top-table-div">
                     <button class="button" id="add-detail-btn">Agregar Detalle</button>
@@ -59,7 +59,7 @@
             <div class="bottom-bar-container order-bar">
                 <h3>Total</h3>
                 <input type="text" class="text-input" id="order-bottom-bar" style="width: 30%;" readonly>
-                <button class="button" id="confirm-order-btn">Confirmar Pedido</button>
+                <button class="button" id="load-order-btn">Cargar Pedido</button>
             </div>
         </div>
     </div>
@@ -127,6 +127,7 @@
                 <h4>Cantidad</h4>
                 <input type="number" class="text-input quantity"  min="1" max="100" name="quantity-input" id="quantity-input">
             </div>
+            <button class="button home-btn" id="back-btn-product">Atrás</button>
         </div>
         <div class="service-list-div">
             <h3>Servicios</h3>
@@ -134,6 +135,7 @@
                 <thead class="thead" id="service-thead"></thead>
                 <tbody class="tbody" id="service-tbody"></tbody>
             </table>
+            <button class="button home-btn" id="back-btn-service">Atrás</button>
         </div>
     </div>
     <script src="pedido.js"></script>

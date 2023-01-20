@@ -53,7 +53,10 @@ const serviceTableBody = document.querySelector("#service-tbody");
 const listInput = document.querySelector("#list-input");
 const searchBtn = document.querySelector("#search-btn");
 const quantityInput = document.querySelector("#quantity-input");
-const confirmOrderBtn = document.querySelector("#confirm-order-btn");
+const loadOrderBtn = document.querySelector("#load-order-btn");
+const backBtnProduct = document.querySelector("#back-btn-product");
+const backBtnService = document.querySelector("#back-btn-service");
+let confirm = false;
 let newClientData = {};
 let isClientSelected = false;
 
@@ -69,7 +72,7 @@ async function search() {
 function getToday() {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
 
     today = yyyy + "-" + mm + "-" + dd
@@ -83,6 +86,10 @@ function cleanInputs() {
     clientBottomBar.value = "";
     listInput.value = "";
     quantityInput.value = 1;
+    loadOrderBtn.style.backgroundColor = "#3D5AFE"
+    loadOrderBtn.innerHTML = "Cargar Pedido";
+    confirm = false;
+    orderBottomBar.value = "";
 }
 
 async function fetchDataFromDB(url) {
@@ -201,7 +208,6 @@ async function newOrder() {
         }
     }).then(res => res.json())
     .then(data => responseData = data);
-    console.log(responseData.id)
 }
 
 function loadDetailIntoTable(detail) {
@@ -591,7 +597,27 @@ serviceBtn.addEventListener("click", () => {
     refreshServicesTable("./service-headers.json", serviceListLink)
 })
 
-confirmOrderBtn.addEventListener("click", () => {
+loadOrderBtn.addEventListener("click", () => {
     if(clientBottomBar.value == "") return;
-    newOrder();
+    if(!confirm) {
+        loadOrderBtn.style.backgroundColor = "#77DD77"
+        loadOrderBtn.innerHTML = "Confirmar?";
+        confirm = true;
+    } else {
+        newOrder();
+        cleanInputs();
+        location.reload();
+    }
 })
+
+backBtnProduct.addEventListener("click", () => {
+    assetTypeDiv.style.display = "inline";
+    productListDiv.style.display = "none";
+})
+
+backBtnService.addEventListener("click", () => {
+    assetTypeDiv.style.display = "inline";
+    serviceListDiv.style.display = "none";
+})
+
+

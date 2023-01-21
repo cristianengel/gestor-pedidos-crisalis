@@ -36,19 +36,19 @@ body {
 }
 
 .button {
-    font-size: large;
+    font-size: medium;
+    font-family: 'Montserrat';
     background-color: #3D5AFE;
     color: white;
     border: none;
-    padding-block: 5px;
-    padding-inline: 7px;
+    padding-block: 7px;
+    padding-inline: 12px;
     border-radius: 10px;
     margin-inline: 5px;
     margin-bottom: 15px;
 }
 
 .home-btn {
-    margin-top: 1em;
     width: 8rem;
     background-color: #FF6961;
     animation-name: fade-in;

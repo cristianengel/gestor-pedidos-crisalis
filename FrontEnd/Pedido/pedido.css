@@ -231,6 +231,7 @@ td {
     justify-content: center;
     border-radius: 20px;
     align-items: center;
+    height: 6vh;
 }
 
 .client-bar {
@@ -289,26 +290,12 @@ td {
 }
 
 .button {
-    font-size: large;
+    font-size: medium;
     background-color: #3D5AFE;
     color: white;
     border: none;
-    padding-block: 5px;
-    padding-inline: 7px;
-    border-radius: 10px;
-    margin-inline: 5px;
-    margin-block: 15px;
-    align-self: center;
-    text-decoration: none;
-}
-
-.button-small {
-    font-size: small;
-    background-color: #3D5AFE;
-    color: white;
-    border: none;
-    padding-block: 5px;
-    padding-inline: 7px;
+    padding-block: 7px;
+    padding-inline: 12px;
     border-radius: 10px;
     margin-inline: 5px;
     margin-block: 15px;

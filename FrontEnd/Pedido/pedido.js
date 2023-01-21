@@ -178,7 +178,7 @@ async function newOrder() {
             quantity: parseInt(row.cells[4].innerHTML)
         }
         console.log(data)
-        const response = await fetch(`http://localhost:8080/order_detail/new?assetId=${parseInt(row.cells[0].innerHTML)}`, {
+        await fetch(`http://localhost:8080/order_detail/new?assetId=${parseInt(row.cells[0].innerHTML)}`, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -200,7 +200,7 @@ async function newOrder() {
         total: orderBottomBar.value
     }
 
-    const secondResponse = await fetch(`http://localhost:8080/order/new?orderDetailsId=${detailList}&clientId=${clientBottomBar.value}`, {
+    await fetch(`http://localhost:8080/order/new?orderDetailsId=${detailList}&clientId=${clientBottomBar.value}`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -208,6 +208,7 @@ async function newOrder() {
         }
     }).then(res => res.json())
     .then(data => responseData = data);
+    console.log(clientBottomBar.value)
 }
 
 function loadDetailIntoTable(detail) {
@@ -597,15 +598,17 @@ serviceBtn.addEventListener("click", () => {
     refreshServicesTable("./service-headers.json", serviceListLink)
 })
 
-loadOrderBtn.addEventListener("click", () => {
-    if(clientBottomBar.value == "") return;
+loadOrderBtn.addEventListener("click", async () => {
+    if(clientBottomBar.value == "") {
+        alert("Seleccione un Cliente")
+        return;
+    }
     if(!confirm) {
         loadOrderBtn.style.backgroundColor = "#77DD77"
         loadOrderBtn.innerHTML = "Confirmar?";
         confirm = true;
     } else {
-        newOrder();
-        cleanInputs();
+        await newOrder();
         location.reload();
     }
 })

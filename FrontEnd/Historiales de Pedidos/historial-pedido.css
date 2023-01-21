@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    min-width: 850px;
+    background-image: url(../Images/material-background.png);
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Montserrat';
+}
+
+body::-webkit-scrollbar {
+    background-color: #536DFE;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #3D5AFE;
+    border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+button {
+    font-family: 'Montserrat';
+}
+
+tbody > tr:hover {
+    color: grey;
+}
+
+td {
+    padding-inline: 5px;
+}
+
+@keyframes fade-in {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes scaleUp {
+    from{
+        scale: .5;
+    }
+    to{
+        scale: 1
+    }
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    height: fit-content;
+    margin-inline: .5em;
+    margin-top: .5em;
+    padding-inline: 50px;
+    animation-name: fade-in;
+    animation-duration: 1s;
+    height: 8vh;
+    min-height: 50px;
+}
+
+.list {
+    background-color: white;
+    border-radius: 20px;
+    width: 100vw;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: 84vh;
+}
+
+.table {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.thead {
+    background-color: #3D5AFE;
+    color: white;
+    border-radius: 10px;
+}
+
+.button {
+    font-size: large;
+    background-color: #3D5AFE;
+    color: white;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+    align-self: center;
+    text-decoration: none;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.home-btn {
+    margin-top: 1em;
+    background-color: #FF6961;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.button:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.home-btn:hover {
+    background-color: #ff908a;
+    transition: .1s ease-in;
+} 

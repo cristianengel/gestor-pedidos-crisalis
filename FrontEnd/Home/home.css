@@ -23,6 +23,11 @@ body {
     to {font-size: x-large;}
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .top-bar {
     display: flex;
     flex-direction: row;
@@ -39,6 +44,46 @@ body {
     height: 8vh;
     min-height: 50px;
 }
+
+.top-bar-div {
+    display: flex;
+}
+
+.button {
+    font-size: large;
+    position: absolute;
+    top: 1%;
+    left: 80%;
+    background-color: #3D5AFE;
+    color: white;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 7px;
+    border-radius: 10px;
+    margin-inline: 5px;
+    margin-block: 15px;
+    align-self: center;
+    text-decoration: none;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.home-btn {
+    margin-top: 1em;
+    background-color: #FF6961;
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+.button:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.home-btn:hover {
+    background-color: #ff908a;
+    transition: .1s ease-in;
+} 
 
 .title {
     margin: 20px;

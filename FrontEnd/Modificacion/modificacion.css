@@ -57,7 +57,7 @@ td {
     background-color: white;
     justify-content: space-between;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 10px;
     height: fit-content;
     margin-inline: .5em;
     margin-top: .5em;
@@ -100,7 +100,7 @@ td {
 .form {
     padding: 2em;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -121,12 +121,11 @@ td {
     background-color: #3D5AFE;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: larger;
     width: 45%;
     padding-block: 5px;
     padding-inline: 7px;
-    border-radius: 10px;
     margin-inline: 5px;
     margin-block: 15px;
 }
@@ -179,7 +178,7 @@ td {
 
 .list {
     background-color: white;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
     overflow-y: scroll;
     overflow-x: scroll;
@@ -190,12 +189,12 @@ td {
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {
     background-color: #536DFE;
     width: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .list::-webkit-scrollbar-thumb, .form::-webkit-scrollbar-thumb {
     background-color: #3D5AFE;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .list::-webkit-scrollbar-corner {
@@ -226,7 +225,7 @@ td {
     border: none;
     padding-block: 7px;
     padding-inline: 12px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin-inline: 5px;
     margin-block: 15px;
     align-self: center;

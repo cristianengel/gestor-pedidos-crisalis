@@ -69,7 +69,7 @@ function loadBody(data) {
             deleteCenterContainer.style.animationName = "scaleUp";
             deleteCenterContainer.style.animationDuration = ".3s";
             elementToDelete = row.cells[0].innerHTML;
-            idText.textContent = `ID: ${row.cells[0].innerHTML}`;
+            idText.textContent = `Nro. de Producto: ${row.cells[0].innerHTML}`;
             nameText.textContent = `Nombre: ${row.cells[1].innerHTML}`;
         })
         for (let j = 0, col; col = row.cells[j]; j++) {

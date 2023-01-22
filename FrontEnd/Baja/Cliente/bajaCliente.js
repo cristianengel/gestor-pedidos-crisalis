@@ -58,8 +58,8 @@ function loadBody(data) {
             deleteCenterContainer.style.animationName = "scaleUp";
             deleteCenterContainer.style.animationDuration = ".3s";
             elementToDelete = row.cells[0].innerHTML;
-            idText.textContent = `ID: ${row.cells[0].innerHTML}`;
-            nameText.textContent = `Nombre: ${row.cells[1].innerHTML}`;
+            idText.textContent = `Identificación: ${row.cells[1].innerHTML}`;
+            nameText.textContent = `Nombre y Apellido: ${row.cells[2].innerHTML} ${row.cells[3].innerHTML}`;
         })
         if(i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"

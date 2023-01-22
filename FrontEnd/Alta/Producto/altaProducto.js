@@ -181,6 +181,10 @@ refreshTable("./headers.json", productListLink)
 refreshTaxesTable("./taxes-headers.json", taxListLink)
 
 addBtn.addEventListener("click", () => {
+    if(nameInput.value == "" || priceInput.value == "") {
+        alert("Hay campos faltantes.");
+        return;
+    }
     addProduct();
 })
 

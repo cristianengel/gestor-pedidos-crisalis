@@ -202,7 +202,7 @@ addBtn.addEventListener("click", () => {
            addressInput.value == "" ||
             phoneNumberInput.value == "" ||
              emailInput.value == "") {
-                console.log("No guardado (Persona)")
+                alert("Hay datos faltantes.")
                 return;
              }
     } else {
@@ -215,11 +215,10 @@ addBtn.addEventListener("click", () => {
             ownerAddressInput.value == "" ||
             ownerPhoneNumberInput.value == "" ||
             ownerEmailInput.value == "") {
-                console.log("No guardado (Empresa)")
+                alert("Hay datos faltantes.")
                 return;
             }
     }
-
     saveClient();
 })
 

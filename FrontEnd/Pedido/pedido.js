@@ -56,6 +56,7 @@ const quantityInput = document.querySelector("#quantity-input");
 const loadOrderBtn = document.querySelector("#load-order-btn");
 const backBtnProduct = document.querySelector("#back-btn-product");
 const backBtnService = document.querySelector("#back-btn-service");
+const placeholderText = document.querySelector("#placeholder-text");
 let confirm = false;
 let newClientData = {};
 let isClientSelected = false;
@@ -249,6 +250,7 @@ function loadDetailIntoTable(detail) {
     }
 
     refreshTotal();
+    placeholderText.style.display = "none"
 }
 
 function loadBody(data) {
@@ -507,24 +509,24 @@ searchBtn.addEventListener("click", () => {
 })
 
 confirmBtnPerson.addEventListener("click", () => {
+    if(nullInputsPerson()){
+        alert("Hay datos faltantes");
+        return;
+    }
     newClientBackground.style.display = "none";
     newPersonDiv.style.display = "none"
     clientTypeDiv.style.display = "none"
-    if(nullInputsPerson()){
-        alert("Faltan Datos");
-        return;
-    }
     newClient(false);
 })
 
 confirmBtnBusiness.addEventListener("click", () => {
+    if(nullInputsBusiness()){
+        alert("Hay datos faltantes");
+        return;
+    }
     newClientBackground.style.display = "none";
     newBusinessDiv.style.display = "none"
     clientTypeDiv.style.display = "none"
-    if(nullInputsBusiness()){
-        alert("Faltan Datos");
-        return;
-    }
     newClient(true);
 })
 
@@ -609,6 +611,7 @@ loadOrderBtn.addEventListener("click", async () => {
         confirm = true;
     } else {
         await newOrder();
+        alert("Pedido Agregado Satisfactoriamente")
         location.reload();
     }
 })

@@ -49,6 +49,7 @@ public class Order {
 
     public OrderDTO toDTO() {
         return OrderDTO.builder()
+                .id(this.id)
                 .client(this.client)
                 .date(this.date)
                 .total(this.total)

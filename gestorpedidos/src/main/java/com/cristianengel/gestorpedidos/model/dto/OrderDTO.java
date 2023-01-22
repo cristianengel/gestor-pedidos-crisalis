@@ -14,6 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class OrderDTO {
+    private int id;
+
     private Client client = null;
 
     @JsonProperty("date")

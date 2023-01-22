@@ -1,0 +1,8 @@
+{
+    "headers": [
+        "Nro.",
+        "Cliente",
+        "Fecha",
+        "Total"
+    ]
+}

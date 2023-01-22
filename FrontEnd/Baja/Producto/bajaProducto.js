@@ -1,7 +1,6 @@
 const tableHead = document.querySelector("#thead");
 const tableBody = document.querySelector("#tbody");
 const listInput = document.querySelector("#list-input");
-const searchBtn = document.querySelector("#search-btn");
 const idText = document.querySelector("#id-text");
 const nameText = document.querySelector("#name-text");
 const masterContainer = document.querySelector(".delete-master-container");

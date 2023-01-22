@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="../historial-pedido.css">
+    <title>Historial Pedidos</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div style="display: flex; align-items: baseline;">
+            <h1>Historial de Pedidos</h1>
+        </div>
+        <div class="btns">
+            <a href="../../Home/home.html" class="button home-btn">Home</a>
+        </div>
+    </div>
+    <div class="center-container">
+        <div class="list">
+            <div class="top-table-div">
+                <h2>Búsqueda</h2>
+                <select name="search-criterion" id="search-criterion">
+                    <option value="client">Cliente</option>
+                    <option value="date">Fecha</option>
+                </select>
+                <input type="number" class="text-input" style="width: 350px;" placeholder="Ingresar identificación del cliente..." id="search-id">
+                <input type="date" class="text-input" id="search-date">
+            </div>
+            <table class="table" id="table">
+                <thead class="thead" id="thead"></thead>
+                <tbody class="tbody" id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="historialTodos.js"></script>
+</body>
+</html>

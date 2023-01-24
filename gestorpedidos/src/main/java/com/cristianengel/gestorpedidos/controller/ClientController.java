@@ -32,6 +32,11 @@ public class ClientController {
         return this.clientService.searchClient(identification);
     }
 
+    @GetMapping(value = "get_by_date", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ClientDTO> searchClientByDate(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return this.clientService.searchClientByDate(date);
+    }
+
     @PostMapping(value = "delete")
     public void deleteByIdentification(@RequestParam String identification) {
         this.clientService.deleteByIdentification(identification);

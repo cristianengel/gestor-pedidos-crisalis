@@ -13,6 +13,8 @@ import java.util.Optional;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
+    @Query("select c from Client c where c.businessStartDate = ?1")
+    List<Client> findByDate(LocalDate businessStartDate);
     @Query("select c from Client c where c.identificationNumber = ?1")
     Optional<Client> findByIdentificationNumber(String identificationNumber);
     @Transactional

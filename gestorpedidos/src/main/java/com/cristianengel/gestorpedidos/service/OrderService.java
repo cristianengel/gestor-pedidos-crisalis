@@ -7,6 +7,8 @@ import com.cristianengel.gestorpedidos.repository.OrderDetailRepository;
 import com.cristianengel.gestorpedidos.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +33,26 @@ public class OrderService {
                 () -> new RuntimeException("Client not found")
         ));
         return this.orderRepository.save(new Order(orderDTO));
+    }
+
+    public List<OrderDTO> findByClient(String identification) {
+        List<OrderDTO> orderDTOList = new ArrayList<OrderDTO>();
+        List<Order> orderList = this.orderRepository.findByClient(this.clientRepository.findByIdentificationNumber(identification).orElseThrow(
+                () -> new RuntimeException("Client Not Found")
+        ));
+        for(Order order : orderList) {
+            orderDTOList.add(order.toDTO());
+        }
+        return orderDTOList;
+    }
+
+    public List<OrderDTO> findByDate(LocalDate date) {
+        List<OrderDTO> orderDTOList = new ArrayList<OrderDTO>();
+        List<Order> orderList = this.orderRepository.findByDate(date);
+        for(Order order : orderList) {
+            orderDTOList.add(order.toDTO());
+        }
+        return orderDTOList;
     }
 
     public List<OrderDTO> getAllOrders() {

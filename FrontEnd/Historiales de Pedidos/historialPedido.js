@@ -9,9 +9,22 @@ const allOrdersList = `http://localhost:8080/order/list`;
 const searchCriterion = document.querySelector("#search-criterion");
 const searchId = document.querySelector("#search-id");
 const searchDate = document.querySelector("#search-date");
+const searchIdBtn = document.querySelector("#search-id-btn");
+const searchDateBtn = document.querySelector("#search-date-btn");
+const clientSearchDiv = document.querySelector(".client-search-div");
+const dateSearchDiv = document.querySelector(".date-search-div");
 const orderDetailsBackground = document.querySelector(".order-details-background");
 const idInput = document.querySelector("#id-input");
 const backBtn = document.querySelector("#back-btn");
+
+async function searchByClient() {
+    refreshTable("./headers.json", `http://localhost:8080/order/get_by_client?identification=${searchId.value}`)
+}
+
+async function searchByDate() {
+    console.log(searchDate.value)
+    refreshTable("./headers.json", `http://localhost:8080/order/get_by_date?date=${searchDate.value}`)
+}
 
 async function fetchDataFromDB(url) {
     const response = await fetch(url)
@@ -137,15 +150,24 @@ refreshTable("./headers.json", allOrdersList);
 
 searchCriterion.addEventListener("change", () => {
     if (searchCriterion.value == "client") {
-        searchId.style.display = "inline"
-        searchDate.style.display = "none"
+        clientSearchDiv.style.display = "inline";
+        dateSearchDiv.style.display = "none";
     }
     if (searchCriterion.value == "date") {
-        searchDate.style.display = "inline"
-        searchId.style.display = "none"
+        dateSearchDiv.style.display = "inline";
+        clientSearchDiv.style.display = "none";
     }
 }) 
     
 backBtn.addEventListener("click", () => {
     orderDetailsBackground.style.display = "none";
 })
+
+searchIdBtn.addEventListener("click", () => {
+    searchByClient()
+})
+
+searchDateBtn.addEventListener("click", () => {
+    searchByDate()
+})
+

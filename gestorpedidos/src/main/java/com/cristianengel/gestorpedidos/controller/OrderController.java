@@ -3,9 +3,11 @@ package com.cristianengel.gestorpedidos.controller;
 import com.cristianengel.gestorpedidos.model.Order;
 import com.cristianengel.gestorpedidos.model.dto.OrderDTO;
 import com.cristianengel.gestorpedidos.service.OrderService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -26,5 +28,15 @@ public class OrderController {
     @GetMapping(value = "list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<OrderDTO> getAllOrders() {
         return this.orderService.getAllOrders();
+    }
+
+    @GetMapping(value = "get_by_client", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrderDTO> getAllOrdersByClient(@RequestParam String identification) {
+        return this.orderService.findByClient(identification);
+    }
+
+    @GetMapping(value = "get_by_date", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrderDTO> getAllOrdersByClient(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return this.orderService.findByDate(date);
     }
 }

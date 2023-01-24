@@ -34,6 +34,15 @@ public class ClientService {
                 .collect(Collectors.toList());
     }
 
+    public List<ClientDTO> searchClientByDate(LocalDate date) {
+        List<Client> clientList = this.clientRepository.findByDate(date);
+        List<ClientDTO> clientDTOList = new ArrayList<ClientDTO>();
+        for(Client iterator : clientList) {
+            clientDTOList.add(iterator.toDTO());
+        }
+        return clientDTOList;
+    }
+
     public void updateClient(boolean isBusiness, String identification,
                              String name, String lastname, String address,
                              String phoneNumber, String email,

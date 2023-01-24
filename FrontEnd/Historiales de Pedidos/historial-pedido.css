@@ -38,6 +38,7 @@ td, th {
 }
 
 select {
+    font-family: 'Montserrat';
     font-size: medium;
     margin-inline: 30px;
     border-radius: 5px;
@@ -215,4 +216,8 @@ option {
     padding: 40px;
     animation-name: scaleUp;
     animation-duration: .3s;
+}
+
+.date-input {
+    display: none;
 }

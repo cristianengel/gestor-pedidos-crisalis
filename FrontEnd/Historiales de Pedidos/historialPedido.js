@@ -62,6 +62,11 @@ function loadDetailBody(data) {
         let dataObjectArray = Object.entries(dataObject);
         for (let i = 0; i < dataObjectArray.length; i++) {
             const cellElement = document.createElement("td")
+            if(i == 1) {
+                cellElement.textContent = dataObjectArray[i][1].name;
+                rowElement.appendChild(cellElement);
+                continue;
+            }
             cellElement.textContent = dataObjectArray[i][1];
             rowElement.appendChild(cellElement);
         }
@@ -71,7 +76,7 @@ function loadDetailBody(data) {
         if (i % 2 == 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
-        row.addEventListener("click", async () => {
+        row.addEventListener("click", () => {
             // TODO
         })
         for (let j = 0, col; col = row.cells[j]; j++) {

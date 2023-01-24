@@ -35,7 +35,7 @@ public class Order {
     private double total;
 
     @OneToMany(
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL
     )
     List<OrderDetail> orderDetails;

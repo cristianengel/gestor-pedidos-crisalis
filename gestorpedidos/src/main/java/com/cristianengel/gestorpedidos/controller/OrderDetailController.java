@@ -27,4 +27,9 @@ public class OrderDetailController {
         return this.orderDetailService.getAllOrderDetails();
     }
 
+    @GetMapping(value = "single_order_list", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<OrderDetailDTO> getOrderDetailsOfSingleOrder(@RequestParam int orderId) {
+        return this.orderDetailService.getOrderDetailsOfSingleOrder(orderId);
+    }
+
 }

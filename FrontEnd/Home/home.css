@@ -51,6 +51,8 @@ a {
 
 .button {
     font-size: medium;
+    font-family: 'Montserrat';
+    font-weight: bold;
     position: relative;
     background-color: #3D5AFE;
     color: white;
@@ -133,6 +135,7 @@ ul {
 
 .nav-list .nav-sub-list ul a {
     float: none;
+    font-weight: bold;
     margin: 5px;
     background-color: #3D5AFE;
     display: block;
@@ -163,6 +166,7 @@ ul {
 }
 
 .nav-sub-item {
+    font-weight: bold;
     float: none;
     margin-block: 5px;
     margin-right: 5px;

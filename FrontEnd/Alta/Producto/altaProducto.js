@@ -100,7 +100,7 @@ function loadTaxesBody(data) {
         let dataObjectArray = Object.entries(dataObject);
         for(let i = 1; i < dataObjectArray.length; i++) {
             
-            const cellElement = document.createElement("td")
+            const cellElement = document.createElement("td");
 
             cellElement.textContent = dataObjectArray[i][1];
             if(i == 2) {

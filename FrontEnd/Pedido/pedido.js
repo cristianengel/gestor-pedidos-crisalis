@@ -242,6 +242,9 @@ function loadDetailIntoTable(detail) {
     detailTableBody.appendChild(rowElement);
 
     for (let i = 1, row; row = detailTable.rows[i]; i++) {
+        if(i % 2 == 0 && i > 0) {
+            row.style.backgroundColor = "#EEEEEE"
+        }
         for (let j = 0, col; col = row.cells[j]; j++) {
             if(col.innerHTML == "") {
                 col.innerHTML = "-";

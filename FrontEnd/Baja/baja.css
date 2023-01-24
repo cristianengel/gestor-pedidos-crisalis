@@ -33,8 +33,8 @@ tbody > tr:hover {
     color: grey;
 }
 
-td {
-    padding-inline: 5px;
+td, th {
+    padding: 5px;
 }
 
 @keyframes fade-in {
@@ -209,6 +209,7 @@ td {
 
 .button {
     font-size: medium;
+    font-weight: bold;
     background-color: #3D5AFE;
     color: white;
     border: none;

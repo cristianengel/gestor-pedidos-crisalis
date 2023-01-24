@@ -1,7 +1,6 @@
 package com.cristianengel.gestorpedidos.controller;
 
 import com.cristianengel.gestorpedidos.model.Order;
-import com.cristianengel.gestorpedidos.model.OrderDetail;
 import com.cristianengel.gestorpedidos.model.dto.OrderDTO;
 import com.cristianengel.gestorpedidos.service.OrderService;
 import org.springframework.http.MediaType;

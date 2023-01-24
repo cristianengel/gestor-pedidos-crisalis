@@ -9,6 +9,7 @@ import com.cristianengel.gestorpedidos.repository.OrderDetailRepository;
 import com.cristianengel.gestorpedidos.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,5 +43,16 @@ public class OrderDetailService {
                 .stream()
                 .map(OrderDetail::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public List<OrderDetailDTO> getOrderDetailsOfSingleOrder(int orderId) {
+        List<OrderDetailDTO> orderDetailDTOList = new ArrayList<OrderDetailDTO>();
+        Order order = this.orderRepository.findById(orderId).orElseThrow(
+                () -> new RuntimeException("Order not found")
+        );
+        for(OrderDetail iterator : order.getOrderDetails()){
+            orderDetailDTOList.add(iterator.toDTO());
+        }
+        return orderDetailDTOList;
     }
 }

@@ -43,6 +43,7 @@ a {
     animation-duration: 1s;
     height: 8vh;
     min-height: 50px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .top-bar-div {
@@ -67,6 +68,18 @@ a {
     text-decoration: none;
     animation-name: fade-in;
     animation-duration: 1s;
+}
+
+.card {
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    font-size: 60px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    border-radius: 10px;
+    white-space: nowrap;
+    margin: 20px;
+    text-align: center;
 }
 
 .home-btn {
@@ -147,6 +160,7 @@ ul {
     padding: 10px;
     animation-name: fade-in;
     animation-duration: .2s;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .nav-list .nav-sub-list ul a:hover {
@@ -177,6 +191,7 @@ ul {
     border-radius: 5px;
     font-size: 15px;
     padding: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .nav-sub-item:hover {
@@ -223,6 +238,7 @@ ul {
     align-items: center;
     animation-name: fade-in;
     animation-duration: 1s;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .linkedin-info {

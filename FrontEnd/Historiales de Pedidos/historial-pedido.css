@@ -86,6 +86,7 @@ option {
     animation-duration: 1s;
     height: 8vh;
     min-height: 50px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .center-container {
@@ -104,6 +105,7 @@ option {
     overflow-y: scroll;
     overflow-x: scroll;
     height: 84vh;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {
@@ -216,6 +218,7 @@ option {
     padding: 40px;
     animation-name: scaleUp;
     animation-duration: .3s;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .date-search-div {

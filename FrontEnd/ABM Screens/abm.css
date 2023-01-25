@@ -27,6 +27,7 @@ body {
     transform: translate(-50%, -40%);
     animation-name: fade-in;
     animation-duration: 1s;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .buttons {
@@ -80,6 +81,7 @@ body {
     align-items: center;
     animation-name: fade-in;
     animation-duration: 1s;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .linkedin-info {

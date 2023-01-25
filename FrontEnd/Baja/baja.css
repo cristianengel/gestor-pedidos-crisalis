@@ -1,7 +1,7 @@
 body {
     margin: 0;
     min-width: 850px;
-    background-image: url(../Images/material-background.png);
+    background-image: url("../Images/material-background.png");
     background-attachment: fixed;
     background-size: cover;
     text-align: center;
@@ -66,6 +66,7 @@ td, th {
     animation-duration: 1s;
     height: 8vh;
     min-height: 50px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
 .top-table-div {
@@ -80,8 +81,6 @@ td, th {
     margin: .5em;
     display: flex;
     justify-content: space-around;
-    animation-name: fade-in;
-    animation-duration: 1s;
 }
 
 .blue-text {
@@ -171,6 +170,9 @@ td, th {
     overflow-y: scroll;
     overflow-x: scroll;
     height: 84vh;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    animation-name: fade-in;
+    animation-duration: 1s;
 }
 
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {
@@ -221,7 +223,7 @@ td, th {
     align-self: center;
     text-decoration: none;
     animation-name: fade-in;
-    animation-duration: 1s;
+    animation-duration: 0s;
 }
 
 .home-btn {

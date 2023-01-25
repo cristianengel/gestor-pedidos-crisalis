@@ -177,8 +177,10 @@ async function refreshTaxesTable(urlHeaders, urlBody) {
 }
 
 // Initial Load
-refreshTable("./headers.json", productListLink)
-refreshTaxesTable("./taxes-headers.json", taxListLink)
+window.onload = () => {
+    refreshTable("./headers.json", productListLink)
+    refreshTaxesTable("./taxes-headers.json", taxListLink)
+}
 
 addBtn.addEventListener("click", () => {
     if(nameInput.value == "" || priceInput.value == "") {

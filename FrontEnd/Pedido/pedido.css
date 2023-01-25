@@ -1,3 +1,8 @@
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 body {
     margin: 0;
     min-width: 850px;
@@ -42,21 +47,59 @@ td, th {
     to {opacity: 100%;}
 }
 
+@keyframes popup {
+    from{
+        transform: translate(-50%, -30%);
+        opacity: 0%;
+    }
+    to{
+        transform: translate(-50%, -20%);
+        opacity: 100%;
+    }
+}
+
 @keyframes scaleUp {
     from{
         scale: .5;
     }
     to{
-        scale: 1
+        scale: 1;
     }
 }
 
-@keyframes scaleUp2 {
-    from{
-        scale: 1;
+@keyframes slide-from-left {
+    from {
+        transform: translateX(-1000px);
     }
-    to{
-        scale: 1.4;
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(1000px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-top {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-from-bottom {
+    from {
+        transform: translateY(100px);
+    }
+    to {
+        transform: translateY(0);
     }
 }
 
@@ -69,7 +112,7 @@ td, th {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    animation-name: scaleUp;
+    animation-name: popup;
     animation-duration: .3s;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
@@ -84,7 +127,7 @@ td, th {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-    animation-name: scaleUp;
+    animation-name: popup;
     animation-duration: .3s;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
@@ -113,8 +156,8 @@ td, th {
     margin-inline: .5em;
     margin-top: .5em;
     padding-inline: 50px;
-    animation-name: fade-in;
-    animation-duration: 1s;
+    animation-name: slide-from-top;
+    animation-duration: .7s;
     height: 8vh;
     min-height: 50px;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
@@ -211,8 +254,6 @@ td, th {
     overflow-x: scroll;
     height: 81vh;
     width: 49vw;
-    animation-name: fade-in;
-    animation-duration: 1s;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
@@ -220,12 +261,16 @@ td, th {
     margin-block: .5em;
     margin-left: .5em;
     margin-right: .25em;
+    animation-name: slide-from-left;
+    animation-duration: .7s;
 }
 
 .detail-list {
     margin-block: .5em;
     margin-left: .25em;
     margin-right: .5em;
+    animation-name: slide-from-right;
+    animation-duration: .7s;
 }
 
 .bottom-bar-container {
@@ -235,8 +280,8 @@ td, th {
     border-radius: 10px;
     align-items: center;
     height: 6vh;
-    animation-name: fade-in;
-    animation-duration: 1s;
+    animation-name: slide-from-bottom;
+    animation-duration: .7s;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
@@ -312,8 +357,6 @@ td, th {
 
 .home-btn {
     background-color: #FF6961;
-    animation-name: fade-in;
-    animation-duration: 1s;
 }
 
 .button:hover {

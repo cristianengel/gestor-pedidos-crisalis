@@ -1,3 +1,8 @@
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 body {
     margin: 0;
     min-width: 850px;
@@ -9,8 +14,6 @@ body {
     justify-content: center;
     flex-direction: column;
     font-family: 'Montserrat';
-    animation-name: fade-in;
-    animation-duration: 1s;
 }
 
 body::-webkit-scrollbar {
@@ -44,6 +47,33 @@ td, th {
     to {opacity: 100%;}
 }
 
+@keyframes slide-from-left {
+    from {
+        transform: translateX(-1000px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(1000px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-from-top {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 .top-bar {
     display: flex;
     flex-direction: row;
@@ -58,6 +88,8 @@ td, th {
     height: 8vh;
     min-height: 50px;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    animation-name: slide-from-top;
+    animation-duration: .7s;
 }
 
 .top-table-div {
@@ -83,6 +115,8 @@ td, th {
     height: min-content;
     margin-right: .25em;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    animation-name: slide-from-left;
+    animation-duration: .7s
 }
 
 .asociated-taxes {
@@ -166,6 +200,8 @@ td, th {
     height: 84vh;
     margin-left: .25em;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    animation-name: slide-from-right;
+    animation-duration: .7s;
 }
 
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {

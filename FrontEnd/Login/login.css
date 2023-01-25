@@ -11,6 +11,17 @@ body {
     to {opacity: 100%;}
 }
 
+@keyframes slide-from-bottom {
+    from {
+        transform: translate(-50%, -40%);
+        opacity: 0%;
+    }
+    to {
+        transform: translate(-50%, -30%);
+        opacity: 100%;
+    }
+}
+
 .center-panel {
     background-color: white;
     padding-top: 2%;
@@ -18,11 +29,11 @@ body {
     width: 500px;
     position: absolute;
     border-radius: 20px;
-    top: 40%;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, -40%);
-    animation-name: fade-in;
-    animation-duration: 1s;
+    transform: translate(-50%, -30%);
+    animation-name: slide-from-bottom;
+    animation-duration: .7s;
 }
 
 .bienvenido-text {
@@ -108,25 +119,4 @@ body {
 .mostrar-btn:hover {
     background-color: #536DFE;
     transition: .1s ease-in;
-}
-
-.footer {
-    background-color: white;
-    position: absolute;
-    top: 99%;
-    left: 50%;
-    transform: translate(-50%, -99%);
-    width: 95vw;
-    height: 10%;
-    border-radius: 20px;
-    display: inline-flex;
-    justify-content: space-evenly;
-    align-items: center;
-    animation-name: fade-in;
-    animation-duration: 1s;
-}
-
-.linkedin-info {
-    display: flex;
-    height: 30px;
 }

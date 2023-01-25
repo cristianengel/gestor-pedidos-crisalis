@@ -11,6 +11,17 @@ body {
     to {opacity: 100%;}
 }
 
+@keyframes slide-from-bottom {
+    from {
+        transform: translate(-50%, -40%);
+        opacity: 0%;
+    }
+    to {
+        transform: translate(-50%, -30%);
+        opacity: 100%;
+    }
+}
+
 .center-panel {
     background-color: white;
     padding-top: 2%;
@@ -18,10 +29,10 @@ body {
     width: 500px;
     position: absolute;
     border-radius: 20px;
-    top: 40%;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, -40%);
-    animation-name: fade-in;
+    transform: translate(-50%, -30%);
+    animation-name: slide-from-bottom;
     animation-duration: 1s;
 }
 
@@ -50,12 +61,12 @@ body {
 }
 
 .link:hover {
-    color: #3D5AFE;
+    color: #536DFE;
     transition: .1s ease-in;
 }
 
 .bottom-btn {
-    background-color: #536DFE;
+    background-color: #3D5AFE;
     border-radius: .5em;
     border: none;
     color: white;
@@ -66,7 +77,7 @@ body {
 }
 
 .mostrar-btn {
-    background-color: #536DFE;
+    background-color: #3D5AFE;
     border: none;
     color: white;
     align-self: flex-end;
@@ -96,7 +107,7 @@ body {
 }
 
 .bottom-btn:hover {
-    background-color: #3D5AFE;
+    background-color: #536DFE;
     transition: .1s ease-in;
 }
 
@@ -106,7 +117,7 @@ body {
 }
 
 .mostrar-btn:hover {
-    background-color: #3D5AFE;
+    background-color: #536DFE;
     transition: .1s ease-in;
 }
 

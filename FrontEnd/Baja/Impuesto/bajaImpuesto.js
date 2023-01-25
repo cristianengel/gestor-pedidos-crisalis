@@ -56,7 +56,7 @@ function loadBody(data) {
             masterContainer.style.animationName = "fade-in";
             masterContainer.style.animationDuration = ".5s";
             deleteCenterContainer.style.display = "block";
-            deleteCenterContainer.style.animationName = "scaleUp";
+            deleteCenterContainer.style.animationName = "slide-from-bottom-center";
             deleteCenterContainer.style.animationDuration = ".3s";
             elementToDelete = row.cells[0].innerHTML;
             idText.textContent = `Nro. de Impuesto: ${row.cells[0].innerHTML}`;

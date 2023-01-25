@@ -1,3 +1,8 @@
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 body {
     margin: 0;
     min-width: 850px;
@@ -51,6 +56,37 @@ td, th {
     }
 }
 
+@keyframes slide-from-top {
+    from {
+        transform: translateY(-100px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-from-bottom {
+    from {
+        transform: translateY(100px);
+        opacity: 0%;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes slide-from-bottom-center {
+    from {
+        transform: translate(-50%, -40%);
+        opacity: 0%;
+    }
+    to {
+        transform: translate(-50%, -30%);
+        opacity: 100%;
+    }
+}
+
 .top-bar {
     display: flex;
     flex-direction: row;
@@ -62,8 +98,8 @@ td, th {
     margin-inline: .5em;
     margin-top: .5em;
     padding-inline: 50px;
-    animation-name: fade-in;
-    animation-duration: 1s;
+    animation-name: slide-from-top;
+    animation-duration: .7s;
     height: 8vh;
     min-height: 50px;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
@@ -130,9 +166,9 @@ td, th {
     width: fit-content;
     height: min-content;
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -30%);
     padding: 50px;
     border-radius: 10px;
 }
@@ -171,8 +207,8 @@ td, th {
     overflow-x: scroll;
     height: 84vh;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
-    animation-name: fade-in;
-    animation-duration: 1s;
+    animation-name: slide-from-bottom;
+    animation-duration: .7s;
 }
 
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {
@@ -222,15 +258,11 @@ td, th {
     margin-block: 15px;
     align-self: center;
     text-decoration: none;
-    animation-name: fade-in;
-    animation-duration: 0s;
 }
 
 .home-btn {
     margin-top: 1em;
     background-color: #FF6961;
-    animation-name: fade-in;
-    animation-duration: 1s;
 }
 
 .button:hover {

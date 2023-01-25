@@ -5,27 +5,24 @@ let mostrarBtn = document.querySelector("#mostrar-btn");
 let loginBtn = document.querySelector("#login-btn");
 let registerBtn = document.querySelector("#register-btn");
 
-function login() {
+async function login() {
     mostrarBtn.style.display = "none";
     passwordInput.type = "password";
     const link = `http://localhost:8080/user/login?username=${usernameInput.value}&password=${passwordInput.value}`;
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', link);
+    const response = await fetch(link, {
+        method: "GET"
+    })
+    const status = response.status;
 
-    xhr.onload = () => {
-        console.log(xhr.status);
-        if(xhr.status == 200) {
-            open("../Home/home.html", "_self");
-        }
-        if(xhr.status == 400) {
-            alert("Hay datos faltantes.")
-        }
-        if(xhr.status == 401) {
-            alert("No se pudo iniciar sesión.")
-        }
+    if(status == "200") {
+        open("../Home/home.html", "_self");
     }
-
-    xhr.send(); 
+    if(status == "400") {
+        alert("Hay datos faltantes.")
+    }
+    if(status == "401") {
+        alert("No se pudo iniciar sesión.")
+    }
 }
 
 // Event Listeners

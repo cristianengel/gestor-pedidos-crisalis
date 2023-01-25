@@ -13,6 +13,17 @@ body {
     to {opacity: 100%;}
 }
 
+@keyframes popup {
+    from{
+        transform: translate(-50%, -40%);
+        opacity: 0%;
+    }
+    to{
+        transform: translate(-50%, -30%);
+        opacity: 100%;
+    }
+}
+
 .center-panel {
     background-color: white;
     display: flex;
@@ -22,11 +33,11 @@ body {
     position: absolute;
     border-radius: 10px;
     width: 500px;
-    top: 40%;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, -40%);
-    animation-name: fade-in;
-    animation-duration: 1s;
+    transform: translate(-50%, -30%);
+    animation-name: popup;
+    animation-duration: .3s;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }
 
@@ -53,8 +64,6 @@ body {
 .home-btn {
     width: 8rem;
     background-color: #FF6961;
-    animation-name: fade-in;
-    animation-duration: 1s;
 }
 
 .button:hover {
@@ -64,45 +73,5 @@ body {
 
 .home-btn:hover {
     background-color: #ff908a;
-    transition: .1s ease-in;
-}
-
-.footer {
-    background-color: white;
-    position: absolute;
-    top: 99%;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    width: 90%;
-    height: 10%;
-    border-radius: 20px;
-    display: inline-flex;
-    justify-content: space-evenly;
-    align-items: center;
-    animation-name: fade-in;
-    animation-duration: 1s;
-    box-shadow: 0 5px 10px rgba(0,0,0,.3);
-}
-
-.linkedin-info {
-    display: flex;
-    height: 30px;
-}
-
-.link {
-    margin-inline: 2%;
-    color: black;
-}
-
-.link:link {
-    text-decoration: none;
-}
-
-.link:visited {
-    text-decoration: none;
-}
-
-.link:hover {
-    color: #3D5AFE;
     transition: .1s ease-in;
 }

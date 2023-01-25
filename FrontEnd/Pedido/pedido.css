@@ -125,7 +125,7 @@ td, th {
     left: 50%;
     transform: translate(-50%, -20%);
     background-color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     animation-name: popup;
     animation-duration: .3s;

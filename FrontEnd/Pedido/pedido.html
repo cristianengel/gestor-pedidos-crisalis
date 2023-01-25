@@ -75,12 +75,30 @@
         </div>
         <div class="new-client-attributes" id="new-person-attributes">
             <h3>Ingresar Datos del Cliente</h3>
-            <input type="text" id="name-input" class="text-input" placeholder="Nombre">
-            <input type="text" id="lastname-input" class="text-input" placeholder="Apellido">
-            <input type="number" min="0" id="dni-input" class="text-input" placeholder="DNI">
-            <input type="text" id="address-input" class="text-input" placeholder="Dirección">
-            <input type="number" min="0" id="phone-number-input" class="text-input" placeholder="Número de Teléfono">
-            <input type="text" id="email-input" class="text-input" placeholder="Email">
+            <div class="attribute-container">
+                <h4>Nombre</h4>
+                <input type="text" id="name-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Apellido</h4>
+                <input type="text" id="lastname-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>DNI</h4>
+                <input type="number" min="0" id="dni-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Dirección</h4>
+                <input type="text" id="address-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Teléfono</h4>
+                <input type="number" min="0" id="phone-number-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Email</h4>
+                <input type="text" id="email-input" class="text-input">
+            </div>
             <div>
                 <button id="confirm-btn-person" class="button">Confirmar</button>
                 <button id="cancel-btn-person" class="button home-btn">Cancelar</button>
@@ -89,19 +107,43 @@
         </div>
         <div class="new-client-attributes" id="new-business-attributes">
             <h3>Ingresar Datos de la Empresa</h3>
-            <input type="number" min="0" id="cuit-input" class="text-input" placeholder="CUIT">
-            <input type="text" id="business-name-input" class="text-input" placeholder="Razón Social">
-            <div class="date-div">
+            <div class="attribute-container">
+                <h4>CUIT</h4>
+                <input type="number" min="0" id="cuit-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Razón Social</h4>
+                <input type="text" id="business-name-input" class="text-input">
+            </div>
+            <div class="attribute-container">
                 <h4>Inicio Actividades</h4>
-                <input type="date" id="date-input" class="text-input" placeholder="Fecha Inicio de Actividades">
+                <input type="date" id="date-input" class="text-input">
             </div>
             <h3 style="color: #3D5AFE;">Datos del Propietario</h3>
-            <input type="text" id="owner-name-input" class="text-input" placeholder="Nombre">
-            <input type="text" id="owner-lastname-input" class="text-input" placeholder="Apellido">
-            <input type="number" min="0" id="owner-dni-input" class="text-input" placeholder="DNI">
-            <input type="text" id="owner-address-input" class="text-input" placeholder="Dirección">
-            <input type="number" min="0" id="owner-phone-number-input" class="text-input" placeholder="Número de Teléfono">
-            <input type="text" id="owner-email-input" class="text-input" placeholder="Email">
+            <div class="attribute-container">
+                <h4>Nombre</h4>
+                <input type="text" id="owner-name-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Apellido</h4>
+                <input type="text" id="owner-lastname-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>DNI</h4>
+                <input type="number" min="0" id="owner-dni-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Dirección</h4>
+                <input type="text" id="owner-address-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Teléfono</h4>
+                <input type="number" min="0" id="owner-phone-number-input" class="text-input">
+            </div>
+            <div class="attribute-container">
+                <h4>Email</h4>
+                <input type="text" id="owner-email-input" class="text-input">
+            </div>
             <div>
                 <button id="confirm-btn-business" class="button">Confirmar</button>
                 <button id="cancel-btn-business" class="button home-btn">Cancelar</button>

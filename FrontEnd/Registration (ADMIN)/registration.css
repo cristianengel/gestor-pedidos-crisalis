@@ -13,7 +13,7 @@ body {
 
 @keyframes slide-from-bottom {
     from {
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -20%);
         opacity: 0%;
     }
     to {
@@ -67,10 +67,12 @@ body {
 
 .bottom-btn {
     background-color: #3D5AFE;
-    border-radius: .5em;
+    border-radius: 5px;
     border: none;
     color: white;
-    font-size: larger;
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'Montserrat';
     margin-inline: 2%;
     padding-block: 5px;
     padding-inline: 7px;
@@ -78,11 +80,12 @@ body {
 
 .mostrar-btn {
     background-color: #3D5AFE;
+    font-family: 'Montserrat';
     border: none;
     color: white;
     align-self: flex-end;
     display: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding-block: 5px;
     padding-inline: 7px;
 }
@@ -119,25 +122,4 @@ body {
 .mostrar-btn:hover {
     background-color: #536DFE;
     transition: .1s ease-in;
-}
-
-.footer {
-    background-color: white;
-    position: absolute;
-    top: 99%;
-    left: 50%;
-    transform: translate(-50%, -99%);
-    width: 95vw;
-    height: 10%;
-    border-radius: 20px;
-    display: inline-flex;
-    justify-content: space-evenly;
-    align-items: center;
-    animation-name: fade-in;
-    animation-duration: 1s;
-}
-
-.linkedin-info {
-    display: flex;
-    height: 30px;
 }

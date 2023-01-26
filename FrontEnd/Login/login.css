@@ -13,7 +13,7 @@ body {
 
 @keyframes slide-from-bottom {
     from {
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -20%);
         opacity: 0%;
     }
     to {
@@ -28,7 +28,7 @@ body {
     padding-bottom: 3%;
     width: 500px;
     position: absolute;
-    border-radius: 20px;
+    border-radius: 10px;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -30%);
@@ -68,19 +68,22 @@ body {
 
 .login-btn {
     background-color: #3D5AFE;
-    border-radius: .5em;
+    border-radius: 5px;
     border: none;
     color: white;
     padding-block: 5px;
     padding-inline: 7px;
-    font-size: larger;
+    font-size: medium;
+    font-family: 'Montserrat';
+    font-weight: bold;
     margin-inline: 2%;
 }
 
 .mostrar-btn {
     background-color: #3D5AFE;
+    font-family: 'Montserrat';
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
     align-self: flex-end;
     display: none;

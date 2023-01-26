@@ -11,18 +11,29 @@ body {
     to {opacity: 100%;}
 }
 
+@keyframes slide-from-bottom {
+    from {
+        opacity: 0%;
+        transform: translate(-50%, -20%);
+    }
+    to {
+        opacity: 100%;
+        transform: translate(-50%, -30%);
+    }
+}
+
 .center-panel {
     background-color: white;
     padding-top: 2%;
     padding-bottom: 3%;
     width: 500px;
     position: absolute;
-    border-radius: 20px;
-    top: 40%;
+    border-radius: 10px;
+    top: 30%;
     left: 50%;
-    transform: translate(-50%, -40%);
-    animation-name: fade-in;
-    animation-duration: 1s;
+    transform: translate(-50%, -30%);
+    animation-name: slide-from-bottom;
+    animation-duration: .7s;
 }
 
 .delete-user-text {
@@ -56,11 +67,13 @@ body {
 
 .bottom-btn {
     background-color: #3D5AFE;
+    font-family: 'Montserrat';
     border: none;
-    border-radius: .5em;
+    border-radius: 5px;
     border-color: black;
     color: white;
-    font-size: larger;
+    font-size: medium;
+    font-weight: bold;
     margin-inline: 2%;
     padding-block: 5px;
     padding-inline: 7px;
@@ -93,25 +106,4 @@ body {
 #username:hover {
     border-bottom: 1px solid #3D5AFE;
     transition: .1s ease-in;
-}
-
-.footer {
-    background-color: white;
-    position: absolute;
-    top: 99%;
-    left: 50%;
-    transform: translate(-50%, -100%);
-    width: 90%;
-    height: 10%;
-    border-radius: 20px;
-    display: inline-flex;
-    justify-content: space-evenly;
-    align-items: center;
-    animation-name: fade-in;
-    animation-duration: 1s;
-}
-
-.linkedin-info {
-    display: flex;
-    height: 30px;
 }

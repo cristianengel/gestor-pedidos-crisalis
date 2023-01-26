@@ -60,7 +60,7 @@ registerBtn.addEventListener("click", () => {
         alert("Hay datos faltantes.");
         return;
     }
-    if(adminKeyInput.value == "clave-admin") {
+    if(adminKeyInput.value == "clave_admin") {
         register();
         nameInput.value = "";
         lastnameInput.value = "";
@@ -68,7 +68,7 @@ registerBtn.addEventListener("click", () => {
         passwordInput.value = "";
         adminKeyInput.value = "";
     } else {
-        alert("Ingresar clave de administrador para poder continuar.")
+        alert("Ingresar clave de administrador correcta para poder continuar.")
     }
 });
 goToLoginBtn.addEventListener("click", () => {

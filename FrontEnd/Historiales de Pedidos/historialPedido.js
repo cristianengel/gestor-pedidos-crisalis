@@ -16,6 +16,7 @@ const dateSearchDiv = document.querySelector(".date-search-div");
 const orderDetailsBackground = document.querySelector(".order-details-background");
 const idInput = document.querySelector("#id-input");
 const backBtn = document.querySelector("#back-btn");
+const productsDeletedText = document.querySelector("#products-deleted-text");
 
 async function searchByClient() {
     refreshTable("./headers.json", `http://localhost:8080/order/get_by_client?identification=${searchId.value}`)
@@ -57,7 +58,7 @@ function loadBody(data) {
             row.style.backgroundColor = "#EEEEEE"
         }
         row.addEventListener("click", async () => {
-            refreshDetailTable("./detail-headers.json", `http://localhost:8080/order_detail/single_order_list?orderId=${row.cells[0].innerHTML}`)
+            refreshDetailTable("./detail-headers.json", `http://localhost:8080/order_detail/single_order_list?orderId=${row.cells[0].innerHTML}`, row.cells[3].innerHTML)
             orderDetailsBackground.style.display = "flex";
             idInput.value = row.cells[0].innerHTML;
         })
@@ -69,7 +70,9 @@ function loadBody(data) {
     }
 }
 
-function loadDetailBody(data) {
+function loadDetailBody(data, total) {
+    let detailsTotal = 0;
+    productsDeletedText.innerHTML = "";
     for (let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
@@ -86,6 +89,7 @@ function loadDetailBody(data) {
         detailTableBody.appendChild(rowElement);
     }
     for (let i = 1, row; row = detailTable.rows[i]; i++) {
+        detailsTotal = detailsTotal + parseFloat(row.cells[2].innerHTML);
         if (i % 2 == 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
@@ -97,6 +101,11 @@ function loadDetailBody(data) {
                 col.innerHTML = "-";
             }
         }
+    }
+    if (detailsTotal != total) {
+        console.log(total)
+        console.log(detailsTotal)
+        productsDeletedText.innerHTML = "*Algunos productos fueron excluídos del detalle"
     }
 }
 
@@ -123,7 +132,7 @@ async function refreshTable(urlHeaders, urlBody) {
     });
 }
 
-async function refreshDetailTable(urlHeaders, urlBody) {
+async function refreshDetailTable(urlHeaders, urlBody, total) {
     // Headers
     const headersResponse = await fetch(urlHeaders);
     const { headers } = await headersResponse.json();
@@ -142,7 +151,7 @@ async function refreshDetailTable(urlHeaders, urlBody) {
     // Body
     detailTableBody.innerHTML = "";
     fetchDataFromDB(urlBody).then(data => {
-        loadDetailBody(data);
+        loadDetailBody(data, total);
     });
 }
 

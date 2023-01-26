@@ -63,11 +63,13 @@ const orderDetailsDiv = document.querySelector(".order-details");
 const checkoutClient = document.querySelector("#checkout-client");
 const checkoutDate = document.querySelector("#checkout-date");
 const checkoutTotal = document.querySelector("#checkout-total");
+const checkoutId = document.querySelector("#checkout-id");
 const prueba = document.querySelector("#prueba");
 
 let confirm = false;
 let newClientData = {};
 let isClientSelected = false;
+let orderId;
 
 
 const clientListLink = "http://localhost:8080/client/list";
@@ -81,6 +83,7 @@ function cloneData() {
 }
 
 function printPageArea(){
+    checkoutId.innerHTML = orderId;
     checkoutClient.innerHTML = clientBottomBar.value;
     checkoutDate.innerHTML = getToday();
     checkoutTotal.innerHTML = orderBottomBar.value;
@@ -226,7 +229,7 @@ async function newOrder() {
         total: orderBottomBar.value
     }
 
-    await fetch(`http://localhost:8080/order/new?orderDetailsId=${detailList}&clientId=${clientBottomBar.value}`, {
+    const orderResponse = await fetch(`http://localhost:8080/order/new?orderDetailsId=${detailList}&clientId=${clientBottomBar.value}`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -234,7 +237,7 @@ async function newOrder() {
         }
     }).then(res => res.json())
     .then(data => responseData = data);
-    console.log(clientBottomBar.value)
+    orderId = responseData.id;
 }
 
 function loadDetailIntoTable(detail) {
@@ -642,6 +645,8 @@ loadOrderBtn.addEventListener("click", async () => {
         if(window.confirm("Imprimir comprobante?")) {
             cloneData();
             printPageArea();
+            window.location.reload();
+        } else {
             window.location.reload();
         }
     }

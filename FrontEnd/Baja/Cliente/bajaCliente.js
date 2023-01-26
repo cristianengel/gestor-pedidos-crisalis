@@ -8,6 +8,7 @@ const masterContainer = document.querySelector(".delete-master-container");
 const deleteCenterContainer = document.querySelector(".delete-center-container");
 const confirmBtn = document.querySelector("#confirm-btn");
 const cancelBtn = document.querySelector("#cancel-btn");
+let idToDelete;
 
 // Table
 const table = document.querySelector("#table");
@@ -19,8 +20,8 @@ async function search() {
     refreshTable("./headers.json", `http://localhost:8080/client/get_by_identification?identification=${listInput.value}`)
 }
 
-async function deleteClient() {
-    const response = await fetch(`http://localhost:8080/client/delete?identification=${identificationInput.value}`, {
+async function deleteClient(id) {
+    const response = await fetch(`http://localhost:8080/client/delete?identification=${id}`, {
         method: "POST",
         headers: {
             "Content-Length": 0
@@ -60,6 +61,7 @@ function loadBody(data) {
             elementToDelete = row.cells[0].innerHTML;
             idText.textContent = `Identificación: ${row.cells[1].innerHTML}`;
             nameText.textContent = `Nombre y Apellido: ${row.cells[2].innerHTML} ${row.cells[3].innerHTML}`;
+            idToDelete = row.cells[1].innerHTML;
         })
         if(i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
@@ -102,7 +104,7 @@ async function refreshTable(urlHeaders, urlBody) {
 refreshTable("./headers.json", clientListLink)
 
 confirmBtn.addEventListener("click", () => {
-    deleteClient();
+    deleteClient(idToDelete);
     masterContainer.style.display = "none";
     deleteCenterContainer.style.display = "none";
     refreshTable("./headers.json", clientListLink);

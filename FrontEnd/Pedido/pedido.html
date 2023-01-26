@@ -50,7 +50,7 @@
                             <th>P. Unit. + Impuestos</th>
                             <th>Cargo Soporte</th>
                             <th>Cantidad</th>
-                            <th>Precio Total</th>
+                            <th>Subtotal</th>
                         </tr>
                     </thead>
                     <tbody class="tbody" id="detail-tbody"></tbody>
@@ -179,6 +179,31 @@
                 <tbody class="tbody" id="service-tbody"></tbody>
             </table>
             <button class="button home-btn" id="back-btn-service">Atrás</button>
+        </div>
+    </div>
+    <div class="checkout-background">
+        <div class="sheet">
+            <div class="order-header">
+                <h1 style="color: #3D5AFE;">Gestor de Pedidos</h1>
+                <h2>Factura</h2>
+            </div>
+            <div class="order-data">
+                <div class="order-attribute-container">
+                    <h4>Cliente:</h4>
+                    <h4 id="checkout-client" class="checkout-value" style="color: gray;"></h4>
+                </div>
+                <div class="order-attribute-container">
+                    <h4>Fecha:</h4>
+                    <h4 id="checkout-date" class="checkout-value" style="color: gray;"></h4>
+                </div>
+            </div>
+            <div class="order-details">
+                <h4 style="margin-bottom: 20px;">Detalles del Pedido</h4>
+            </div>
+            <div class="order-attribute-container total-div">
+                <h4>Total:</h4>
+                <h4 id="checkout-total" class="checkout-value" style="color: gray;"></h4>
+            </div>
         </div>
     </div>
     <script src="pedido.js"></script>

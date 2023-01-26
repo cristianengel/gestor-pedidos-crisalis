@@ -57,14 +57,39 @@ const loadOrderBtn = document.querySelector("#load-order-btn");
 const backBtnProduct = document.querySelector("#back-btn-product");
 const backBtnService = document.querySelector("#back-btn-service");
 const placeholderText = document.querySelector("#placeholder-text");
+const sheet = document.querySelector(".sheet");
+const checkoutBackground = document.querySelector(".checkout-background");
+const orderDetailsDiv = document.querySelector(".order-details");
+const checkoutClient = document.querySelector("#checkout-client");
+const checkoutDate = document.querySelector("#checkout-date");
+const checkoutTotal = document.querySelector("#checkout-total");
+const prueba = document.querySelector("#prueba");
+
 let confirm = false;
 let newClientData = {};
 let isClientSelected = false;
+
 
 const clientListLink = "http://localhost:8080/client/list";
 const addClientLink = "http://localhost:8080/client/new";
 const productListLink = "http://localhost:8080/asset/products";
 const serviceListLink = "http://localhost:8080/asset/services";
+
+function cloneData() {
+    const clone = detailTable.cloneNode(true);
+    orderDetailsDiv.appendChild(clone);
+}
+
+function printPageArea(){
+    checkoutClient.innerHTML = clientBottomBar.value;
+    checkoutDate.innerHTML = getToday();
+    checkoutTotal.innerHTML = orderBottomBar.value;
+    let printContent = sheet.innerHTML;
+    let originalContent = document.body.innerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContent;
+}
 
 async function search() {
     refreshTable("./headers.json", `http://localhost:8080/client/get_by_identification?identification=${listInput.value}`)
@@ -614,8 +639,11 @@ loadOrderBtn.addEventListener("click", async () => {
         confirm = true;
     } else {
         await newOrder();
-        alert("Pedido Agregado Satisfactoriamente")
-        location.reload();
+        if(window.confirm("Imprimir comprobante?")) {
+            cloneData();
+            printPageArea();
+            window.location.reload();
+        }
     }
 })
 

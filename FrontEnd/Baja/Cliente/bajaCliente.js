@@ -21,7 +21,7 @@ async function search() {
 }
 
 async function deleteClient(id) {
-    const response = await fetch(`http://localhost:8080/client/delete?identification=${id}`, {
+    await fetch(`http://localhost:8080/client/delete?identification=${id}`, {
         method: "POST",
         headers: {
             "Content-Length": 0
@@ -107,7 +107,6 @@ confirmBtn.addEventListener("click", () => {
     deleteClient(idToDelete);
     masterContainer.style.display = "none";
     deleteCenterContainer.style.display = "none";
-    refreshTable("./headers.json", clientListLink);
 })
 
 cancelBtn.addEventListener("click", () => {

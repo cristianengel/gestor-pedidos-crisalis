@@ -51,8 +51,8 @@ public class AssetService {
 
     public void updateProduct(int id, String name, Double price, List<Integer> taxesId) {
         List<Tax> taxes = new ArrayList<>();
-        for(int i = 0; i < taxesId.size(); i++) {
-            taxes.add(this.taxRepository.findById(taxesId.get(i)).orElseThrow(
+        for (Integer integer : taxesId) {
+            taxes.add(this.taxRepository.findById(integer).orElseThrow(
                     () -> {
                         throw new RuntimeException("No se encontró el impuesto");
                     }
@@ -67,8 +67,8 @@ public class AssetService {
 
     public void updateService(int id, String name, Double price, Double extraCharges, List<Integer> taxesId) {
         List<Tax> taxes = new ArrayList<>();
-        for(int i = 0; i < taxesId.size(); i++) {
-            taxes.add(this.taxRepository.findById(taxesId.get(i)).orElseThrow(
+        for (Integer integer : taxesId) {
+            taxes.add(this.taxRepository.findById(integer).orElseThrow(
                     () -> {
                         throw new RuntimeException("No se encontró el impuesto");
                     }

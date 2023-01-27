@@ -143,6 +143,7 @@ function loadTaxesBody(data) {
         }
         const check = document.createElement("INPUT");
         check.setAttribute("type", "checkbox");
+        check.setAttribute("class", "checkbox");
         check.setAttribute("id", `checkbox${dataObjectArray[0][1]}`)
         rowElement.appendChild(check);
 

@@ -110,6 +110,7 @@ function loadTaxesBody(data) {
         }
         const check = document.createElement("INPUT");
         check.setAttribute("type", "checkbox");
+        check.setAttribute("class", "checkbox");
         rowElement.appendChild(check);
 
         check.addEventListener("change", () => {

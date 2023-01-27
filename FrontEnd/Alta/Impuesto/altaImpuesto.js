@@ -95,7 +95,10 @@ async function refreshTable(urlHeaders, urlBody) {
 refreshTable("./headers.json", productListLink)
 
 addBtn.addEventListener("click", () => {
-    if(nameInput.value == "" || percentageInput.value == "") return;
+    if(nameInput.value == "" || percentageInput.value == "") {
+        alert("Hay campos faltantes.")
+        return;
+    }
     addTax();
 })
 

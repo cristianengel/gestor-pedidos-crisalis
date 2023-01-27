@@ -78,7 +78,7 @@ td, th {
 
 @keyframes slide-from-bottom-center {
     from {
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -20%);
         opacity: 0%;
     }
     to {
@@ -210,6 +210,11 @@ td, th {
 
 .text-input:focus {
     outline: none;
+}
+
+.checkbox {
+    accent-color: #3D5AFE;
+    transform: translateY(5px);
 }
 
 .list {

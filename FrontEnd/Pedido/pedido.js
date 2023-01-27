@@ -177,7 +177,7 @@ async function newClient(isBusiness) {
             address: ownerAddressInput.value,
             phone_number: ownerPhoneNumberInput.value,
             email: ownerEmailInput.value,
-            business_name: businessNameInput.value,
+            business_name: businessNameInput.value.toUpperCase(),
             business_start_date: businessStartDateInput.value,
             owner_id: ownerDniInput.value
         }
@@ -415,7 +415,10 @@ function loadServicesBody(data) {
             let price = basePrice;
             let responseData;
             for(tax of taxes) {
-                const response = await fetch(`http://localhost:8080/tax/get_by_name?name=${tax}`)
+                if(tax == "-") {
+                    continue;
+                }
+                await fetch(`http://localhost:8080/tax/get_by_name?name=${tax}`)
                     .then(res => res.json())
                     .then(data => responseData = data);
             
@@ -634,6 +637,10 @@ serviceBtn.addEventListener("click", () => {
 loadOrderBtn.addEventListener("click", async () => {
     if(clientBottomBar.value == "") {
         alert("Seleccione un Cliente")
+        return;
+    }
+    if(detailTable.rows.length == 1) {
+        alert("El pedido está vacío");
         return;
     }
     if(!confirm) {

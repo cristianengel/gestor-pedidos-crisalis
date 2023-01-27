@@ -163,6 +163,11 @@ td, th {
     display: none;
 }
 
+.checkbox {
+    accent-color: #3D5AFE;
+    transform: translateY(5px);
+}
+
 .text-input {
     height: fit-content;
     margin-inline: 1em;

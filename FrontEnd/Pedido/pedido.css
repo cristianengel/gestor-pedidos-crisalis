@@ -49,7 +49,7 @@ td, th {
 
 @keyframes popup {
     from{
-        transform: translate(-50%, -30%);
+        transform: translate(-50%, -10%);
         opacity: 0%;
     }
     to{
@@ -291,7 +291,7 @@ td, th {
     border-radius: 10px;
     align-items: center;
     height: 6vh;
-    animation-name: slide-from-bottom;
+    animation-name: slide-from-bottom-center;
     animation-duration: .7s;
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
 }

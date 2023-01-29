@@ -30,10 +30,10 @@ async function addProduct() {
         extra_charges: 0,
         taxes: []
     }
-    for(let i of taxesList) {
+    for (let i of taxesList) {
         addProductLink = addProductLink + `${i},`
     }
-    addProductLink = addProductLink.slice(0,-1);
+    addProductLink = addProductLink.slice(0, -1);
     const response = await fetch(addProductLink, {
         method: "POST",
         body: JSON.stringify(data),
@@ -43,7 +43,7 @@ async function addProduct() {
     })
         .then(res => res.json())
         .then(data => console.log(data));
-        
+
     refreshTable("./headers.json", productListLink);
     cleanInputs()
 }
@@ -61,15 +61,15 @@ async function fetchDataFromDB(url) {
 }
 
 function loadBody(data) {
-    for(let dataObject of data) {
+    for (let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < dataObjectArray.length; i++) {
-            if(i == 3 || i == 4) continue;
+        for (let i = 0; i < dataObjectArray.length; i++) {
+            if (i == 3 || i == 4) continue;
             const cellElement = document.createElement("td")
-            if(i == 5) {
+            if (i == 5) {
                 let taxesArray = []
-                for(let j of dataObjectArray[i][1]) {
+                for (let j of dataObjectArray[i][1]) {
                     let dataTaxesArray = Object.entries(j)
                     taxesArray.push(dataTaxesArray[1][1])
                 }
@@ -83,27 +83,27 @@ function loadBody(data) {
         tableBody.appendChild(rowElement);
     }
     for (let i = 0, row; row = table.rows[i]; i++) {
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
         for (let j = 0, col; col = row.cells[j]; j++) {
-            if(col.innerHTML == "") {
+            if (col.innerHTML == "") {
                 col.innerHTML = "-"
             }
-        }  
+        }
     }
 }
 
 function loadTaxesBody(data) {
-    for(let dataObject of data) {
+    for (let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 1; i < dataObjectArray.length; i++) {
-            
+        for (let i = 1; i < dataObjectArray.length; i++) {
+
             const cellElement = document.createElement("td");
 
             cellElement.textContent = dataObjectArray[i][1];
-            if(i == 2) {
+            if (i == 2) {
                 cellElement.textContent = dataObjectArray[i][1] + "%";
             }
             rowElement.appendChild(cellElement);
@@ -114,7 +114,7 @@ function loadTaxesBody(data) {
         rowElement.appendChild(check);
 
         check.addEventListener("change", () => {
-            if(check.checked) {
+            if (check.checked) {
                 taxesList.push(dataObjectArray[0][1]);
             } else {
                 const index = taxesList.indexOf(dataObjectArray[0][1]);
@@ -125,7 +125,7 @@ function loadTaxesBody(data) {
         taxesTableBody.appendChild(rowElement);
     }
     for (let i = 0, row; row = taxesTable.rows[i]; i++) {
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
     }
@@ -144,7 +144,7 @@ async function refreshTable(urlHeaders, urlBody) {
         const headerElement = document.createElement("th");
 
         headerElement.textContent = headerText;
-        tableHead.querySelector("tr").appendChild(headerElement); 
+        tableHead.querySelector("tr").appendChild(headerElement);
     }
 
     // Body
@@ -167,7 +167,7 @@ async function refreshTaxesTable(urlHeaders, urlBody) {
         const headerElement = document.createElement("th");
 
         headerElement.textContent = headerText;
-        taxesTableHead.querySelector("tr").appendChild(headerElement); 
+        taxesTableHead.querySelector("tr").appendChild(headerElement);
     }
 
     // Body
@@ -184,11 +184,21 @@ window.onload = () => {
 }
 
 addBtn.addEventListener("click", () => {
-    if(nameInput.value == "" || priceInput.value == "") {
+    if (nameInput.value == "" || priceInput.value == "") {
         alert("Hay campos faltantes.");
         return;
     }
     addProduct();
+})
+
+window.addEventListener("keydown", function (event) {
+    if (event.key == "Enter") {
+        if (nameInput.value == "" || priceInput.value == "") {
+            alert("Hay campos faltantes.");
+            return;
+        }
+        addProduct();
+    }
 })
 
 listInput.addEventListener("keyup", () => {

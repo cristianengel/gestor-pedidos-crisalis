@@ -79,13 +79,18 @@ body {
     padding-inline: 7px;
 }
 
-.username-div {
+.bottom-btn:hover {
+    background-color: #536DFE;
+    transition: .1s ease-in;
+}
+
+.input-div {
     display: inline-flex;
     height: 30px;
     column-gap: 20px;
 }
 
-#username {
+.text-input {
     font-size: large;
     background: none;
     color: black;
@@ -94,16 +99,12 @@ body {
     outline: none;
 }
 
-#username::placeholder {
-    color: rgb(65,65,65);
-}
-
 .delete-btn:hover {
     background-color: #536DFE;
     transition: .1s ease-in;
 }
 
-#username:hover {
+.text-input:hover {
     border-bottom: 1px solid #3D5AFE;
     transition: .1s ease-in;
 }

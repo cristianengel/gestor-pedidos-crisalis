@@ -29,7 +29,7 @@ async function addTax() {
     })
         .then(res => res.json())
         .then(data => console.log(data));
-        
+
     refreshTable("./headers.json", productListLink);
     cleanInputs()
 }
@@ -47,12 +47,12 @@ async function fetchDataFromDB(url) {
 }
 
 function loadBody(data) {
-    for(let dataObject of data) {
+    for (let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < dataObjectArray.length; i++) {
+        for (let i = 0; i < dataObjectArray.length; i++) {
             const cellElement = document.createElement("td");
-            if(i < 2) {
+            if (i < 2) {
                 cellElement.textContent = dataObjectArray[i][1];
             } else {
                 cellElement.textContent = dataObjectArray[i][1] + "%";
@@ -62,7 +62,7 @@ function loadBody(data) {
         tableBody.appendChild(rowElement);
     }
     for (let i = 0, row; row = table.rows[i]; i++) {
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
     }
@@ -81,7 +81,7 @@ async function refreshTable(urlHeaders, urlBody) {
         const headerElement = document.createElement("th");
 
         headerElement.textContent = headerText;
-        tableHead.querySelector("tr").appendChild(headerElement); 
+        tableHead.querySelector("tr").appendChild(headerElement);
     }
 
     // Body
@@ -95,11 +95,21 @@ async function refreshTable(urlHeaders, urlBody) {
 refreshTable("./headers.json", productListLink)
 
 addBtn.addEventListener("click", () => {
-    if(nameInput.value == "" || percentageInput.value == "") {
+    if (nameInput.value == "" || percentageInput.value == "") {
         alert("Hay campos faltantes.")
         return;
     }
     addTax();
+})
+
+window.addEventListener("keydown", function (event) {
+    if (event.key == "Enter") {
+        if (nameInput.value == "" || percentageInput.value == "") {
+            alert("Hay campos faltantes.")
+            return;
+        }
+        addTax();
+    }
 })
 
 listInput.addEventListener("keyup", () => {

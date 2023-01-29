@@ -78,6 +78,24 @@ body {
     padding-inline: 7px;
 }
 
+.home-btn {
+    background-color: #FF6961;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    margin-inline: 2%;
+    padding-block: 5px;
+    padding-inline: 7px;
+}
+
+.home-btn:hover {
+    background-color: #FF908A;
+    transition: .1s ease-in;
+}
+
 .mostrar-btn {
     background-color: #3D5AFE;
     font-family: 'Montserrat';

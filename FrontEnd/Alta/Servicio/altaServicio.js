@@ -193,6 +193,16 @@ addBtn.addEventListener("click", () => {
     addService(); 
 })
 
+window.addEventListener("keydown", function(event) {
+    if(event.key == "Enter") {
+        if(nameInput.value == "" || priceInput.value == "") {
+            alert("Hay campos faltantes.");
+            return;
+        }
+        addService(); 
+    }
+})
+
 listInput.addEventListener("keyup", () => {
     search();
 })

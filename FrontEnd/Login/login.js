@@ -43,18 +43,12 @@ mostrarBtn.addEventListener("click", () => {
     }
 });
 
-usernameInput.addEventListener("keydown", function(event) {
-    if(event.key == "Enter") {
-        login()
-    }
-})
-
-passwordInput.addEventListener("keydown", function(event) {
-    if(event.key == "Enter") {
-        login()
-    }
-})
-
 registerBtn.addEventListener("click", () => {
     open("../Registration (ADMIN)/registration.html", "_self");
+})
+
+window.addEventListener("keydown", function(event) {
+    if(event.key == "Enter") {
+        login()
+    }
 })

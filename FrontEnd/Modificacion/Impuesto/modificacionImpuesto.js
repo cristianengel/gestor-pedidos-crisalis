@@ -10,6 +10,13 @@ const cancelBtn = document.querySelector("#cancel-btn");
 const formContainer = document.querySelector(".form-container");
 const productListLink = "http://localhost:8080/tax/list";
 
+function nullInputs() {
+    if (idInput.value == "" ||
+        nameInput.value == "" ||
+        percentageInput.value == "") return true;
+    return false;
+}
+
 function cleanInputs() {
     idInput.value = "";
     nameInput.value = "";
@@ -30,7 +37,7 @@ async function modifyTax() {
             "Content-Length": 0
         }
     })
-        
+
     refreshTable("./headers.json", productListLink);
     cleanInputs()
 }
@@ -44,12 +51,12 @@ async function fetchDataFromDB(url) {
 }
 
 function loadBody(data) {
-    for(let dataObject of data) {
+    for (let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i = 0; i < dataObjectArray.length; i++) {
+        for (let i = 0; i < dataObjectArray.length; i++) {
             const cellElement = document.createElement("td")
-            if(i < 2) {
+            if (i < 2) {
                 cellElement.textContent = dataObjectArray[i][1];
             } else {
                 cellElement.textContent = dataObjectArray[i][1] + "%";
@@ -63,25 +70,25 @@ function loadBody(data) {
         row.addEventListener("click", () => {
             idInput.value = row.cells[0].innerHTML;
             nameInput.value = row.cells[1].innerHTML;
-            percentageInput.value = (row.cells[2].innerHTML).slice(0,-1);
+            percentageInput.value = (row.cells[2].innerHTML).slice(0, -1);
 
             formContainer.style.display = "flex";
         })
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if(col.innerHTML == "false") {
-            col.innerHTML = "No";
-          } else if (col.innerHTML == "true") {
-            col.innerHTML = "Sí";
-          } else if (col.innerHTML == "") {
-            col.innerHTML = "-";
-          }
-        }  
+            //iterate through columns
+            //columns would be accessed using the "col" variable assigned in the for loop
+            if (col.innerHTML == "false") {
+                col.innerHTML = "No";
+            } else if (col.innerHTML == "true") {
+                col.innerHTML = "Sí";
+            } else if (col.innerHTML == "") {
+                col.innerHTML = "-";
+            }
+        }
     }
 }
 
@@ -98,7 +105,7 @@ async function refreshTable(urlHeaders, urlBody) {
         const headerElement = document.createElement("th");
 
         headerElement.textContent = headerText;
-        tableHead.querySelector("tr").appendChild(headerElement); 
+        tableHead.querySelector("tr").appendChild(headerElement);
     }
 
     // Body
@@ -112,7 +119,23 @@ async function refreshTable(urlHeaders, urlBody) {
 refreshTable("./headers.json", productListLink)
 
 modifyBtn.addEventListener("click", () => {
+    if (nullInputs() == true) {
+        alert("Hay campos faltantes");
+        cleanInputs();
+        return;
+    }
     modifyTax();
+})
+
+window.addEventListener("keydown", function (event) {
+    if (event.key == "Enter") {
+        if (nullInputs() == true) {
+            alert("Hay campos faltantes");
+            cleanInputs();
+            return;
+        }
+        modifyTax();
+    }
 })
 
 listInput.addEventListener("keyup", () => {

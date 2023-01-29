@@ -6,6 +6,7 @@ let adminKeyInput = document.querySelector("#admin-key");
 let mostrarBtn = document.querySelector("#mostrar-btn");
 let registerBtn = document.querySelector("#register-btn");
 let goToLoginBtn = document.querySelector("#go-to-login-btn");
+let deleteUserBtn = document.querySelector("#delete-user-btn");
 
 // Registración
 function register() {
@@ -43,11 +44,15 @@ function hideMostrarBtn() {
 
 // Event Listeners
 nameInput.addEventListener("focus", hideMostrarBtn)
+
 lastnameInput.addEventListener("focus", hideMostrarBtn)
+
 usernameInput.addEventListener("focus", hideMostrarBtn);
+
 passwordInput.addEventListener("focus", () => {
     mostrarBtn.style.display = "flex";
 });
+
 mostrarBtn.addEventListener("click", () => {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
@@ -55,12 +60,13 @@ mostrarBtn.addEventListener("click", () => {
         passwordInput.type = "password";
     }
 });
+
 registerBtn.addEventListener("click", () => {
     if (nameInput.value == "" || lastnameInput.value == "" || usernameInput.value == "" || passwordInput.value == "") {
         alert("Hay datos faltantes.");
         return;
     }
-    if(adminKeyInput.value == "clave_admin") {
+    if (adminKeyInput.value == "clave_admin") {
         register();
         nameInput.value = "";
         lastnameInput.value = "";
@@ -71,6 +77,11 @@ registerBtn.addEventListener("click", () => {
         alert("Ingresar clave de administrador correcta para poder continuar.")
     }
 });
+
 goToLoginBtn.addEventListener("click", () => {
     open("../Login/login.html", "_self");
 });
+
+deleteUserBtn.addEventListener("click", () => {
+    open("../Delete User (ADMIN)/delete-user.html", "_self")
+})

@@ -32,7 +32,7 @@ function nullInputs() {
     if(idInput.value == "" ||
      nameInput.value == "" ||
       priceInput.value == "" ||
-       extraChargesInput.value == "") return true;
+      extraChargesInput.value == "") return true;
     return false;
 }
 
@@ -222,8 +222,23 @@ refreshTaxesTable("./taxes-headers.json", taxListLink)
 refreshTable("./headers.json", serviceListLink)
 
 modifyBtn.addEventListener("click", () => {
-    if(nullInputs() == true) return;
+    if(nullInputs() == true) {
+        alert("Hay datos faltantes");
+        cleanInputs();
+        return;
+    }
     modifyService();
+})
+
+window.addEventListener("keydown", function(event) {
+    if(event.key == "Enter") {
+        if(nullInputs() == true) {
+            alert("Hay datos faltantes");
+            cleanInputs();
+            return;
+        }
+        modifyService();
+    }
 })
 
 cancelBtn.addEventListener("click", () => {

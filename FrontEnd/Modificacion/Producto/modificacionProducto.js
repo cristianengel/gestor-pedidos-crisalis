@@ -26,6 +26,13 @@ function cleanInputs() {
     refreshTaxesTable("./taxes-headers.json", taxListLink)
 }
 
+function nullInputs() {
+    if(idInput.value == "" ||
+     nameInput.value == "" ||
+      priceInput.value == "") return true;
+    return false;
+}
+
 async function search() {
     refreshTable("./headers.json", `http://localhost:8080/asset/search_product?name=${listInput.value}`)
 }
@@ -212,6 +219,11 @@ refreshTable("./headers.json", productListLink)
 
 
 modifyBtn.addEventListener("click", () => {
+    if(nullInputs() == true) {
+        alert("Hay datos faltantes.");
+        cleanInputs();
+        return;
+    }
     modifyProduct();
 })
 
@@ -223,3 +235,10 @@ listInput.addEventListener("keyup", () => {
     search();
 })
 
+window.addEventListener("keydown", function(event) {
+    if (event.key == "Enter") {
+        if (formContainer.style.display == "flex") {
+            modifyProduct();
+        }
+    }
+})

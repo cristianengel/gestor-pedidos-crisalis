@@ -1,4 +1,5 @@
 let usernameInput = document.querySelector("#username");
+let adminKeyInput = document.querySelector("#admin-key");
 let deleteBtn = document.querySelector("#delete-btn");
 let goToLoginBtn = document.querySelector("#go-to-login-btn");
 
@@ -18,6 +19,10 @@ function deleteUser() {
 deleteBtn.addEventListener("click", () => {
     if (usernameInput.value == "") {
         alert("Hay datos faltantes.")
+        return;
+    }
+    if (adminKeyInput.value != "clave_admin") {
+        alert("Ingresar clave de administrador correcta para continuar.");
         return;
     }
     deleteUser()

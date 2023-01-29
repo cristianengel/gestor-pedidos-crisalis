@@ -194,7 +194,7 @@ businessBtn.addEventListener("click", () => {
     isBusiness = true;
 })
 
-addBtn.addEventListener("click", () => {
+function addClientFunction() {
     if(!isBusiness) {
         if(nameInput.value == "" ||
          lastnameInput.value == "" ||
@@ -220,6 +220,14 @@ addBtn.addEventListener("click", () => {
             }
     }
     saveClient();
+}
+
+addBtn.addEventListener("click", addClientFunction)
+
+window.addEventListener("keydown", function(event) {
+    if(event.key == "Enter") {
+        addClientFunction();
+    }
 })
 
 searchBtn.addEventListener("click", () => {

@@ -191,7 +191,7 @@ window.onload = () => {
     refreshTable("./headers.json", clientListLink)
 }
 
-modifyBtn.addEventListener("click", () => {
+function modifyClientFunction() {
     if(!isBusiness) {
         if(nameInput.value == "" ||
          lastnameInput.value == "" ||
@@ -215,6 +215,16 @@ modifyBtn.addEventListener("click", () => {
             }
     }
     modifyClient();
+}
+
+modifyBtn.addEventListener("click", modifyClientFunction)
+
+window.addEventListener("keydown", function(event) {
+    if(event.key == "Enter") {
+        if (formContainer.style.display == "flex") {
+            modifyClientFunction();
+        }
+    }
 })
 
 searchBtn.addEventListener("click", () => {

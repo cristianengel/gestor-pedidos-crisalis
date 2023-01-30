@@ -14,38 +14,11 @@ const searchDateBtn = document.querySelector("#search-date-btn");
 const clientSearchDiv = document.querySelector(".client-search-div");
 const dateSearchDiv = document.querySelector(".date-search-div");
 const orderDetailsBackground = document.querySelector(".order-details-background");
-const orderDetailsDiv = document.querySelector(".order-details");
-const checkoutClient = document.querySelector("#checkout-client");
-const checkoutDate = document.querySelector("#checkout-date");
-const checkoutTotal = document.querySelector("#checkout-total");
-const checkoutId = document.querySelector("#checkout-id");
 const idInput = document.querySelector("#id-input");
-const clientInput = document.querySelector("#client-input");
-const sheet = document.querySelector(".sheet");
-const dateInput = document.querySelector("#date-input");
 const backBtn = document.querySelector("#back-btn");
 const productsDeletedText = document.querySelector("#products-deleted-text");
+const deleteBtn = document.querySelector("#delete-btn");
 const totalText = document.querySelector("#total-text");
-const printBtn = document.querySelector("#print-btn");
-
-function cloneData() {
-    const clone = detailTable.cloneNode(true);
-    orderDetailsDiv.appendChild(clone)
-}
-
-function printPageArea(){
-    checkoutId.innerHTML = idInput.value;
-    checkoutClient.innerHTML = clientInput.value;
-    checkoutDate.innerHTML = dateInput.value;
-    checkoutTotal.innerHTML = totalText.innerHTML;
-
-    let printContent = sheet.innerHTML;
-    let originalContent = document.body.innerHTML;
-    
-    document.body.innerHTML = printContent;
-    window.print();
-    document.body.innerHTML = originalContent;
-}
 
 async function searchByClient() {
     refreshTable("./headers.json", `http://localhost:8080/order/get_by_client?identification=${searchId.value}`)
@@ -90,15 +63,13 @@ function loadBody(data) {
             refreshDetailTable("./detail-headers.json", `http://localhost:8080/order_detail/single_order_list?orderId=${row.cells[0].innerHTML}`, row.cells[3].innerHTML)
             orderDetailsBackground.style.display = "flex";
             idInput.value = row.cells[0].innerHTML;
-            clientInput.value = row.cells[1].innerHTML;
-            dateInput.value = row.cells[2].innerHTML;
+            totalText.innerHTML = "Total: " + row.cells[3].innerHTML
         })
         for (let j = 0, col; col = row.cells[j]; j++) {
             if (col.innerHTML == "") {
                 col.innerHTML = "-";
             }
         }
-        totalText.innerHTML = row.cells[3].innerHTML;
     }
 }
 
@@ -125,6 +96,9 @@ function loadDetailBody(data, total) {
         if (i % 2 == 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
+        row.addEventListener("click", () => {
+            // TODO
+        })
         for (let j = 0, col; col = row.cells[j]; j++) {
             if (col.innerHTML == "") {
                 col.innerHTML = "-";
@@ -132,6 +106,8 @@ function loadDetailBody(data, total) {
         }
     }
     if (detailsTotal != total) {
+        console.log(total)
+        console.log(detailsTotal)
         productsDeletedText.innerHTML = "*Algunos productos fueron excluídos del detalle"
     }
 }
@@ -199,17 +175,19 @@ backBtn.addEventListener("click", () => {
     orderDetailsBackground.style.display = "none";
 })
 
+deleteBtn.addEventListener("click", () => {
+    fetch(`http://localhost:8080/order/delete?id=${idInput.value}`, {
+        method: "POST"
+    })
+    orderDetailsBackground.style.display = "none";
+    refreshTable("./headers.json", allOrdersList)
+})
+
 searchIdBtn.addEventListener("click", () => {
     searchByClient()
 })
 
 searchDateBtn.addEventListener("click", () => {
     searchByDate()
-})
-
-printBtn.addEventListener("click", () => {
-    cloneData();
-    printPageArea();
-    window.location.reload();
 })
 

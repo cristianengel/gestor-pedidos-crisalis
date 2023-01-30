@@ -43,9 +43,17 @@
     <div class="order-details-background">
         <div class="order-details-center">
             <h2>Detalle del pedido</h2>
-            <div style="display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #3D5AFE;">
+            <div style="display: flex; align-items: center; justify-content: center;">
                 <h3>Nro. de Pedido</h3>
                 <input type="number" class="text-input" id="id-input" readonly>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <h3>Cliente</h3>
+                <input type="number" class="text-input" id="client-input" readonly>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #3D5AFE;">
+                <h3>Fecha</h3>
+                <input type="date" class="text-input" id="date-input" readonly>
             </div>
             <br>
             <table class="table" id="detail-table" cellspacing="0">
@@ -53,8 +61,42 @@
                 <tbody class="tbody" id="detail-tbody"></tbody>
             </table>
             <p style="color: gray; font-size: smaller;" id="products-deleted-text"></p>
+            <div style="display: flex; justify-content: center;">
+                <h4 style="margin-inline: 5px;">Total:</h4>
+                <h4 style="margin-inline: 5px;" id="total-text"></h4>
+            </div>
             <br>
+            <button class="button" id="print-btn">Imprimir Comprobante</button>
             <button class="button home-btn" id="back-btn">Atrás</button>
+        </div>
+    </div>
+    <div class="checkout-background">
+        <div class="sheet">
+            <div class="order-header">
+                <h1 style="color: #3D5AFE;">Gestor de Pedidos</h1>
+                <h2>Comprobante de Pedido</h2>
+            </div>
+            <div class="order-data">
+                <div class="order-attribute-container">
+                    <h4 style="text-decoration: underline;">Nro. de Pedido:</h4>
+                    <h4 id="checkout-id" class="checkout-value" style="color: gray;"></h4>
+                </div>
+                <div class="order-attribute-container">
+                    <h4 style="text-decoration: underline;">Cliente:</h4>
+                    <h4 id="checkout-client" class="checkout-value" style="color: gray;"></h4>
+                </div>
+                <div class="order-attribute-container">
+                    <h4 style="text-decoration: underline;">Fecha:</h4>
+                    <h4 id="checkout-date" class="checkout-value" style="color: gray;"></h4>
+                </div>
+            </div>
+            <div class="order-details">
+                <h4 style="margin-bottom: 20px;">Detalles del Pedido</h4>
+            </div>
+            <div class="order-attribute-container total-div">
+                <h4 style="text-decoration: underline;">Total:</h4>
+                <h4 id="checkout-total" class="checkout-value" style="color: gray;"></h4>
+            </div>
         </div>
     </div>
     <script src="historialPedido.js"></script>

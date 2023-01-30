@@ -35,6 +35,12 @@ public class OrderService {
         return this.orderRepository.save(new Order(orderDTO));
     }
 
+    public void deleteOrder(int id) {
+        this.orderRepository.delete(this.orderRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Order not found.")
+        ));
+    }
+
     public List<OrderDTO> findByClient(String identification) {
         List<OrderDTO> orderDTOList = new ArrayList<OrderDTO>();
         List<Order> orderList = this.orderRepository.findByClient(this.clientRepository.findByIdentificationNumber(identification).orElseThrow(

@@ -39,4 +39,9 @@ public class OrderController {
     public List<OrderDTO> getAllOrdersByClient(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return this.orderService.findByDate(date);
     }
+
+    @PostMapping(value = "delete")
+    public void deleteOrder(@RequestParam int id) {
+        this.orderService.deleteOrder(id);
+    }
 }

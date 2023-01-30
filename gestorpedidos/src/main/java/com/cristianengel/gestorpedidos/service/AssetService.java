@@ -85,6 +85,7 @@ public class AssetService {
     public List<Asset> findAllGoodsByNameAndType(String name, int type) {
         return this.assetRepository.findAllByNameAndType(name, type);
     }
+
     public List<AssetDTO> getAllProductsInDB() {
         return this.assetRepository.findAllByType(1)
                 .stream()

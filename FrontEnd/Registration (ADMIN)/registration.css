@@ -1,5 +1,5 @@
 body {
-    background-image: url(../Images/material-background.png);
+    background: linear-gradient(#123873 0%, #DDDDDD 100%);
     text-align: center;
     font-family: 'Montserrat';
     background-attachment: fixed;
@@ -61,12 +61,12 @@ body {
 }
 
 .link:hover {
-    color: #536DFE;
+    color: #1e4e97;
     transition: .1s ease-in;
 }
 
 .bottom-btn {
-    background-color: #3D5AFE;
+    background-color: #123873;
     border-radius: 5px;
     border: none;
     color: white;
@@ -97,7 +97,7 @@ body {
 }
 
 .mostrar-btn {
-    background-color: #3D5AFE;
+    background-color: #123873;
     font-family: 'Montserrat';
     border: none;
     color: white;
@@ -128,16 +128,16 @@ body {
 }
 
 .bottom-btn:hover {
-    background-color: #536DFE;
+    background-color: #1e4e97;
     transition: .1s ease-in;
 }
 
 #username:hover, #password:hover, #name:hover, #lastname:hover, #admin-key:hover {
-    border-bottom: 1px solid #3D5AFE;
+    border-bottom: 1px solid #123873;
     transition: .1s ease-in;
 }
 
 .mostrar-btn:hover {
-    background-color: #536DFE;
+    background-color: #1e4e97;
     transition: .1s ease-in;
 }

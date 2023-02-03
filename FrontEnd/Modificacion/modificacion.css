@@ -6,7 +6,7 @@ html {
 body {
     margin: 0;
     min-width: 850px;
-    background-image: url(../Images/material-background.png);
+    background: linear-gradient(#123873 0%, #DDDDDD 100%);
     background-attachment: fixed;
     background-size: cover;
     text-align: center;
@@ -17,11 +17,11 @@ body {
 }
 
 body::-webkit-scrollbar {
-    background-color: #536DFE;
+    background-color: #123873;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #3D5AFE;
+    background-color: #1e4e97;
     border-radius: 10px;
 }
 
@@ -150,11 +150,11 @@ td, th {
 }
 
 .blue-text {
-    color: #3D5AFE;
+    color: #123873;
 }
 
 .top-btn {
-    background-color: #3D5AFE;
+    background-color: #123873;
     color: white;
     border: none;
     border-radius: 5px;
@@ -167,14 +167,14 @@ td, th {
 }
 
 .top-btn:hover {
-    background-color: #536DFE;
+    background-color: #1e4e97;
 }
 
 .top-input {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #3D5AFE;
+    border-bottom: 1px solid #123873;
     margin-inline: 20px;
 }
 
@@ -189,7 +189,7 @@ td, th {
 }
 
 .id-input {
-    border-bottom: 1px solid #3D5AFE;
+    border-bottom: 1px solid #123873;
     margin-inline: 20px;
 }
 
@@ -205,7 +205,7 @@ td, th {
 }
 
 .text-input:hover {
-    border-bottom: 1px solid #3D5AFE;
+    border-bottom: 1px solid #123873;
 }
 
 .text-input:focus {
@@ -213,7 +213,7 @@ td, th {
 }
 
 .checkbox {
-    accent-color: #3D5AFE;
+    accent-color: #123873;
     transform: translateY(5px);
 }
 
@@ -231,13 +231,13 @@ td, th {
 }
 
 .list::-webkit-scrollbar, .form::-webkit-scrollbar {
-    background-color: #536DFE;
+    background-color: #123873;
     width: 20px;
     border-radius: 10px;
 }
 
 .list::-webkit-scrollbar-thumb, .form::-webkit-scrollbar-thumb {
-    background-color: #3D5AFE;
+    background-color: #1e4e97;
     border-radius: 10px;
 }
 
@@ -250,7 +250,7 @@ td, th {
 }
 
 .thead {
-    background-color: #3D5AFE;
+    background-color: #123873;
     color: white;
 }
 
@@ -265,7 +265,7 @@ td, th {
 .button {
     font-size: medium;
     font-weight: bold;
-    background-color: #3D5AFE;
+    background-color: #123873;
     color: white;
     border: none;
     padding-block: 7px;
@@ -280,12 +280,10 @@ td, th {
 .home-btn {
     margin-top: 1em;
     background-color: #FF6961;
-    animation-name: fade-in;
-    animation-duration: 1s;
 }
 
 .button:hover {
-    background-color: #536DFE;
+    background-color: #1e4e97;
     transition: .1s ease-in;
 }
 

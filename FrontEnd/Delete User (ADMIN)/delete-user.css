@@ -1,5 +1,5 @@
 body {
-    background-image: url(../Images/material-background.png);
+    background: linear-gradient(#123873 0%, #DDDDDD 100%);
     text-align: center;
     font-family: 'Montserrat';
     background-attachment: fixed;
@@ -61,12 +61,12 @@ body {
 }
 
 .link:hover {
-    color: #3D5AFE;
+    color: #123873;
     transition: .1s ease-in;
 }
 
 .bottom-btn {
-    background-color: #3D5AFE;
+    background-color: #123873;
     font-family: 'Montserrat';
     border: none;
     border-radius: 5px;
@@ -80,7 +80,7 @@ body {
 }
 
 .bottom-btn:hover {
-    background-color: #536DFE;
+    background-color: #1e4e97;
     transition: .1s ease-in;
 }
 
@@ -100,11 +100,11 @@ body {
 }
 
 .delete-btn:hover {
-    background-color: #536DFE;
+    background-color: #1e4e97;
     transition: .1s ease-in;
 }
 
 .text-input:hover {
-    border-bottom: 1px solid #3D5AFE;
+    border-bottom: 1px solid #123873;
     transition: .1s ease-in;
 }

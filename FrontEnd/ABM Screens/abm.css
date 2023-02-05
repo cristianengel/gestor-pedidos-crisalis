@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-image: url(../Images/material-background.png);
+    background: linear-gradient(#123873 0%, #DDDDDD 100%);
     font-family: 'Montserrat';
     display: flex;
     justify-content: center;
@@ -51,7 +51,7 @@ body {
     font-size: medium;
     font-family: 'Montserrat';
     font-weight: bold;
-    background-color: #3D5AFE;
+    background-color: #123873;
     color: white;
     border: none;
     padding-block: 7px;
@@ -67,7 +67,7 @@ body {
 }
 
 .button:hover {
-    background-color: #536DFE;
+    background-color: #1e4e97;
     transition: .1s ease-in;
 }
 

@@ -27,7 +27,7 @@ const newClientDiv = document.querySelector(".new-client-attributes");
 const newPersonDiv = document.querySelector("#new-person-attributes");
 const newBusinessDiv = document.querySelector("#new-business-attributes");
 const personBtn = document.querySelector("#person-btn");
-const businessBtn = document.querySelector("#business-btn"); 
+const businessBtn = document.querySelector("#business-btn");
 const clientTable = document.querySelector("#client-table");
 const clientTableBody = document.querySelector("#client-tbody");
 const clientTableHead = document.querySelector("#client-thead");
@@ -82,7 +82,7 @@ function cloneData() {
     orderDetailsDiv.appendChild(clone);
 }
 
-function printPageArea(){
+function printPageArea() {
     checkoutId.innerHTML = orderId;
     checkoutClient.innerHTML = clientBottomBar.value;
     checkoutDate.innerHTML = getToday();
@@ -90,7 +90,7 @@ function printPageArea(){
 
     let printContent = sheet.innerHTML;
     let originalContent = document.body.innerHTML;
-    
+
     document.body.innerHTML = printContent;
     window.print();
     document.body.innerHTML = originalContent;
@@ -132,17 +132,17 @@ async function fetchDataFromDB(url) {
 }
 
 function nullInputsPerson() {
-    if(nameInput.value == "" ||
-     lastnameInput.value == "" ||
-      dniInput.value == "" ||
-       addressInput.value == "" ||
-       phoneNumberInput == "" ||
-       emailInput == "") return true;
+    if (nameInput.value == "" ||
+        lastnameInput.value == "" ||
+        dniInput.value == "" ||
+        addressInput.value == "" ||
+        phoneNumberInput == "" ||
+        emailInput == "") return true;
     return false;
 }
 
 function nullInputsBusiness() {
-    if(cuitInput.value == "" ||
+    if (cuitInput.value == "" ||
         businessNameInput.value == "" ||
         businessStartDateInput.value == "" ||
         ownerNameInput.value == "" ||
@@ -155,7 +155,7 @@ function nullInputsBusiness() {
 }
 
 async function newClient(isBusiness) {
-    if(!isBusiness) {
+    if (!isBusiness) {
         newClientData = {
             is_business: false,
             identification_number: dniInput.value,
@@ -201,7 +201,7 @@ async function newClient(isBusiness) {
 async function newOrder() {
     let detailList = [];
     let responseData;
-    
+
     for (let i = 1, row; row = detailTable.rows[i]; i++) {
 
         let data = {
@@ -216,9 +216,9 @@ async function newOrder() {
                 "Content-Type": "application/json"
             }
         })
-        .then(res => res.json())
-        .then(data => responseData = data);
-        
+            .then(res => res.json())
+            .then(data => responseData = data);
+
         let responseDataArray = Object.entries(responseData);
         detailList.push(responseDataArray[0][1]);
         console.log(responseDataArray[0][1])
@@ -238,7 +238,7 @@ async function newOrder() {
             "Content-Type": "application/json"
         }
     }).then(res => res.json())
-    .then(data => responseData = data);
+        .then(data => responseData = data);
     orderId = responseData.id;
 }
 
@@ -272,11 +272,11 @@ function loadDetailIntoTable(detail) {
     detailTableBody.appendChild(rowElement);
 
     for (let i = 1, row; row = detailTable.rows[i]; i++) {
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
         for (let j = 0, col; col = row.cells[j]; j++) {
-            if(col.innerHTML == "") {
+            if (col.innerHTML == "") {
                 col.innerHTML = "-";
             }
         }
@@ -291,7 +291,7 @@ function loadBody(data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
 
-        for(let i of dataObjectArray) {
+        for (let i of dataObjectArray) {
             let cellElement = document.createElement("td");
             cellElement.textContent = i[1];
             rowElement.appendChild(cellElement);
@@ -303,21 +303,21 @@ function loadBody(data) {
         row.addEventListener("click", () => {
             clientBottomBar.value = row.cells[1].innerHTML;
         })
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if(col.innerHTML == "false") {
-            col.innerHTML = "Persona";
-          } else if (col.innerHTML == "true") {
-            col.innerHTML = "Empresa";
-          } else if (col.innerHTML == "") {
-            col.innerHTML = "-";
-          }
-        }  
+            //iterate through columns
+            //columns would be accessed using the "col" variable assigned in the for loop
+            if (col.innerHTML == "false") {
+                col.innerHTML = "Persona";
+            } else if (col.innerHTML == "true") {
+                col.innerHTML = "Empresa";
+            } else if (col.innerHTML == "") {
+                col.innerHTML = "-";
+            }
+        }
     }
 }
 
@@ -325,12 +325,12 @@ function loadProductsBody(data) {
     for (let dataObject of data) {
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i of dataObjectArray) {
-            if(dataObjectArray.indexOf(i) == 3 || dataObjectArray.indexOf(i) == 4) continue;
+        for (let i of dataObjectArray) {
+            if (dataObjectArray.indexOf(i) == 3 || dataObjectArray.indexOf(i) == 4) continue;
             let cellElement = document.createElement("td");
-            if(dataObjectArray.indexOf(i) == 5) {
+            if (dataObjectArray.indexOf(i) == 5) {
                 let taxesArray = []
-                for(let j of dataObjectArray[dataObjectArray.indexOf(i)][1]) {
+                for (let j of dataObjectArray[dataObjectArray.indexOf(i)][1]) {
                     let dataTaxesArray = Object.entries(j)
                     taxesArray.push(dataTaxesArray[1][1])
                 }
@@ -350,11 +350,11 @@ function loadProductsBody(data) {
             let taxes = row.cells[3].innerHTML.split(",");
             let price = basePrice;
             let responseData;
-            for(tax of taxes) {
+            for (tax of taxes) {
                 const response = await fetch(`http://localhost:8080/tax/get_by_name?name=${tax}`)
                     .then(res => res.json())
                     .then(data => responseData = data);
-            
+
                 let responseDataArray = Object.entries(responseData);
 
                 let charge = price * (responseDataArray[2][1] / 100);
@@ -372,17 +372,17 @@ function loadProductsBody(data) {
             productListDiv.style.display = "none";
             assetFormDiv.style.display = "none";
         })
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if (col.innerHTML == "") {
-            col.innerHTML = "-";
-          }
-        }  
+            //iterate through columns
+            //columns would be accessed using the "col" variable assigned in the for loop
+            if (col.innerHTML == "") {
+                col.innerHTML = "-";
+            }
+        }
     }
 }
 
@@ -391,12 +391,12 @@ function loadServicesBody(data) {
         console.log(dataObject)
         const rowElement = document.createElement("tr");
         let dataObjectArray = Object.entries(dataObject);
-        for(let i of dataObjectArray) {
-            if(dataObjectArray.indexOf(i) == 3) continue;
+        for (let i of dataObjectArray) {
+            if (dataObjectArray.indexOf(i) == 3) continue;
             let cellElement = document.createElement("td");
-            if(dataObjectArray.indexOf(i) == 5) {
+            if (dataObjectArray.indexOf(i) == 5) {
                 let taxesArray = []
-                for(let j of dataObjectArray[dataObjectArray.indexOf(i)][1]) {
+                for (let j of dataObjectArray[dataObjectArray.indexOf(i)][1]) {
                     let dataTaxesArray = Object.entries(j)
                     taxesArray.push(dataTaxesArray[1][1])
                 }
@@ -416,14 +416,14 @@ function loadServicesBody(data) {
             let extraCharges = row.cells[3].innerHTML;
             let price = basePrice;
             let responseData;
-            for(tax of taxes) {
-                if(tax == "-") {
+            for (tax of taxes) {
+                if (tax == "-") {
                     continue;
                 }
                 await fetch(`http://localhost:8080/tax/get_by_name?name=${tax}`)
                     .then(res => res.json())
                     .then(data => responseData = data);
-            
+
                 let responseDataArray = Object.entries(responseData);
 
                 let charge = price * (responseDataArray[2][1] / 100);
@@ -441,17 +441,17 @@ function loadServicesBody(data) {
             serviceListDiv.style.display = "none";
             assetFormDiv.style.display = "none";
         })
-        if(i % 2 == 0 && i > 0) {
+        if (i % 2 == 0 && i > 0) {
             row.style.backgroundColor = "#EEEEEE"
         }
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j = 0, col; col = row.cells[j]; j++) {
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          if (col.innerHTML == "") {
-            col.innerHTML = "-";
-          }
-        }  
+            //iterate through columns
+            //columns would be accessed using the "col" variable assigned in the for loop
+            if (col.innerHTML == "") {
+                col.innerHTML = "-";
+            }
+        }
     }
 }
 
@@ -536,7 +536,7 @@ function refreshTotal() {
 refreshTable("./headers.json", clientListLink)
 
 searchBtn.addEventListener("click", () => {
-    if(listInput.value == "") {
+    if (listInput.value == "") {
         refreshTable("./headers.json", clientListLink);
         clientBottomBar.value = "";
         return;
@@ -545,7 +545,7 @@ searchBtn.addEventListener("click", () => {
 })
 
 confirmBtnPerson.addEventListener("click", () => {
-    if(nullInputsPerson()){
+    if (nullInputsPerson()) {
         alert("Hay datos faltantes");
         return;
     }
@@ -556,7 +556,7 @@ confirmBtnPerson.addEventListener("click", () => {
 })
 
 confirmBtnBusiness.addEventListener("click", () => {
-    if(nullInputsBusiness()){
+    if (nullInputsBusiness()) {
         alert("Hay datos faltantes");
         return;
     }
@@ -637,21 +637,21 @@ serviceBtn.addEventListener("click", () => {
 })
 
 loadOrderBtn.addEventListener("click", async () => {
-    if(clientBottomBar.value == "") {
+    if (clientBottomBar.value == "") {
         alert("Seleccione un Cliente")
         return;
     }
-    if(detailTable.rows.length == 1) {
+    if (detailTable.rows.length == 1) {
         alert("El pedido está vacío");
         return;
     }
-    if(!confirm) {
+    if (!confirm) {
         loadOrderBtn.style.backgroundColor = "#77DD77"
         loadOrderBtn.innerHTML = "Confirmar?";
         confirm = true;
     } else {
         await newOrder();
-        if(window.confirm("Imprimir comprobante?")) {
+        if (window.confirm("Imprimir comprobante?")) {
             cloneData();
             printPageArea();
             window.location.reload();

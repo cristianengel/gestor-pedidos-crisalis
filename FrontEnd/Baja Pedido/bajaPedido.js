@@ -25,7 +25,6 @@ async function searchByClient() {
 }
 
 async function searchByDate() {
-    console.log(searchDate.value)
     refreshTable("./headers.json", `http://localhost:8080/order/get_by_date?date=${searchDate.value}`)
 }
 
@@ -175,8 +174,8 @@ backBtn.addEventListener("click", () => {
     orderDetailsBackground.style.display = "none";
 })
 
-deleteBtn.addEventListener("click", () => {
-    fetch(`http://localhost:8080/order/delete?id=${idInput.value}`, {
+deleteBtn.addEventListener("click", async () => {
+    await fetch(`http://localhost:8080/order/delete?id=${idInput.value}`, {
         method: "POST"
     })
     orderDetailsBackground.style.display = "none";

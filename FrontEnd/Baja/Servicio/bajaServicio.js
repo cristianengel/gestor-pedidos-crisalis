@@ -111,8 +111,8 @@ listInput.addEventListener("keyup", () => {
     search();
 })
 
-confirmBtn.addEventListener("click", () => {
-    deleteService();
+confirmBtn.addEventListener("click", async () => {
+    await deleteService();
     masterContainer.style.display = "none";
     deleteCenterContainer.style.display = "none";
     refreshTable("./headers.json", serviceLinkList);

@@ -103,8 +103,8 @@ async function refreshTable(urlHeaders, urlBody) {
 
 refreshTable("./headers.json", clientListLink)
 
-confirmBtn.addEventListener("click", () => {
-    deleteClient(idToDelete);
+confirmBtn.addEventListener("click", async () => {
+    await deleteClient(idToDelete);
     masterContainer.style.display = "none";
     deleteCenterContainer.style.display = "none";
 })

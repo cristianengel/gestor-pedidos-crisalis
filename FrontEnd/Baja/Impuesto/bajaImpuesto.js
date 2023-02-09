@@ -107,8 +107,8 @@ async function refreshTable(urlHeaders, urlBody) {
 // Initial Load
 refreshTable("./headers.json", taxListLink)
 
-confirmBtn.addEventListener("click", () => {
-    deleteTax();
+confirmBtn.addEventListener("click", async () => {
+    await deleteTax();
     masterContainer.style.display = "none";
     deleteCenterContainer.style.display = "none";
     refreshTable("./headers.json", taxListLink);

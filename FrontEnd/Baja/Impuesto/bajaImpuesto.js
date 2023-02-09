@@ -12,9 +12,9 @@ const taxListLink = "http://localhost:8080/tax/list";
 let elementToDelete;
 
 
-function deleteTax() {
+async function deleteTax() {
     const deleteTaxLink = `http://localhost:8080/tax/delete?id=${elementToDelete}`;
-    fetch(deleteTaxLink, {
+    await fetch(deleteTaxLink, {
         method: "POST",
         headers: {
             "Content-Length": 0

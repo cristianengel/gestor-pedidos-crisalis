@@ -12,9 +12,9 @@ const cancelBtn = document.querySelector("#cancel-btn");
 let elementToDelete;
 const serviceLinkList = "http://localhost:8080/asset/services";
 
-function deleteService() {
+async function deleteService() {
     const deleteServiceLink = `http://localhost:8080/asset/delete_service?id=${elementToDelete}`;
-    fetch(deleteServiceLink, {
+    await fetch(deleteServiceLink, {
         method: "POST",
         headers: {
             "Content-Length": 0

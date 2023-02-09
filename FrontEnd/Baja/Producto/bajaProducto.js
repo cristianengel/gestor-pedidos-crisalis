@@ -10,9 +10,9 @@ const cancelBtn = document.querySelector("#cancel-btn");
 const productListLink = "http://localhost:8080/asset/products";
 let elementToDelete;
 
-function deleteProduct() {
+async function deleteProduct() {
     const deleteProductLink = `http://localhost:8080/asset/delete_product?id=${elementToDelete}`;
-    fetch(deleteProductLink, {
+    await fetch(deleteProductLink, {
         method: "POST",
         headers: {
             "Content-Length": 0
